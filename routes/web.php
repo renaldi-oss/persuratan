@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guest.login');
 });
 
 Route::get('/dashboard', function() {
-    return view('layouts.app');
-});
+    return view('auth.dashboard.Home');
+})->name('dashboard');
