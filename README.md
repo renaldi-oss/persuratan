@@ -1,66 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="./public/assets/img/TEKNO-KLOP.png" alt="LOGO" style="width: 250px;"/>
+  <br/>
+  <sub>SURAT | TEKNO KLOP INDONESIA</sub>
 </p>
 
-## About Laravel
+### Read Before Proceeding
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Surat merupakan sebuah aplikasi yang dibuat untuk mempermudah PT. TEKNO KLOP INDONESIA dalam mengelola surat masuk dan surat keluar. Aplikasi ini dibuat dengan menggunakan framework **Laravel v10**. Untuk database yang digunakan adalah mysql.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Aplikasi dikembangkan oleh mahasiswa Politeknik Negeri Malang yang sedang menjalani magang di PT. TEKNO KLOP INDONESIA. Aplikasi ini dibuat untuk memenuhi tugas akhir magang.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Untuk cara instalasi aplikasi ini, silahkan baca dokumentasi dibawah ini.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Table of Contents
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- [Table of Contents](#table-of-contents)
+- [Requirements](#requirements)
+- [Installation](#installation)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Requirements
 
-### Premium Partners
+- [PHP](https://www.php.net/) >= 8.1
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/en/) >= 20.0
+- [NPM](https://www.npmjs.com/) >= 8.0
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+all in one installer [XAMPP](https://www.apachefriends.org/download.html)
 
-## Contributing
+## Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Clone the repository
 
-## Code of Conduct
+```bash
+git clone https://github.com/renaldi-oss/persuratan.git
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. cd into the project directory
 
-## Security Vulnerabilities
+```bash
+cd persuratan
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. copy .env.example to .env
 
-## License
+```bash
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. set the database configuration in .env file
+
+5. install composer dependencies
+
+```bash
+composer install
+```
+
+6. install npm dependencies
+
+```bash
+npm install
+```
+
+7. generate application key
+
+```bash
+php artisan key:generate
+```
+
+8. run the migration & seeder
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+9. run the application on localhost
+
+```bash
+php artisan serve
+```
+
+10. run vite dev server
+
+```bash
+npm run dev
+```
+
+## Todo
+
+| Nama fitur               | status            |
+|--------------------------|------------------|
+| Authentikasi User        | ✔️ _mari paleng_ |
+| Surat PO   | ❌               |
+| Surat WO   | ❌               |
+
+## FAQ
+
+1. **Instalasi Gagal**
+
+check requirements diatas, kemudian coba lagi sampai berhasil :)
+
+> **Note:** Jika masih belum berhasil, silahkan buat issue baru di repository ini. ketika membuat issue baru hubungi @renaldi-oss untuk meminta bantuan. dan jangan lupa kopinya :D
+
+
+## Show your support
+
+* Follow me on GitHub [@renaldi-oss](https://github.com/renaldi-oss) or my site [here](https://renaldi.tech)
+
+## Disclaimer
+
+project ini dikembangkan oleh rekan-rekan mahasiswa Politeknik Negeri Malang yang sedang menjalani magang di PT. TEKNO KLOP INDONESIA. Aplikasi ini dibuat untuk memenuhi tugas akhir magang. Aplikasi ini tidak untuk diperjual belikan. Jika ada yang menjual aplikasi ini, maka itu adalah penipuan. Terima kasih.
