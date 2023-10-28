@@ -61,13 +61,20 @@ class authController extends Controller
         return $users;
     }
 
-    public function autoLogin()
+    public function autoLogin($role)
     {
         // batalkan jika bukan env local
         abort_unless(app()->environment('local'), 403);
+    
+        $userId = match ($role) {
+            'admin' => 1,
+            'manager' => 2,
+            'engineer' => 3,
+            default => abort(404),
+        };
+    
         // login untuk developer
-        $user = App\Models\User::find(1);
-        Auth::login($user);
-        return redirect()->route('home');
-    }
+        Auth::loginUsingId($userId);
+        return redirect()->route('home')->with('success', 'You have been logged in!');
+    }    
 }

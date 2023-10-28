@@ -20,21 +20,15 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [authController::class, 'index'])->name('login');
     Route::post('/login', [authController::class, 'authenticate'])->name('login.store');
 
-    // login untuk developer
-    Route::get('/auto-login', function () {
-        $user = App\Models\User::find(1);
-        Auth::login($user);
-        return redirect()->route('home');
-    })->name('auto-login.dev');
-
+    // auto login berdasarkan role DEVELOPMENT ONLY
+    Route::get('/auto-login/{role}', [authController::class, 'autoLogin'])->name('auto-login');
 });
 
 // DASHBOARD
 route::middleware(['auth'])->group(function() {
-    // halaman utama setelah login
+    // halaman utama dashboard setelah login
     Route::get('/', [homeController::class, 'index'])->name('home');
-
-    Route::middleware(['role:admin|manager|super-admin'])->group(function() {
+    Route::middleware(['role:admin|manager'])->group(function() {
         // halaman manajemen user
         Route::resource('manage-user', userController::class)->names([
             'index' => 'manage-user',
@@ -45,7 +39,6 @@ route::middleware(['auth'])->group(function() {
             'update' => 'manage-user.update',
             'destroy' => 'manage-user.destroy',
         ]);
-
     });
 
     // LOGOUT

@@ -34,13 +34,18 @@
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
               </div>
-              {{-- btn auto login ketika development--}}
               @if (App::environment('local'))
-              <div class="col-12 mt-1">
-                <a href="{{ route('auto-login.dev') }}" class="btn btn-primary btn-block">Sign In Dev</a>
-              </div>
+                <hr />
+                <div class="col-12 mt-1">
+                  <a href="{{ route('auto-login', ['role' => 'admin']) }}" class="btn btn-primary btn-block">admin</a>
+                </div>
+                <div class="col-12 mt-1">
+                  <a href="{{ route('auto-login', ['role' => 'manager']) }}" class="btn btn-primary btn-block">manager</a>
+                </div>
+                <div class="col-12 mt-1">
+                  <a href="{{ route('auto-login', ['role' => 'engineer']) }}" class="btn btn-primary btn-block">engineer</a>
+                </div>
               @endif
-
             </div>
           </form>
         </div>
