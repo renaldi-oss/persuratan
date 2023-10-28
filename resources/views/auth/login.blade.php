@@ -8,8 +8,7 @@
           <a href="#" class="h1"><b>TKI</b></a>
         </div>
         <div class="card-body">
-          <!-- Change the form id to 'loginForm' -->
-          <form id="loginForm" action="{{ route('login') }}" method="POST">
+          <form id="loginForm" action="{{ route('login.store') }}" method="POST">
             @csrf
             <div class="form-group">
               <div class="input-group mb-3">
@@ -30,27 +29,28 @@
                   </div>
                 </div>
               </div>
-            </div>
-            
+            </div> 
             <div class="row">
-              <!-- /.col -->
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
               </div>
-              <!-- /.col -->
+              {{-- btn auto login ketika development--}}
+              @if (App::environment('local'))
+              <div class="col-12 mt-1">
+                <a href="{{ route('auto-login.dev') }}" class="btn btn-primary btn-block">Sign In Dev</a>
+              </div>
+              @endif
+
             </div>
           </form>
         </div>
-        <!-- /.card-body -->
       </div>
-      <!-- /.card -->
     </div>
-    <!-- /.login-box -->
 </main>
 @endsection
 
 @section('script')
-
+{{-- required jquery untuk validator input data --}}
 <script src="{{ asset('./plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('./plugins/jquery-validation/additional-methods.min.js') }}"></script>
 {{-- script jquery untuk validator input data --}}
@@ -63,7 +63,7 @@
       },
       password: {
         required: true,
-        minlength: 1
+        minlength: 6
       }
     },
     messages: {
@@ -72,7 +72,7 @@
       },
       password: {
         required: "Please provide a password",
-        minlength: "Your password must be at least 5 characters long"
+        minlength: "Your password must be at least 6 characters long"
       }
     },
     errorElement: 'span',

@@ -26,7 +26,7 @@ class authController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect('/dashboard')->with('success', 'You have been logged in!');;
+            return redirect()->route('home')->with('success', 'You have been logged in!');
         }
  
         return back()->withErrors([
@@ -42,6 +42,32 @@ class authController extends Controller
  
         $request->session()->regenerateToken();
  
-        return redirect('/')->with('success', 'You have been logged out!');
+        return redirect()->route('login')->with('success', 'You have been logged out!');;
+    }
+
+    public function getAllUsersLastSeen()
+    {
+        $users = User::all();
+        foreach ($users as $user) {
+            if(Cache::has('user-is-online-' . $user->id))
+            {
+                $user->last_seen = 'Online';
+            }
+            else
+            {
+                $user->last_seen = $user->last_seen->diffForHumans();
+            }
+        }
+        return $users;
+    }
+
+    public function autoLogin()
+    {
+        // batalkan jika bukan env local
+        abort_unless(app()->environment('local'), 403);
+        // login untuk developer
+        $user = App\Models\User::find(1);
+        Auth::login($user);
+        return redirect()->route('home');
     }
 }
