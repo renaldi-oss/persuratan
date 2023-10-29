@@ -10,7 +10,7 @@
   @else
     <title>{{ config('app.name') }}</title>
   @endif
-  <link rel="icon" href="{{ url(asset('/assets/img/TEKNO-KLOP.png')) }}" type="image/png" sizes="32x32">
+  <link rel="icon" href="{{ url(asset('./assets/img/LOGO1.png')) }}" type="image/png" sizes="32x32">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
