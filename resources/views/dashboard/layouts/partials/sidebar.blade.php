@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     {{-- MAIN LOGO --}}
     <a href="#" class="brand-link">
-    <img src="{{ asset('./assets/img/TEKNO-KLOP.png') }}" alt="Tekno Klop Indonesia" class="brand-image img-circle bg-light">
+    <img src="{{ asset('./assets/img/LOGO1.png') }}" alt="Tekno Klop Indonesia" class="brand-image img-circle bg-light">
     <span class="brand-text font-weight-light">{{ config('app.name' , 'Tekno Klop Indonesia') }}</span>
     </a>
 
