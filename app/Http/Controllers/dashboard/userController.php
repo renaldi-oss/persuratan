@@ -5,22 +5,33 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use DataTables;
 
 class userController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // get all users where role is not Super Admin
-        $user = User::whereDoesntHave('roles', function ($query) {
-            $query->where('name', 'Super Admin');
-        })->get();
+        // get user data with roles
+        if($request->ajax()) {
+            $users = User::with('roles')->get();
         
-
-        return view('dashboard.user.index');
-
+            return datatables()->of($users)
+                ->addColumn('roles', function($user) {
+                    return $user->roles->pluck('name')->implode(', ');
+                })
+                ->addColumn('action', function($user) {
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn .= '&nbsp;&nbsp;';
+                    $btn .= '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'roles'])
+                ->make(true);
+        }
+        return view('dashboard.users.index');
     }
 
     /**
@@ -28,7 +39,7 @@ class userController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
