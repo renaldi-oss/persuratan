@@ -34,11 +34,10 @@ route::middleware(['auth'])->group(function() {
             'index' => 'manage-user',
             'create' => 'manage-user.create',
             'store' => 'manage-user.store',
-            'show' => 'manage-user.show',
             'edit' => 'manage-user.edit',
             'update' => 'manage-user.update',
             'destroy' => 'manage-user.destroy',
-        ]);
+        ])->except(['show']);
     });
 
     // LOGOUT
