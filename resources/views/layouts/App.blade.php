@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +24,7 @@
    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    
+
     @yield('main')
 
     <!-- jQuery -->
@@ -34,5 +36,5 @@
 
     @yield('script')
 </body>
-    
+
 </html>
