@@ -29,8 +29,8 @@
         </li>
 
         @hasrole('admin|manager')
-        <li class="nav-item {{ request()->routeIs('manage-user') ? 'menu-open' : '' }}">
-            <a href="{{ route("manage-user") }}" class="nav-link">
+        <li class="nav-item {{ request()->routeIs('manage-users') ? 'menu-open' : '' }}">
+            <a href="{{ route("manage-users") }}" class="nav-link">
             <i class="nav-icon far fa-user"></i>
             <p>
                 Users

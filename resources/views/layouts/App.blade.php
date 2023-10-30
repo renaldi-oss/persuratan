@@ -17,12 +17,13 @@
   <link rel="stylesheet" href="{{ asset('/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{{ asset('./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
 
-   @yield('style')
-   <meta name="csrf-token" content="{{ csrf_token() }}">
+  @yield('style')
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    
     @yield('main')
 
     <!-- jQuery -->
@@ -31,7 +32,9 @@
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
-
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('./plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    
     @stack('script')
 </body>
     

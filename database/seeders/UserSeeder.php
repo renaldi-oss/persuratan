@@ -40,5 +40,10 @@ class UserSeeder extends Seeder
             'name' => 'engineer',
             'email' => 'engineer@gmail.com',
         ])->assignRole('engineer');
+        
+
+        User::factory()->count(10)->create()->each(function ($user) {
+            $user->assignRole(Role::all()->random());
+        });
     }
 }

@@ -10,7 +10,7 @@
 
 @section('content')
   
-  <x-breadcrumb title="Manage users" link="{{ route('manage-user') }}" item="Users" subItem="Manage" />
+  <x-breadcrumb title="Manage users" link="{{ route('manage-users') }}" item="Users" subItem="Manage" />
 
   <!-- Main content -->
   <div class="content">
@@ -22,9 +22,9 @@
             <!-- /.card-header -->
             <div class="card-body ">
               <div class="container-fluid my-2">
-                <a href="{{ route('manage-user.create') }}" class="btn btn-primary">Create</a>                
+                <a href="{{ route('manage-users.create') }}" class="btn btn-primary">Create</a>                
               </div>
-              <table id="usersTable" class="table table-bordered table-striped">
+              <table id="usersTable" class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
                   <th>id</th>
@@ -58,6 +58,15 @@
 <script src="{{ asset('./plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('./plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('./plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('./plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('./plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('./plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('./plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('./plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('./plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('./plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('./plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
 {{-- script table user --}}
 <script type="text/javascript">
   $(document).ready(function() {
@@ -66,7 +75,13 @@
       processing: true,
       serverSide: true,
       paging: true,
-      ajax: "{{ route('manage-user') }}",
+      pageLength: 10,
+      lengthChange: true,
+      searching: true,
+      ordering: true,
+      info: true,
+      autoWidth: true,
+      ajax: "{{ route('manage-users') }}",
       columns: [
         {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},
@@ -76,7 +91,8 @@
                 data: 'action', 
                 name: 'action', 
                 orderable: true, 
-                searchable: true
+                searchable: true,
+                class: 'd-flex justify-content-center'
         },
       ]
     });

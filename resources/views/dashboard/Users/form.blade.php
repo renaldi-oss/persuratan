@@ -26,7 +26,9 @@
     <label for="input-roles">Roles</label>
     <select class="form-control @error('roles') is-invalid @enderror" id="input-roles" name="roles">
         @foreach ($roles as $id => $name)
-            <option value="{{ $id }}" {{ $user->roles->pluck('id')->contains($id) ? 'selected' : '' }}>{{ $name }}</option>
+            <option value="{{ $id }}" 
+            {{  (isset($user) && $user->roles->pluck('id')->contains($id)) ? 'selected' : '' }}
+            >{{ $name }}</option>
         @endforeach
     </select>
     <x-errormessage error="roles" />

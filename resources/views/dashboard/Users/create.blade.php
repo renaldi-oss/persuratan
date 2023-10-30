@@ -3,11 +3,11 @@
 
 @section('content')
 
-<x-breadcrumb title="Create user" link="{{ route('manage-user') }}" item="User" subItem="Create" />
+<x-breadcrumb title="Create user" link="{{ route('manage-users') }}" item="User" subItem="Create" />
 
 <div class="card m-3">
   <div class="card-body">
-    <form id="Form" action="{{ route('manage-user.store') }}" method="POST">
+    <form id="Form" action="{{ route('manage-users.store') }}" method="POST">
         {{ csrf_field() }}
         @include('dashboard.users.form', ['tombol' => 'Create'])
     </form>

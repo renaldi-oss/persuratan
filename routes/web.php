@@ -17,7 +17,9 @@ use App\Http\Controllers\dashboard\userController;
 */
 // LOGIN
 Route::middleware('guest')->group(function () {
+    // halaman login untuk semua user ketika belum login
     Route::get('/login', [authController::class, 'index'])->name('login');
+    // proses login
     Route::post('/login', [authController::class, 'authenticate'])->name('login.store');
 
     // auto login berdasarkan role DEVELOPMENT ONLY
@@ -28,15 +30,16 @@ Route::middleware('guest')->group(function () {
 route::middleware(['auth'])->group(function() {
     // halaman utama dashboard setelah login
     Route::get('/', [homeController::class, 'index'])->name('home');
+    // halaman kelola user khusus admin dan manager
     Route::middleware(['role:admin|manager'])->group(function() {
         // halaman manajemen user
-        Route::resource('manage-user', userController::class)->names([
-            'index' => 'manage-user',
-            'create' => 'manage-user.create',
-            'store' => 'manage-user.store',
-            'edit' => 'manage-user.edit',
-            'update' => 'manage-user.update',
-            'destroy' => 'manage-user.destroy',
+        Route::resource('manage-users', userController::class)->names([
+            'index' => 'manage-users',
+            'create' => 'manage-users.create',
+            'store' => 'manage-users.store',
+            'edit' => 'manage-users.edit',
+            'update' => 'manage-users.update',
+            'destroy' => 'manage-users.destroy',
         ])->except(['show']);
     });
 

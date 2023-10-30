@@ -26,9 +26,13 @@ class userController extends Controller
                     return $user->roles->pluck('name')->implode(', ');
                 })
                 ->addColumn('action', function($user) {
-                    $btn = '<a href="' . route("manage-user.edit", $user->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn = '<a href="' . route("manage-users.edit", $user->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
                     $btn .= '  ';
-                    $btn .= '<a href="' . route("manage-user.destroy", $user->id) . '" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $btn .= '<form action="' . route("manage-users.destroy", $user->id) . '" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="' . csrf_token() . '">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>';
                     return $btn;
                 })
                 ->rawColumns(['action', 'roles'])
@@ -71,7 +75,7 @@ class userController extends Controller
         $user = User::create($request->all());
         $user->assignRole($request->input('roles'));
         
-        return redirect()->route('manage-user')->with('success', 'User created successfully.');
+        return redirect()->route('manage-users')->with('success', 'User created successfully.');
     }
 
     /**
@@ -101,7 +105,7 @@ class userController extends Controller
         $user = User::find($id);
     
         if (!$user) {
-            return redirect()->route('manage-user')->with('error', 'User not found.');
+            return redirect()->route('manage-users')->with('error', 'User not found.');
         }
         Validator::make($request->all(), [
             'name' => 'required',
@@ -125,7 +129,7 @@ class userController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('manage-user')->with('success', 'User updated successfully.');
+        return redirect()->route('manage-users')->with('success', 'User updated successfully.');
     }
     
     /**
@@ -134,6 +138,6 @@ class userController extends Controller
     public function destroy(string $id)
     {
         User::find($id)->delete();
-        return redirect()->route('manage-user')->with('success', 'User deleted successfully.');
+        return redirect()->route('manage-users')->with('success', 'User deleted successfully.');
     }
 }
