@@ -35,6 +35,53 @@
     <!-- SweetAlert2 -->
     <script src="{{ asset('./plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     
+    <script>
+      // if there is a message in session, show it
+      // @if (session('status'))
+      //   // check the type of message
+      //   @if (session('status') == 'success')
+      //     Swal.fire(
+      //       'Success!',
+      //       '{{ session('message') }}',
+      //       'success'
+      //     )
+      //   @elseif (session('status') == 'error')
+      //     Swal.fire(
+      //       'Error!',
+      //       '{{ session('message') }}',
+      //       'error'
+      //     )
+      //   @else
+      //     Swal.fire(
+      //       'Info!',
+      //       '{{ session('message') }}',
+      //       'info'
+      //     )
+      //   @endif
+      // @endif
+    </script>
+    <script>
+      @if (session('status'))
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+    
+        Toast.fire({
+          icon: '{{ session('status') }}',
+          title: '{{ session('message') }}'
+        })
+      @endif
+    </script>
+    
+
     @stack('script')
 </body>
     

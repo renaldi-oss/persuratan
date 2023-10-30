@@ -14,10 +14,6 @@
             <div class="content-wrapper">
                 @yield('content')
             </div>
-            {{-- Toast --}}
-            @if (session()->has('pesan'))
-            <x-toast message="{{ session()->get('pesan'); }}" status="{{ session()->get('status'); }}" />
-            @endif
 
             @include('dashboard.layouts.partials.footer')
         </div>

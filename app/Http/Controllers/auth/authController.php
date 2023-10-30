@@ -26,7 +26,7 @@ class authController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('home')->with('success', 'You have been logged in!');
+            return redirect()->route('home')->with('status', 'success')->with('message', 'welcome back! ' . Auth::user()->name);
         }
  
         return back()->withErrors([
@@ -42,7 +42,7 @@ class authController extends Controller
  
         $request->session()->regenerateToken();
  
-        return redirect()->route('login')->with('success', 'You have been logged out!');;
+        return redirect()->route('login')->with('status', 'success')->with('message', 'You have been logged out!');
     }
 
     public function getAllUsersLastSeen()
@@ -75,6 +75,6 @@ class authController extends Controller
     
         // login untuk developer
         Auth::loginUsingId($userId);
-        return redirect()->route('home')->with('success', 'You have been logged in!');
+        return redirect()->route('home')->with('status', 'success')->with('message', 'welcome back! ' . Auth::user()->name);
     }    
 }

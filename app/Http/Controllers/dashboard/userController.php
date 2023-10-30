@@ -63,19 +63,15 @@ class userController extends Controller
             'username' => 'required|unique:users',
             'email' => 'required|unique:users',
             'password' => 'required',
-            'roles' => 'required'
         ]);
 
-        if($request->fails()) {
-            return response()->json([
-                'errors' => $request->errors()->all()
-            ]);
-        }
-
         $user = User::create($request->all());
-        $user->assignRole($request->input('roles'));
+        $role = Role::find($request->input('roles'));
+        $user->assignRole($role->name);
         
-        return redirect()->route('manage-users')->with('success', 'User created successfully.');
+        return redirect()->route('manage-users')
+            ->with('status', 'success')
+            ->with('message', 'User ' . $user->name . ' created successfully.');
     }
 
     /**
@@ -91,8 +87,9 @@ class userController extends Controller
      */
     public function edit(string $id)
     {
+        $user = User::find($id);
         return view('dashboard.users.edit',[
-            'user' => User::find($id), 
+            'user' => $user,
             'roles' => Role::pluck('name', 'id')->all() // akan mengembalikan associative array
         ]);
     }
@@ -105,7 +102,9 @@ class userController extends Controller
         $user = User::find($id);
     
         if (!$user) {
-            return redirect()->route('manage-users')->with('error', 'User not found.');
+            return redirect()->route('manage-users')
+            ->with('status', 'error')
+            ->with('message', 'User ' . $user->name . ' not found.');
         }
         Validator::make($request->all(), [
             'name' => 'required',
@@ -124,12 +123,14 @@ class userController extends Controller
         } else {
             $request->merge(['password' => $user->password]);
         }
-        // ganti role
         $user->roles()->sync($request->input('roles'));
 
         $user->update($request->all());
 
-        return redirect()->route('manage-users')->with('success', 'User updated successfully.');
+        return redirect()
+            ->route('manage-users')
+            ->with('status', 'success')
+            ->with('message', "Data ". $user->name ." updated successfully.");
     }
     
     /**
@@ -137,7 +138,11 @@ class userController extends Controller
      */
     public function destroy(string $id)
     {
-        User::find($id)->delete();
-        return redirect()->route('manage-users')->with('success', 'User deleted successfully.');
+        $user = User::find($id);
+        $name = $user->name;
+        $user->delete();
+        return redirect()->route('manage-users')
+        ->with('status', 'success')
+        ->with('message', 'User ' . $name . ' deleted successfully.');
     }
 }
