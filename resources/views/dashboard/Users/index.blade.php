@@ -5,6 +5,12 @@
 <link rel="stylesheet" href="{{ asset('./plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('./plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('./plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+{{-- incrase table fontsize --}}
+<style>
+  td, th {
+    font-size: 20px;
+  }
+</style>
 
 @endsection
 
@@ -24,10 +30,9 @@
               <div class="container-fluid my-2">
                 <a href="{{ route('manage-users.create') }}" class="btn btn-primary">Create</a>                
               </div>
-              <table id="usersTable" class="table table-bordered table-striped text-center">
+              <table id="usersTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>id</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Roles</th>
@@ -81,9 +86,9 @@
       ordering: true,
       info: true,
       autoWidth: true,
+      responsive: true,
       ajax: "{{ route('manage-users') }}",
       columns: [
-        {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},
         {data: 'email', name: 'email'},
         {data: 'roles', name: 'roles'}, 
