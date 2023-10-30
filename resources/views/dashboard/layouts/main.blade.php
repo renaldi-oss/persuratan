@@ -14,7 +14,7 @@
             <div class="content-wrapper">
                 @yield('content')
             </div>
-    
+
             @include('dashboard.layouts.partials.footer')
         </div>
     </main>

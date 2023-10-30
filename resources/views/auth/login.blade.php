@@ -35,7 +35,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
               </div>
               @if (App::environment('local'))
-                <hr />
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 <div class="col-12 mt-1">
                   <a href="{{ route('auto-login', ['role' => 'admin']) }}" class="btn btn-primary btn-block">admin</a>
                 </div>
@@ -54,7 +54,7 @@
 </main>
 @endsection
 
-@section('script')
+@push('script')
 {{-- required jquery untuk validator input data --}}
 <script src="{{ asset('./plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('./plugins/jquery-validation/additional-methods.min.js') }}"></script>
@@ -95,4 +95,4 @@
 });
   </script>
 
-@endsection
+@endpush

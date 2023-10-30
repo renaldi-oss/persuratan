@@ -30,6 +30,15 @@ Untuk cara instalasi aplikasi ini, silahkan baca dokumentasi dibawah ini.
 
 all in one installer [XAMPP](https://www.apachefriends.org/download.html)
 
+## Plugins & Dependencies
+
+[datatables](https://yajrabox.com/docs/laravel-datatables/10.0/)
+
+## Helper sites
+
+[bootstrap cheatsheet](https://bootstrap-cheatsheet.themeselection.com/)
+
+
 ## Installation
 
 1. Clone the repository

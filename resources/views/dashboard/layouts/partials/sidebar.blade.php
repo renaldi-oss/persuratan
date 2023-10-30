@@ -55,6 +55,21 @@
             </p>
             </a>
         </li>
+        @hasrole('admin|manager')
+        <li class="nav-item {{ request()->routeIs('manage-users') ? 'menu-open' : '' }}">
+            <a href="{{ route("manage-users") }}" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+                Users
+                <span class="badge badge-info right"></span>
+            </p>
+            </a>
+        </li>
+        @endhasrole
+
+        {{-- DIVIDER --}}
+        <hr class="my-12 mx-1 bg-secondary" />
+        
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-comment-exclamation"></i>
