@@ -46,3 +46,6 @@ route::middleware(['auth'])->group(function() {
     // LOGOUT
     route::post('/logout', [authController::class, 'logout'])->name('logout');
 });
+route::get('/dashboard/index', function () {
+    return view('dashboard.index');
+});
