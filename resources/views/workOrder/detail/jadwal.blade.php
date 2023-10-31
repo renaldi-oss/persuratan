@@ -2,11 +2,12 @@
 
 
 @section('content')
-@include('workOrder.detail.index')
   <!-- fullCalendar -->
   <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
 <div>
-    <div class="card card-primary">
+{{-- @include('workOrder.detail.index') --}}
+<div class="card card-primary">
+  <h1 class="ml-4">Jadwal Pelaksanaan</h1> 
       <div class="card-body p-0">
         <!-- THE CALENDAR -->
         <div id="calendar" class="fc fc-media-screen fc-direction-ltr fc-theme-bootstrap">

@@ -66,11 +66,36 @@
                       <div class="card">
                           <table>
                               <tr>
-                                  <td><a href="/workOrder/detail/jadwal"><button type="button" class="btn btn-block btn-primary btn-lg p-2">Jadwal Pelaksanaan</button></a></td>
-                                  <td><button type="button" class="btn btn-block btn-primary btn-lg p-2">Purchase Request</button></td> 
-                                  <td><button type="button" class="btn btn-block btn-primary btn-lg p-2">Check List</button></td> 
-                                  <td><button type="button" class="btn btn-block btn-primary btn-lg p-2">QC Pass</button></td> 
-                                  <td><button type="button" class="btn btn-block btn-primary btn-lg p-2">Persuratan</button></td> 
+                                  <td>
+                                    <form action="/load-jadwal" method="POST">
+                                      @csrf
+                                      <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Jadwal Pelaksanaan</button>
+                                    </form>
+                                  </td>
+                                  <td>
+                                    <form action="/load-purchaseRequest" method="post">
+                                      @csrf
+                                      <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Purchase Request</button>
+                                    </form>
+                                  </td> 
+                                  <td>
+                                    <form action="/load-checklist" method="post">
+                                      @csrf
+                                      <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Check List</button>
+                                    </form>
+                                  </td> 
+                                  <td>
+                                    <form action="/load-qcPass" method="post">
+                                      @csrf
+                                      <button type="submit" class="btn btn-block btn-primary btn-lg p-2">QC Pass</button>
+                                    </form>
+                                  </td> 
+                                  <td>
+                                    <form action="/load-persuratan" method="post">
+                                      @csrf
+                                      <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Persuratan</button>
+                                    </form>
+                                  </td> 
                               </tr>
                           </table>
                       </div>
@@ -81,8 +106,4 @@
 
             </div>
           </div>
-
-
-          
-
 @endsection

@@ -43,7 +43,17 @@ route::middleware(['auth'])->group(function() {
     //halaman Work Order
     Route::get('/workOrder', [workOrderController::class, 'index'])->name('workOrder');
     Route::get('/workOrder/detail', [workOrderController::class, 'detail'])->name('detailWorkOrder');
-    Route::get('/workOrder/detail/jadwal', [workOrderController::class, 'jadwal'])->name('jadwal');
+
+    Route::get('/jadwal', [workOrderController::class, 'jadwal'])->name('jadwal');
+    Route::post('/load-jadwal', [workOrderController::class, 'handleJadwal'])->name('handleJadwal');
+    Route::get('/purchaseRequest', [workOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
+    Route::post('/load-purchaseRequest', [workOrderController::class, 'handlePurchaseRequest'])->name('handlePurchaseRequest');
+    Route::get('/checklist', [workOrderController::class, 'checklist'])->name('checklist');
+    Route::post('/load-checklist', [workOrderController::class, 'handleChecklist'])->name('Checklist');
+    Route::get('/qcPass', [workOrderController::class, 'qcPass'])->name('qcPass');
+    Route::post('/load-qcPass', [workOrderController::class, 'handleQCPass'])->name('handleQCPass');
+    Route::get('/persuratan', [workOrderController::class, 'persuratan'])->name('persuratan');
+    Route::post('/load-persuratan', [workOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
 
     // LOGOUT
     route::post('/logout', [authController::class, 'logout'])->name('logout');
