@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\authController;
 use App\Http\Controllers\dashboard\homeController;
 use App\Http\Controllers\dashboard\userController;
+use App\Http\Controllers\dashboard\workOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,10 @@ route::middleware(['auth'])->group(function() {
             'destroy' => 'manage-user.destroy',
         ])->except(['show']);
     });
+    //halaman Work Order
+    Route::get('/workOrder', [workOrderController::class, 'index'])->name('workOrder');
+    Route::get('/workOrder/detail', [workOrderController::class, 'detail'])->name('detailWorkOrder');
+    Route::get('/workOrder/detail/jadwal', [workOrderController::class, 'jadwal'])->name('jadwal');
 
     // LOGOUT
     route::post('/logout', [authController::class, 'logout'])->name('logout');
