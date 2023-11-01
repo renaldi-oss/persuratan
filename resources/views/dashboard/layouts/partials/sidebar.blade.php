@@ -1,5 +1,4 @@
 <!-- Main Sidebar Container -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
@@ -105,6 +104,7 @@
                     </a>
                 </li>
                 @endhasrole
+            </ul>
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-solid fa-list"></i>

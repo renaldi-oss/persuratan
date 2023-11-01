@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="{{ asset('./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css') }}">
   @yield('style')
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -36,7 +36,7 @@
     <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="{{ asset('./plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-    
+
     <script>
       // if there is a message in session, show it
       // @if (session('status'))
@@ -75,14 +75,14 @@
             toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
         })
-    
+
         Toast.fire({
           icon: '{{ session('status') }}',
           title: '{{ session('message') }}'
         })
       @endif
     </script>
-    
+
 
     @stack('script')
 </body>
