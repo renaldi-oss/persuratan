@@ -9,36 +9,11 @@
     <div class="sidebar">
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item">
-        <a href="#" class="nav-link">
-            <img src="{{ asset('./assets/img/bruh.jpg') }}" class="img-circle elevation-2   nav-icon" alt="User Image">
-            <p>
-                Boi
-                <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-solid fa-right-from-bracket"></i>
-                  <p>Log Out</p>
-                </a>
-              </li>
-            </ul>
-        </li>
-    </ul>
-    </div>
-
-    <!-- SidebarSearch Form -->
-    <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-            <button class="btn btn-sidebar">
-            <i class="fas fa-search fa-fw"></i>
-            </button>
+        <div class="image">
+          <img src="{{ asset('assets/img/bruh.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
+        <div class="info">
+          <a class="d-block">{{ Auth::user()->name }}</a>
         </div>
     </div>
 
@@ -55,6 +30,21 @@
             </p>
             </a>
         </li>
+        @hasrole('finance|manager')
+        <li class="nav-item {{ request()->routeIs('manage-users') ? 'menu-open' : '' }}">
+            <a href="{{ route("manage-users") }}" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+                Users
+                <span class="badge badge-info right"></span>
+            </p>
+            </a>
+        </li>
+        @endhasrole
+
+        {{-- DIVIDER --}}
+        <hr class="my-12 mx-1 bg-secondary" />
+        
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-comment-exclamation"></i>
@@ -64,7 +54,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/workOrder" class="nav-link">
+            <a href="#" class="nav-link">
             <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
             <p>
                 Work Order
@@ -80,20 +70,24 @@
             </p>
             </a>
             <ul class="nav nav-treeview">
+                @hasrole('finance|manager')
+                <li class="nav-item {{ request()->routeIs('operational') ? 'menu-open' : '' }}">
+                    <a href="{{ route("operational") }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Operational Request
+                        <span class="badge badge-info right"></span>
+                    </p>
+                    </a>
+                </li>
+                @endhasrole     
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Purchase Order</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Operational Request</p>
-                </a>
-              </li>
             </ul>
-        </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-solid fa-list"></i>
