@@ -10,7 +10,7 @@
 
 @section('content')
 
-  <x-breadcrumb title="Operational Request" link="{{ route('operational') }}" item="Operational" subItem="Manage" />
+  <x-breadcrumb title="Purchase Order" link="{{ route('purchase') }}" item="Purchase" subItem="Manage" />
 
   <!-- Main content -->
   <div class="content">
@@ -22,17 +22,16 @@
             <!-- /.card-header -->
             <div class="card-body ">
               <div class="container-fluid my-2">
-                <a href="{{ route('operational.create') }}" class="btn btn-primary">Create</a>
+                <a href="{{ route('purchase.create') }}" class="btn btn-primary">Create</a>
               </div>
               <table id="usersTable" class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
                     <th>Tanggal</th>
-                    <th>Jenis Kegiatan</th>
-                    <th>Instansi</th>
-                    <th>Lokasi</th>
+                    <th>Pemohon</th>
+                    <th>Divisi</th>
                     <th>No PO</th>
-                    <th>Jumlah</th>
+                    <th>proyek</th>
                     <th>Status</th>
                 </tr>
                 </thead>
@@ -83,13 +82,12 @@
       ordering: true,
       info: true,
       autoWidth: true,
-      ajax: "{{ route('operational') }}",
+      ajax: "{{ route('purchase') }}",
       columns: [
         {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},
         {data: 'email', name: 'email'},
         {data: 'name', name: 'name'},
-        {data: 'email', name: 'email'},
         {data: 'roles', name: 'roles'},
         {
                 data: 'action',

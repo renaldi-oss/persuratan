@@ -44,7 +44,7 @@
 
         {{-- DIVIDER --}}
         <hr class="my-12 mx-1 bg-secondary" />
-        
+
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-comment-exclamation"></i>
@@ -63,7 +63,7 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-building-columns"></i>
+                <i class="nav-icon fas fa-solid fa-money-check-dollar" style="color: #c2c7d0;"></i>
             <p>
                 Administration & Finance
                 <i class="right fas fa-angle-left"></i>
@@ -80,13 +80,18 @@
                     </p>
                     </a>
                 </li>
-                @endhasrole     
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Purchase Order</p>
-                </a>
-              </li>
+                @endhasrole
+                @hasrole('admin|manager')
+                <li class="nav-item {{ request()->routeIs('purchase') ? 'menu-open' : '' }}">
+                    <a href="{{ route("purchase") }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Purchase Order
+                        <span class="badge badge-info right"></span>
+                    </p>
+                    </a>
+                </li>
+                @endhasrole
             </ul>
         <li class="nav-item">
             <a href="#" class="nav-link">

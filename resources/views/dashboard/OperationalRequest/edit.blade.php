@@ -32,7 +32,6 @@
        },
         email: {
           required: true,
-          email: true,
         },
        password: {
          required: true,
@@ -51,7 +50,7 @@
        },
         email: {
           required: "Please enter a valid email address",
-          email: "Please enter a valid email address"
+
         },
        password: {
          required: "Please provide a password",

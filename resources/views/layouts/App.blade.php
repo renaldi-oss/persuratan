@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="{{ asset('./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-
   @yield('style')
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -49,14 +48,14 @@
             toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
         })
-    
+
         Toast.fire({
           icon: '{{ session('status') }}',
           title: '{{ session('message') }}'
         })
       @endif
     </script>
-    
+
 
     @stack('script')
 </body>

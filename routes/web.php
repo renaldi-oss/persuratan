@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\auth\AuthController;
-use App\Http\Controllers\dashboard\HomeController;
-use App\Http\Controllers\dashboard\UserController;
-use App\Http\Controllers\dashboard\WorkOrderController;
-use App\Http\Controllers\Dashboard\OperationalController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\OperationalController; // Tambahkan ini
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +25,7 @@ Route::middleware('guest')->group(function () {
 
     // auto login berdasarkan role DEVELOPMENT ONLY
     Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
+
 });
 
 // DASHBOARD

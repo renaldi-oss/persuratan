@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class OperationalController extends Controller
+class purchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class OperationalController extends Controller
         // get user data with roles
         if($request->ajax()) {
             $users = User::with('roles')->get();
-        
+
             return datatables()->of($users)
     ->addColumn('roles', function($user) {
         return $user->roles->pluck('name')->implode(', ');
@@ -28,9 +28,8 @@ class OperationalController extends Controller
     ->addColumn('action', function($user) {
         $btn = '<div style="display: flex; align-items: center;">';
         $btn .= '<span style="background: #FFF8cc;  color: #FFA500; padding: 3px 8px; border-radius: 8px;">Menunggu Acc Admin</span>';
-        $btn .= '<a href="' . route("operational.edit", $user->id) . '" class="edit btn btn-sm" style=" color: #666;"><i class="fas fa-edit"></i></a>';
         $btn .= '</div>';
-        $btn .= '<form action="' . route("operational.destroy", $user->id) . '" method="POST">';
+        $btn .= '<form action="' . route("purchase.destroy", $user->id) . '" method="POST">';
         $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
         $btn .= '</form>';
         return $btn;
@@ -38,10 +37,8 @@ class OperationalController extends Controller
     ->rawColumns(['action', 'roles'])
     ->make(true);
 
-        
-        
         }
-        return view('dashboard.operationalrequest.index');
+        return view('dashboard.PurchaseOrder.index');
     }
 
     /**
@@ -49,8 +46,8 @@ class OperationalController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id')->all(); 
-        return view('dashboard.operationalrequest.create',
+        $roles = Role::pluck('name', 'id')->all();
+        return view('dashboard.PurchaseOrder.create',
         [
             'roles' => $roles
         ]);
@@ -68,14 +65,14 @@ class OperationalController extends Controller
             'location' => 'required',
             'po' => 'required',
             'amount' => 'required',
-            'location' => 'required',
+            'status' => 'required',
         ]);
 
         $user = User::create($request->all());
         $role = Role::find($request->input('roles'));
         $user->assignRole($role->name);
-        
-        return redirect()->route('operational')
+
+        return redirect()->route('purchase')
             ->with('status', 'success')
             ->with('message', 'User ' . $user->name . ' created successfully.');
     }
@@ -94,7 +91,7 @@ class OperationalController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        return view('dashboard.operationalrequest.edit',[
+        return view('dashboard.PurchaseOrder.edit',[
             'user' => $user,
             'roles' => Role::pluck('name', 'id')->all() // akan mengembalikan associative array
         ]);
@@ -106,9 +103,9 @@ class OperationalController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-    
+
         if (!$user) {
-            return redirect()->route('operational')
+            return redirect()->route('purchase')
             ->with('status', 'error')
             ->with('message', 'User ' . $user->name . ' not found.');
         }
@@ -134,11 +131,11 @@ class OperationalController extends Controller
         $user->update($request->all());
 
         return redirect()
-            ->route('operational')
+            ->route('purchase')
             ->with('status', 'success')
             ->with('message', "Data ". $user->name ." updated successfully.");
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -147,7 +144,7 @@ class OperationalController extends Controller
         $user = User::find($id);
         $name = $user->name;
         $user->delete();
-        return redirect()->route('operational')
+        return redirect()->route('purchase')
         ->with('status', 'success')
         ->with('message', 'User ' . $name . ' deleted successfully.');
     }
