@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Dashboard\HomeController;
-use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\auth\authController;
+use App\Http\Controllers\dashboard\homeController;
+use App\Http\Controllers\dashboard\userController;
+use App\Http\Controllers\dashboard\workOrderController;
 use App\Http\Controllers\Dashboard\OperationalController; // Tambahkan ini
 
 /*
@@ -42,8 +43,21 @@ Route::middleware(['auth'])->group(function() {
             'update' => 'manage-users.update',
             'destroy' => 'manage-users.destroy',
         ])->except(['show']);
+    });
+    //halaman Work Order
+    Route::get('/workOrder', [workOrderController::class, 'index'])->name('workOrder');
+    Route::get('/workOrder/detail', [workOrderController::class, 'detail'])->name('detailWorkOrder');
 
-        // Tambahkan rute untuk administration
+    Route::get('/jadwal', [workOrderController::class, 'jadwal'])->name('jadwal');
+    Route::post('/load-jadwal', [workOrderController::class, 'handleJadwal'])->name('handleJadwal');
+    Route::get('/purchaseRequest', [workOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
+    Route::post('/load-purchaseRequest', [workOrderController::class, 'handlePurchaseRequest'])->name('handlePurchaseRequest');
+    Route::get('/checklist', [workOrderController::class, 'checklist'])->name('checklist');
+    Route::get('/qcPass', [workOrderController::class, 'qcPass'])->name('qcPass');
+    Route::post('/load-qcPass', [workOrderController::class, 'handleQCPass'])->name('handleQCPass');
+    Route::get('/persuratan', [workOrderController::class, 'persuratan'])->name('persuratan');
+    Route::post('/load-persuratan', [workOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
+    // Tambahkan rute untuk administration
         Route::resource('operational', OperationalController::class)->names([
             'index' => 'operational',
             'create' => 'operational.create',
