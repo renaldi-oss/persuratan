@@ -70,20 +70,24 @@
             </p>
             </a>
             <ul class="nav nav-treeview">
+                @hasrole('admin|manager')
+                <li class="nav-item {{ request()->routeIs('operational') ? 'menu-open' : '' }}">
+                    <a href="{{ route("operational") }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Operational Request
+                        <span class="badge badge-info right"></span>
+                    </p>
+                    </a>
+                </li>
+                @endhasrole     
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Purchase Order</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Operational Request</p>
-                </a>
-              </li>
             </ul>
-        </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-solid fa-list"></i>
