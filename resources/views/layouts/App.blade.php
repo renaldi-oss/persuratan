@@ -36,32 +36,6 @@
     <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="{{ asset('./plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-    
-    <script>
-      // if there is a message in session, show it
-      // @if (session('status'))
-      //   // check the type of message
-      //   @if (session('status') == 'success')
-      //     Swal.fire(
-      //       'Success!',
-      //       '{{ session('message') }}',
-      //       'success'
-      //     )
-      //   @elseif (session('status') == 'error')
-      //     Swal.fire(
-      //       'Error!',
-      //       '{{ session('message') }}',
-      //       'error'
-      //     )
-      //   @else
-      //     Swal.fire(
-      //       'Info!',
-      //       '{{ session('message') }}',
-      //       'info'
-      //     )
-      //   @endif
-      // @endif
-    </script>
     <script>
       @if (session('status'))
         const Toast = Swal.mixin({
