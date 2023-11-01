@@ -5,6 +5,7 @@ use App\Http\Controllers\auth\authController;
 use App\Http\Controllers\dashboard\homeController;
 use App\Http\Controllers\dashboard\userController;
 use App\Http\Controllers\dashboard\workOrderController;
+use App\Http\Controllers\Dashboard\OperationalController; // Tambahkan ini
 
 /*
 |--------------------------------------------------------------------------
@@ -12,32 +13,35 @@ use App\Http\Controllers\dashboard\workOrderController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes are loaded by the RouteServiceProvider, and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
 // LOGIN
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [authController::class, 'index'])->name('login');
-    Route::post('/login', [authController::class, 'authenticate'])->name('login.store');
+    // halaman login untuk semua user ketika belum login
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    // proses login
+    Route::post('/login', [AuthController::class, 'authenticate'])->name('login.store');
 
     // auto login berdasarkan role DEVELOPMENT ONLY
-    Route::get('/auto-login/{role}', [authController::class, 'autoLogin'])->name('auto-login');
+    Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
 });
 
 // DASHBOARD
-route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function() {
     // halaman utama dashboard setelah login
-    Route::get('/', [homeController::class, 'index'])->name('home');
-    Route::middleware(['role:admin|manager'])->group(function() {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    // halaman kelola user khusus finance dan manager
+    Route::middleware(['role:finance|manager'])->group(function() {
         // halaman manajemen user
-        Route::resource('manage-user', userController::class)->names([
-            'index' => 'manage-user',
-            'create' => 'manage-user.create',
-            'store' => 'manage-user.store',
-            'edit' => 'manage-user.edit',
-            'update' => 'manage-user.update',
-            'destroy' => 'manage-user.destroy',
+        Route::resource('manage-users', UserController::class)->names([
+            'index' => 'manage-users',
+            'create' => 'manage-users.create',
+            'store' => 'manage-users.store',
+            'edit' => 'manage-users.edit',
+            'update' => 'manage-users.update',
+            'destroy' => 'manage-users.destroy',
         ])->except(['show']);
     });
     //halaman Work Order
@@ -49,12 +53,21 @@ route::middleware(['auth'])->group(function() {
     Route::get('/purchaseRequest', [workOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
     Route::post('/load-purchaseRequest', [workOrderController::class, 'handlePurchaseRequest'])->name('handlePurchaseRequest');
     Route::get('/checklist', [workOrderController::class, 'checklist'])->name('checklist');
-    Route::post('/load-checklist', [workOrderController::class, 'handleChecklist'])->name('Checklist');
     Route::get('/qcPass', [workOrderController::class, 'qcPass'])->name('qcPass');
     Route::post('/load-qcPass', [workOrderController::class, 'handleQCPass'])->name('handleQCPass');
     Route::get('/persuratan', [workOrderController::class, 'persuratan'])->name('persuratan');
     Route::post('/load-persuratan', [workOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
+    // Tambahkan rute untuk administration
+        Route::resource('operational', OperationalController::class)->names([
+            'index' => 'operational',
+            'create' => 'operational.create',
+            'store' => 'operational.store',
+            'edit' => 'operational.edit',
+            'update' => 'operational.update',
+            'destroy' => 'operational.destroy',
+        ])->except(['show']);
 
+    });
     // LOGOUT
-    route::post('/logout', [authController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

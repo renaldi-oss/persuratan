@@ -16,17 +16,23 @@
     <input type="email" class="form-control @error('email') is-invalid @enderror" id="input-email" name="email" placeholder="Masukkan email" value="{{ old('email', ($user->email ?? '')) }}">
     <x-errormessage error="email" />
 </div>
+
+{{-- check route --}}
+@if(Route::currentRouteName() == 'manage-users.create')
 <div class="form-group">
     <label for="input-password">Password</label>
     <input type="password" class="form-control @error('password') is-invalid @enderror" id="input-password" name="password" placeholder="Masukkan password" value="{{ old('password', ($user->password ?? '')) }}">
     <x-errormessage error="password" />
 </div>
+@endif
 
 <div class="form-group">
     <label for="input-roles">Roles</label>
     <select class="form-control @error('roles') is-invalid @enderror" id="input-roles" name="roles">
         @foreach ($roles as $id => $name)
-            <option value="{{ $id }}" {{ $user->roles->pluck('id')->contains($id) ? 'selected' : '' }}>{{ $name }}</option>
+            <option value="{{ $id }}" 
+            {{  (isset($user) && $user->roles->pluck('id')->contains($id)) ? 'selected' : '' }}
+            >{{ $name }}</option>
         @endforeach
     </select>
     <x-errormessage error="roles" />
