@@ -67,7 +67,7 @@ class authController extends Controller
         abort_unless(app()->environment('local'), 403);
     
         $userId = match ($role) {
-            'admin' => 1,
+            'finance' => 1,
             'manager' => 2,
             'engineer' => 3,
             default => abort(404),

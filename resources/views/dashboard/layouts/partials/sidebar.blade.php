@@ -30,7 +30,7 @@
             </p>
             </a>
         </li>
-        @hasrole('admin|manager')
+        @hasrole('finance|manager')
         <li class="nav-item {{ request()->routeIs('manage-users') ? 'menu-open' : '' }}">
             <a href="{{ route("manage-users") }}" class="nav-link">
             <i class="nav-icon far fa-user"></i>
@@ -70,7 +70,7 @@
             </p>
             </a>
             <ul class="nav nav-treeview">
-                @hasrole('admin|manager')
+                @hasrole('finance|manager')
                 <li class="nav-item {{ request()->routeIs('operational') ? 'menu-open' : '' }}">
                     <a href="{{ route("operational") }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>

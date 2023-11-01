@@ -31,8 +31,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function() {
     // halaman utama dashboard setelah login
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    // halaman kelola user khusus admin dan manager
-    Route::middleware(['role:admin|manager'])->group(function() {
+    // halaman kelola user khusus finance dan manager
+    Route::middleware(['role:finance|manager'])->group(function() {
         // halaman manajemen user
         Route::resource('manage-users', UserController::class)->names([
             'index' => 'manage-users',
@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function() {
             'destroy' => 'operational.destroy',
         ])->except(['show']);
 
-        // LOGOUT
-        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
+    // LOGOUT
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

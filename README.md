@@ -38,6 +38,8 @@ all in one installer [XAMPP](https://www.apachefriends.org/download.html)
 
 [bootstrap cheatsheet](https://bootstrap-cheatsheet.themeselection.com/)
 
+[laravel cheatsheet](https://github.com/syofyanzuhad/Laravel-Trik-Indonesia/blob/main/README.md)
+
 
 ## Installation
 
@@ -61,37 +63,30 @@ cp .env.example .env
 
 4. set the database configuration in .env file
 
-5. install composer dependencies
+5. install composer dependencies & npm dependencies
 
 ```bash
-composer install
+composer install && npm install
 ```
-
-6. install npm dependencies
-
-```bash
-npm install
-```
-
-7. generate application key
+6. generate application key
 
 ```bash
 php artisan key:generate
 ```
 
-8. run the migration & seeder
+7. run the migration & seeder
 
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-9. run the application on localhost
+8. run the application on localhost
 
 ```bash
 php artisan serve
 ```
 
-10. run vite dev server
+9. run vite dev server
 
 ```bash
 npm run dev

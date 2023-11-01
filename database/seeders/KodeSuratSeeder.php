@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\KodeSurat;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use app\Models\KodeSurat;
 
 class KodeSuratSeeder extends Seeder
 {
