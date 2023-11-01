@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class operationalController extends Controller
+class OperationalController extends Controller
 {
     /**
      * Display a listing of the resource.

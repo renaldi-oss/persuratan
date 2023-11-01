@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\auth\authController;
-use App\Http\Controllers\dashboard\homeController;
-use App\Http\Controllers\dashboard\userController;
-use App\Http\Controllers\dashboard\workOrderController;
-use App\Http\Controllers\Dashboard\OperationalController; // Tambahkan ini
+use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\dashboard\HomeController;
+use App\Http\Controllers\dashboard\UserController;
+use App\Http\Controllers\dashboard\WorkOrderController;
+use App\Http\Controllers\Dashboard\OperationalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,21 +53,20 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/purchaseRequest', [workOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
     Route::post('/load-purchaseRequest', [workOrderController::class, 'handlePurchaseRequest'])->name('handlePurchaseRequest');
     Route::get('/checklist', [workOrderController::class, 'checklist'])->name('checklist');
+    Route::post('/load-checklist', [workOrderController::class, 'handleChecklist'])->name('handleChecklist');
     Route::get('/qcPass', [workOrderController::class, 'qcPass'])->name('qcPass');
     Route::post('/load-qcPass', [workOrderController::class, 'handleQCPass'])->name('handleQCPass');
     Route::get('/persuratan', [workOrderController::class, 'persuratan'])->name('persuratan');
     Route::post('/load-persuratan', [workOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
     // Tambahkan rute untuk administration
-        Route::resource('operational', OperationalController::class)->names([
-            'index' => 'operational',
-            'create' => 'operational.create',
-            'store' => 'operational.store',
-            'edit' => 'operational.edit',
-            'update' => 'operational.update',
-            'destroy' => 'operational.destroy',
-        ])->except(['show']);
-
-    });
+    Route::resource('operational', OperationalController::class)->names([
+        'index' => 'operational',
+        'create' => 'operational.create',
+        'store' => 'operational.store',
+        'edit' => 'operational.edit',
+        'update' => 'operational.update',
+        'destroy' => 'operational.destroy',
+    ])->except(['show']);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

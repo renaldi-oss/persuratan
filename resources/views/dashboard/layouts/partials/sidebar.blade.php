@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-    <img src="{{ asset('./dist/img/logo-white.png') }}" alt="Tekno Klop Indonesia" class="brand-image" style="opacity: .8">
+    <img src="{{ asset('./assets/img/LOGO.png') }}" alt="Tekno Klop Indonesia" class="brand-image" style="opacity: .8">
     </a>
 
     <!-- Sidebar -->

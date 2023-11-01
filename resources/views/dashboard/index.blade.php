@@ -491,21 +491,21 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </td>
-                                                                                <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past"
-                                                                                    data-date="2023-10-14">
-                                                                                    <div
-                                                                                        class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                                                                        <div class="fc-daygrid-day-top"><a
-                                                                                                class="fc-daygrid-day-number">14</a>
-                                                                                        </div>
-                                                                                        <div class="fc-daygrid-day-events">
-                                                                                        </div>
-                                                                                        <div class="fc-daygrid-day-bg">
-                                                                                        </div>
+                                                                            <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past"
+                                                                                data-date="2023-10-14">
+                                                                                <div
+                                                                                    class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                                                                    <div class="fc-daygrid-day-top"><a
+                                                                                            class="fc-daygrid-day-number">14</a>
                                                                                     </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
+                                                                                    <div class="fc-daygrid-day-events">
+                                                                                    </div>
+                                                                                    <div class="fc-daygrid-day-bg">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
                                                                                 <td class="fc-daygrid-day fc-day fc-day-sun fc-day-past"
                                                                                     data-date="2023-10-15">
                                                                                     <div
@@ -950,6 +950,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- Page specific script -->
+@section('script')
+    <script src="{{ asset('./plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('./plugins/fullcalendar/main.js') }}"></script>
+@endsection
+
     <script>
         $(function() {
 
