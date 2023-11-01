@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\UserController;
-use App\Http\Controllers\Dashboard\OperationalController; // Tambahkan ini
+use App\Http\Controllers\Dashboard\OperationalController;
+use App\Http\Controllers\Dashboard\PurchaseController;// Tambahkan ini
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::middleware('guest')->group(function () {
 
     // auto login berdasarkan role DEVELOPMENT ONLY
     Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
+
 });
 
 // DASHBOARD
@@ -43,7 +45,7 @@ Route::middleware(['auth'])->group(function() {
             'destroy' => 'manage-users.destroy',
         ])->except(['show']);
 
-        // Tambahkan rute untuk administration
+        // Tambahkan rute untuk Operational request
         Route::resource('operational', OperationalController::class)->names([
             'index' => 'operational',
             'create' => 'operational.create',
@@ -52,6 +54,17 @@ Route::middleware(['auth'])->group(function() {
             'update' => 'operational.update',
             'destroy' => 'operational.destroy',
         ])->except(['show']);
+
+        // Tambahkan rute untuk purchase order
+        Route::resource('purchase', purchaseController::class)->names([
+            'index' => 'purchase',
+            'create' => 'purchase.create',
+            'store' => 'purchase.store',
+            'edit' => 'purchase.edit',
+            'update' => 'purchase.update',
+            'destroy' => 'purchase.destroy',
+        ])->except(['show']);
+
 
         // LOGOUT
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

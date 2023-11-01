@@ -94,13 +94,17 @@
                     </a>
                 </li>
                 @endhasrole
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Purchase Order</p>
-                </a>
-              </li>
-            </ul>
+                @hasrole('admin|manager')
+                <li class="nav-item {{ request()->routeIs('purchase') ? 'menu-open' : '' }}">
+                    <a href="{{ route("purchase") }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Purchase Order
+                        <span class="badge badge-info right"></span>
+                    </p>
+                    </a>
+                </li>
+                @endhasrole
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-solid fa-list"></i>

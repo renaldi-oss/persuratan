@@ -3,13 +3,13 @@
 
 @section('content')
 
-<x-breadcrumb title="Create Operational request" link="{{ route('operational') }}" item="Operational" subItem="Create" />
+<x-breadcrumb title="Purchase Order" link="{{ route('purchase') }}" item="purchase" subItem="Create" />
 
 <div class="card m-3">
   <div class="card-body">
-    <form id="Form" action="{{ route('operational.store') }}" method="POST">
+    <form id="Form" action="{{ route('purchase.store') }}" method="POST">
         {{ csrf_field() }}
-        @include('dashboard.OperationalRequest.form', ['tombol' => 'Create'])
+        @include('dashboard.PurchaseOrder.form', ['tombol' => 'Create'])
     </form>
   </div>
 </div>
@@ -73,5 +73,5 @@
    });
  });
 </script>
-  
+
 @endpush
