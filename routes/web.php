@@ -34,7 +34,7 @@ Route::middleware('guest')->group(function () {
 // DASHBOARD
 Route::middleware(['auth'])->group(function() {
     // halaman utama dashboard setelah login
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('index');
     // halaman kelola user khusus finance dan manager
     Route::middleware(['role:finance|manager'])->group(function() {
         // halaman manajemen user
@@ -50,6 +50,9 @@ Route::middleware(['auth'])->group(function() {
         // halaman manajemen instansi
         Route::resource('instansi', InstansiController::class);
 
+        // Tambahkan rute untuk data dashboard
+        Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
+        Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
     });
     //halaman Work Order
     Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');
