@@ -40,6 +40,16 @@
             </p>
             </a>
         </li>
+        <li class="nav-item {{ request()->routeIs('instansi') ? 'menu-open' : '' }}">
+            <a href="{{ route("instansi.index") }}" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+                Instansi
+                <span class="badge badge-info right"></span>
+                <span class="fa-duotone fa-spinner-third fa-spin"></span>
+            </p>
+            </a>
+        </li>
         @endhasrole
 
         {{-- DIVIDER --}}
@@ -81,9 +91,9 @@
                     </a>
                 </li>
                 @endhasrole
-                @hasrole('admin|manager')
+                @hasrole('finance|manager')
                 <li class="nav-item {{ request()->routeIs('purchase') ? 'menu-open' : '' }}">
-                    <a href="{{ route("purchase") }}" class="nav-link">
+                    <a href="/" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                     <p>
                         Purchase Order
