@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
 use DataTables;
-use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
 
-class userController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class userController extends Controller
         // get user data with roles
         if($request->ajax()) {
             $users = User::with('roles')->get();
-        
+            
             return datatables()->of($users)
                 ->addColumn('roles', function($user) {
                     return $user->roles->pluck('name')->implode(', ');

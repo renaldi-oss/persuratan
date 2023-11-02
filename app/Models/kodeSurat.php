@@ -9,8 +9,6 @@ class KodeSurat extends Model
 {
     use HasFactory;
 
-    protected $table = 'kode_surats';
-    protected $fillable = ['kode', 'keterangan'];
-
-    // Define relationships as needed
+    protected $guarded = ['id'];
+   
 }

@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proyek extends Model
 {
-    protected $table = 'proyek';
-    protected $fillable = ['nama_proyek', 'id_instansi', 'pekerjaan', 'lokasi', 'due_date', 'no_po', 'file_po'];
+    use HasFactory;
+
+    protected $guarded = ['id'];
 
     public function instansi()
     {
-        return $this->belongsTo(Instansi::class, 'id_instansi');
+        return $this->belongsTo(Instansi::class);
     }
 
-    public function workOrders()
+    public function workOrder()
     {
-        return $this->hasMany(WorkOrder::class, 'id_proyek');
+        return $this->hasMany(WorkOrder::class);
     }
-
-    // Define other relationships as needed
 }

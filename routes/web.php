@@ -1,10 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\InstansiController;
+use App\Http\Controllers\Dashboard\OperationalController; 
 use App\Http\Controllers\Dashboard\UserController;
-use App\Http\Controllers\Dashboard\OperationalController; // Tambahkan ini
+use App\Http\Controllers\Dashboard\WorkOrderController;
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +28,15 @@ Route::middleware('guest')->group(function () {
 
     // auto login berdasarkan role DEVELOPMENT ONLY
     Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
+
 });
 
 // DASHBOARD
 Route::middleware(['auth'])->group(function() {
     // halaman utama dashboard setelah login
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    // halaman kelola user khusus admin dan manager
-    Route::middleware(['role:admin|manager'])->group(function() {
+    // halaman kelola user khusus finance dan manager
+    Route::middleware(['role:finance|manager'])->group(function() {
         // halaman manajemen user
         Route::resource('manage-users', UserController::class)->names([
             'index' => 'manage-users',
@@ -43,17 +47,33 @@ Route::middleware(['auth'])->group(function() {
             'destroy' => 'manage-users.destroy',
         ])->except(['show']);
 
-        // Tambahkan rute untuk administration
-        Route::resource('operational', OperationalController::class)->names([
-            'index' => 'operational',
-            'create' => 'operational.create',
-            'store' => 'operational.store',
-            'edit' => 'operational.edit',
-            'update' => 'operational.update',
-            'destroy' => 'operational.destroy',
-        ])->except(['show']);
+        // halaman manajemen instansi
+        Route::resource('instansi', InstansiController::class);
 
-        // LOGOUT
-        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
+    //halaman Work Order
+    Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');
+    Route::get('/workOrder/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
+
+    Route::get('/jadwal', [WorkOrderController::class, 'jadwal'])->name('jadwal');
+    Route::post('/load-jadwal', [WorkOrderController::class, 'handleJadwal'])->name('handleJadwal');
+    Route::get('/purchaseRequest', [WorkOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
+    Route::post('/load-purchaseRequest', [WorkOrderController::class, 'handlePurchaseRequest'])->name('handlePurchaseRequest');
+    Route::get('/checklist', [WorkOrderController::class, 'checklist'])->name('checklist');
+    Route::post('/load-checklist', [WorkOrderController::class, 'handleChecklist'])->name('handleChecklist');
+    Route::get('/qcPass', [WorkOrderController::class, 'qcPass'])->name('qcPass');
+    Route::post('/load-qcPass', [WorkOrderController::class, 'handleQCPass'])->name('handleQCPass');
+    Route::get('/persuratan', [WorkOrderController::class, 'persuratan'])->name('persuratan');
+    Route::post('/load-persuratan', [WorkOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
+    // Tambahkan rute untuk administration
+    Route::resource('operational', OperationalController::class)->names([
+        'index' => 'operational',
+        'create' => 'operational.create',
+        'store' => 'operational.store',
+        'edit' => 'operational.edit',
+        'update' => 'operational.update',
+        'destroy' => 'operational.destroy',
+    ])->except(['show']);
+    // LOGOUT
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

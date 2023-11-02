@@ -27,11 +27,13 @@
               <table id="usersTable" class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Roles</th>
-                    <th>Action</th>
+                    <th>Tanggal</th>
+                    <th>Jenis Kegiatan</th>
+                    <th>Instansi</th>
+                    <th>Lokasi</th>
+                    <th>No PO</th>
+                    <th>Jumlah</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -84,6 +86,8 @@
       ajax: "{{ route('operational') }}",
       columns: [
         {data: 'id', name: 'id'},
+        {data: 'name', name: 'name'},
+        {data: 'email', name: 'email'},
         {data: 'name', name: 'name'},
         {data: 'email', name: 'email'},
         {data: 'roles', name: 'roles'},

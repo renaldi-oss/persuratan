@@ -3,7 +3,7 @@
 
 @section('content')
 
-<x-breadcrumb title="Create user" link="{{ route('operational') }}" item="User" subItem="Create" />
+<x-breadcrumb title="Create Operational request" link="{{ route('operational') }}" item="Operational" subItem="Create" />
 
 <div class="card m-3">
   <div class="card-body">
@@ -26,12 +26,11 @@
        username: {
          required: true,
        },
-       name:{
+       date:{
          required: true,
        },
         email: {
           required: true,
-          email: true,
         },
        password: {
          required: true,
@@ -50,7 +49,6 @@
        },
         email: {
           required: "Please enter a valid email address",
-          email: "Please enter a valid email address"
         },
        password: {
          required: "Please provide a password",

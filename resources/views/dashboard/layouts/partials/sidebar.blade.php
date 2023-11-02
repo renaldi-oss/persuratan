@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-    <img src="{{ asset('./dist/img/logo-white.png') }}" alt="Tekno Klop Indonesia" class="brand-image" style="opacity: .8">
+    <img src="{{ asset('./assets/img/LOGO.png') }}" alt="Tekno Klop Indonesia" class="brand-image" style="opacity: .8">
     </a>
 
     <!-- Sidebar -->
@@ -30,7 +30,7 @@
             </p>
             </a>
         </li>
-        @hasrole('admin|manager')
+        @hasrole('finance|manager')
         <li class="nav-item {{ request()->routeIs('manage-users') ? 'menu-open' : '' }}">
             <a href="{{ route("manage-users") }}" class="nav-link">
             <i class="nav-icon far fa-user"></i>
@@ -40,11 +40,21 @@
             </p>
             </a>
         </li>
+        <li class="nav-item {{ request()->routeIs('instansi') ? 'menu-open' : '' }}">
+            <a href="{{ route("instansi.index") }}" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+                Instansi
+                <span class="badge badge-info right"></span>
+                <span class="fa-duotone fa-spinner-third fa-spin"></span>
+            </p>
+            </a>
+        </li>
         @endhasrole
 
         {{-- DIVIDER --}}
         <hr class="my-12 mx-1 bg-secondary" />
-        
+
         <li class="nav-item">
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-comment-exclamation"></i>
@@ -63,14 +73,14 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-building-columns"></i>
+                <i class="nav-icon fas fa-solid fa-money-check-dollar" style="color: #c2c7d0;"></i>
             <p>
                 Administration & Finance
                 <i class="right fas fa-angle-left"></i>
             </p>
             </a>
             <ul class="nav nav-treeview">
-                @hasrole('admin|manager')
+                @hasrole('finance|manager')
                 <li class="nav-item {{ request()->routeIs('operational') ? 'menu-open' : '' }}">
                     <a href="{{ route("operational") }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -80,13 +90,18 @@
                     </p>
                     </a>
                 </li>
-                @endhasrole     
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Purchase Order</p>
-                </a>
-              </li>
+                @endhasrole
+                @hasrole('finance|manager')
+                <li class="nav-item {{ request()->routeIs('purchase') ? 'menu-open' : '' }}">
+                    <a href="/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Purchase Order
+                        <span class="badge badge-info right"></span>
+                    </p>
+                    </a>
+                </li>
+                @endhasrole
             </ul>
         <li class="nav-item">
             <a href="#" class="nav-link">

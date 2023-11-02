@@ -37,7 +37,7 @@
               @if (App::environment('local'))
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 <div class="col-12 mt-1">
-                  <a href="{{ route('auto-login', ['role' => 'admin']) }}" class="btn btn-primary btn-block">admin</a>
+                  <a href="{{ route('auto-login', ['role' => 'finance']) }}" class="btn btn-primary btn-block">finance</a>
                 </div>
                 <div class="col-12 mt-1">
                   <a href="{{ route('auto-login', ['role' => 'manager']) }}" class="btn btn-primary btn-block">manager</a>

@@ -16,16 +16,16 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         //php artisan serve
-        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'finance']);
         Role::create(['name' => 'manager']);
         Role::create(['name' => 'engineer']);
 
         User::factory()->create([
-            'username' => 'admin',
-            'password' => bcrypt('admin'),
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-        ])->assignRole('admin');
+            'username' => 'finance',
+            'password' => bcrypt('finance'),
+            'name' => 'finance',
+            'email' => 'finance@gmail.com',
+        ])->assignRole('finance');
 
         User::factory()->create([
             'username' => 'manager',

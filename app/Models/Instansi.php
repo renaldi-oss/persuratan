@@ -9,8 +9,6 @@ class Instansi extends Model
 {
     use HasFactory;
 
-    protected $table = 'instansi';
-    protected $fillable = ['nama', 'alamat', 'kontak', 'email', 'lokasi'];
+    protected $guarded = ['id'];
 
-    // Define relationships as needed
 }

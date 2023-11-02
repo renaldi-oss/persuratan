@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class WorkOrder extends Model
 {
-    protected $table = 'work_order';
-    protected $fillable = ['id_proyek', 'kode_wo'];
+    use HasFactory;
+
+    protected $guarded = ['id'];
 
     public function proyek()
     {
-        return $this->belongsTo(Proyek::class, 'id_proyek');
+        return $this->belongsTo(Proyek::class);
     }
-
-    // Define other relationships as needed
 }

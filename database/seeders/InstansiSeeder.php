@@ -2,24 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Instansi;
-use Faker\Factory as Faker;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
 
 class InstansiSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        $faker = Faker::create();
-
-        for ($i = 0; $i < 10; $i++) {
-            Instansi::create([
-                'nama' => $faker->company,
-                'alamat' => $faker->address,
-                'kontak' => $faker->name,
-                'email' => $faker->safeEmail,
-                'lokasi' => $faker->city,
-            ]);
-        }
+        Instansi::factory()->count(5)->create();
     }
 }

@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class operationalController extends Controller
+class OperationalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,21 +22,24 @@ class operationalController extends Controller
             $users = User::with('roles')->get();
         
             return datatables()->of($users)
-                ->addColumn('roles', function($user) {
-                    return $user->roles->pluck('name')->implode(', ');
-                })
-                ->addColumn('action', function($user) {
-                    $btn = '<a href="' . route("operational.edit", $user->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
-                    $btn .= '  ';
-                    $btn .= '<form action="' . route("operational.destroy", $user->id) . '" method="POST">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="' . csrf_token() . '">
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>';
-                    return $btn;
-                })
-                ->rawColumns(['action', 'roles'])
-                ->make(true);
+    ->addColumn('roles', function($user) {
+        return $user->roles->pluck('name')->implode(', ');
+    })
+    ->addColumn('action', function($user) {
+        $btn = '<div style="display: flex; align-items: center;">';
+        $btn .= '<span style="background: #FFF8cc;  color: #FFA500; padding: 3px 8px; border-radius: 8px;">Menunggu Acc Admin</span>';
+        $btn .= '<a href="' . route("operational.edit", $user->id) . '" class="edit btn btn-sm" style=" color: #666;"><i class="fas fa-edit"></i></a>';
+        $btn .= '</div>';
+        $btn .= '<form action="' . route("operational.destroy", $user->id) . '" method="POST">';
+        $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+        $btn .= '</form>';
+        return $btn;
+    })
+    ->rawColumns(['action', 'roles'])
+    ->make(true);
+
+        
+        
         }
         return view('dashboard.operationalrequest.index');
     }
@@ -59,10 +62,13 @@ class operationalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'username' => 'required|unique:users',
-            'email' => 'required|unique:users',
-            'password' => 'required',
+            'date' => 'required',
+            'type' => 'required',
+            'instances' => 'required',
+            'location' => 'required',
+            'po' => 'required',
+            'amount' => 'required',
+            'location' => 'required',
         ]);
 
         $user = User::create($request->all());
