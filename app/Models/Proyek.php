@@ -9,6 +9,7 @@ class Proyek extends Model
 {
     use HasFactory;
 
+    protected $table = 'proyeks';
     protected $guarded = ['id'];
 
     public function instansi()

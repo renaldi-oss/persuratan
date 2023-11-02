@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-  
+
   <x-breadcrumb title="Manage Instansi" link="{{ route('instansi.index') }}" item="Instansi" subItem="Manage" />
 
   <!-- Main content -->
@@ -17,12 +17,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          
+
           <div class="card" style="height: auto;">
             <!-- /.card-header -->
             <div class="card-body ">
               <div class="container-fluid my-2">
-                <a href="{{ route('instansi.create') }}" class="btn btn-primary">Create</a>                
+                <a href="{{ route('instansi.create') }}" class="btn btn-primary">Create</a>
               </div>
               <table id="table" class="table table-bordered table-striped" style="text-align: center;">
                 <thead>
@@ -87,14 +87,14 @@
       responsive: true,
       ajax: "{{ route('instansi.index') }}",
       columns: [
-        {data: 'nama', name: 'nama'},
+        {data: 'nama_instansi', name: 'nama'},
         {data: 'alamat', name: 'alamat'},
-        {data: 'kontak', name: 'kontak'}, 
-        {data: 'email', name: 'email'}, 
+        {data: 'kontak', name: 'kontak'},
+        {data: 'email', name: 'email'},
         {data: 'lokasi', name: 'lokasi'},
         {
-            data: 'action', 
-            name: 'action', 
+            data: 'action',
+            name: 'action',
             class: 'd-flex justify-content-center'
         },
         ],
@@ -103,7 +103,7 @@
           console.log(data);
         },
     });
-  });  
+  });
 </script>
 
 @endpush
