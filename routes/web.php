@@ -5,6 +5,7 @@ use App\Http\Controllers\auth\authController;
 use App\Http\Controllers\dashboard\homeController;
 use App\Http\Controllers\dashboard\userController;
 use App\Http\Controllers\dashboard\workOrderController;
+use App\Http\Controllers\dashboard\summaryController;
 use App\Http\Controllers\Dashboard\OperationalController; // Tambahkan ini
 
 /*
@@ -47,7 +48,6 @@ Route::middleware(['auth'])->group(function() {
     //halaman Work Order
     Route::get('/workOrder', [workOrderController::class, 'index'])->name('workOrder');
     Route::get('/workOrder/detail', [workOrderController::class, 'detail'])->name('detailWorkOrder');
-
     Route::get('/jadwal', [workOrderController::class, 'jadwal'])->name('jadwal');
     Route::post('/load-jadwal', [workOrderController::class, 'handleJadwal'])->name('handleJadwal');
     Route::get('/purchaseRequest', [workOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
@@ -60,6 +60,10 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/persuratan', [workOrderController::class, 'persuratan'])->name('persuratan');
     Route::post('/load-persuratan', [workOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
     Route::get('/add-persuratan', [workOrderController::class, 'addPersuratan'])->name('addPersuratan');
+
+    //halaman summary
+    Route::get('/summary', [summaryController::class, 'index'])->name('summary');
+    
     // Tambahkan rute untuk administration
         Route::resource('operational', OperationalController::class)->names([
             'index' => 'operational',

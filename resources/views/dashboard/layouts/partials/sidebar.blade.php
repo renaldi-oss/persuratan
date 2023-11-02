@@ -89,11 +89,11 @@
               </li>
             </ul>
         <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-solid fa-list"></i>
-            <p>
-                Summary
-            </p>
+            <a href="/summary" class="nav-link">
+                <i class="nav-icon fas fa-solid fa-list"></i>
+                <p>
+                    Summary
+                </p>
             </a>
         </li>
         </ul>
