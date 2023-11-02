@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Operational extends Model
 {
     use HasFactory;
-    
+
+    protected $table = 'operationals';
     protected $guarded = ['id'];
 
     public function proyek()

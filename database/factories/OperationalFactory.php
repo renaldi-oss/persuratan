@@ -17,7 +17,11 @@ class OperationalFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'kegiatan' => $this->faker->jobTitle(),
+            'lokasi' => $this->faker->city(),
+            'jumlah' => $this->faker->numberBetween(1000, 100000),
+            'status' => $this->faker->randomElement(['pending', 'manager', 'finance']),
+            'tanggal' => $this->faker->date(),
         ];
     }
 }
