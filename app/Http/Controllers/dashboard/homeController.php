@@ -7,7 +7,6 @@ use App\Models\Instansi;
 use App\Models\Proyek;
 use App\Models\Operational;
 use Illuminate\Http\Request;
-use App\Models\Proyek;
 
 class HomeController extends Controller
 {
