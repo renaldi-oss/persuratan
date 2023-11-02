@@ -64,7 +64,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/workOrder" class="nav-link">
             <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
             <p>
                 Work Order
@@ -104,11 +104,11 @@
                 @endhasrole
             </ul>
         <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-solid fa-list"></i>
-            <p>
-                Summary
-            </p>
+            <a href="/summary" class="nav-link">
+                <i class="nav-icon fas fa-solid fa-list"></i>
+                <p>
+                    Summary
+                </p>
             </a>
         </li>
         </ul>

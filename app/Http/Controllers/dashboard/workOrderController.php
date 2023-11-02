@@ -32,6 +32,10 @@ class WorkOrderController extends Controller
     {
         return redirect('/purchaseRequest');
     }
+    public function addPrItem()
+    {
+        return view('workOrder.detail.addPrItem');
+    }
     public function checklist()
     {
         return view('workOrder.detail.checklist');
@@ -55,5 +59,9 @@ class WorkOrderController extends Controller
     public function handlePersuratan(Request $request)
     {
         return redirect('/persuratan');
+    }
+    public function addPersuratan()
+    {
+        return view('workOrder.detail.addPersuratan');
     }
 }

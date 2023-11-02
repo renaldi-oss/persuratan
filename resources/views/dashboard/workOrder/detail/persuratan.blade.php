@@ -4,9 +4,11 @@
 <div class="row d-flex">
   <h1 class="ml-4">Berkas</h1>
   <div class="card-body justify-content-end">
-    <button type="submit" class="btn btn-block btn-primary btn-sm col-2 align-right">
-      <i class="fas fa-solid fa-plus"></i>&nbsp;Tambah
-    </button>
+    <a href="/add-persuratan">
+      <button type="submit" class="btn btn-block btn-primary btn-sm col-2 align-right">
+        <i class="fas fa-solid fa-plus"></i>&nbsp;Tambah
+      </button>
+    </a>
   </div> 
 </div>
 <div class="row ml-3 mr-3">
@@ -26,6 +28,7 @@
               <td>PEN</td>
               <td>PENAWARAN</td>
               <td>
+                  <i class="fas fa-solid fa-eye"></i>&nbsp;
                   <i class="fas fa-solid fa-upload"></i>&nbsp;
                   <i class="fas fa-solid fa-trash"></i>&nbsp;
               </td>
@@ -34,6 +37,7 @@
               <td>DO</td>
               <td>DELIVERY ORDER</td>
               <td>
+                  <i class="fas fa-solid fa-eye"></i>&nbsp;
                   <i class="fas fa-solid fa-upload"></i>&nbsp;
                   <i class="fas fa-solid fa-trash"></i>&nbsp;
               </td>
@@ -42,6 +46,7 @@
               <td>DOK</td>
               <td>DOKUMENTASI</td>
               <td>
+                  <i class="fas fa-solid fa-eye"></i>&nbsp;
                   <i class="fas fa-solid fa-upload"></i>&nbsp;
                   <i class="fas fa-solid fa-trash"></i>&nbsp;
               </td>
@@ -50,6 +55,7 @@
               <td>ST</td>
               <td>SURAT TUGAS</td>
               <td>
+                  <i class="fas fa-solid fa-eye"></i>&nbsp;
                   <i class="fas fa-solid fa-upload"></i>&nbsp;
                   <i class="fas fa-solid fa-trash"></i>&nbsp;
               </td>
@@ -58,6 +64,7 @@
               <td>BAST</td>
               <td>BERITA ACARA SERAH TERIMA</td>
               <td>
+                  <i class="fas fa-solid fa-eye"></i>&nbsp;
                   <i class="fas fa-solid fa-upload"></i>&nbsp;
                   <i class="fas fa-solid fa-trash"></i>&nbsp;
               </td>
