@@ -4,12 +4,20 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Proyek;
 
 class HomeController extends Controller
 {
     //
     public function index()
     {
-        return view('dashboard.index');
+        $proyek = Proyek::all();
+        response()->json($proyek);
+        return view('dashboard.index', ['proyek' => $proyek]);
+    }
+
+    public function viewProyek()
+    {
+
     }
 }

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\KodeSurat;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\KodeSurat;
 
 class KodeSuratSeeder extends Seeder
 {
