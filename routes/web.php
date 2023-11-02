@@ -52,7 +52,9 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/load-jadwal', [workOrderController::class, 'handleJadwal'])->name('handleJadwal');
     Route::get('/purchaseRequest', [workOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
     Route::post('/load-purchaseRequest', [workOrderController::class, 'handlePurchaseRequest'])->name('handlePurchaseRequest');
+    Route::get('/add-pr-item', [workOrderController::class, 'addPrItem'])->name('addPrItem');
     Route::get('/checklist', [workOrderController::class, 'checklist'])->name('checklist');
+    Route::post('/load-checklist', [workOrderController::class, 'handleChecklist'])->name('handleChecklist');
     Route::get('/qcPass', [workOrderController::class, 'qcPass'])->name('qcPass');
     Route::post('/load-qcPass', [workOrderController::class, 'handleQCPass'])->name('handleQCPass');
     Route::get('/persuratan', [workOrderController::class, 'persuratan'])->name('persuratan');
@@ -67,7 +69,6 @@ Route::middleware(['auth'])->group(function() {
             'destroy' => 'operational.destroy',
         ])->except(['show']);
 
-    });
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

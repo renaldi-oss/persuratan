@@ -54,7 +54,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/workOrder" class="nav-link">
             <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
             <p>
                 Work Order

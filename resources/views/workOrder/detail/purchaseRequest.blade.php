@@ -4,9 +4,11 @@
 <div class="row d-flex">
   <h1 class="ml-4">Purchase Request</h1> 
   <div class="card-body justify-content-end">
-    <button type="submit" class="btn btn-block btn-primary btn-sm col-2 align-right">
-      <i class="fas fa-solid fa-plus"></i>&nbsp;Tambah
-    </button>
+    <a href="/add-pr-item">
+      <button type="submit" class="btn btn-block btn-primary btn-sm col-2 align-right">
+        <i class="fas fa-solid fa-plus"></i>&nbsp;Tambah
+      </button>
+    </a>
   </div> 
 </div>
 <div class="row ml-3 mr-3">
