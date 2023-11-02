@@ -60,4 +60,8 @@ class workOrderController extends Controller
     {
         return redirect('/persuratan');
     }
+    public function addPersuratan()
+    {
+        return view('workOrder.detail.addPersuratan');
+    }
 }

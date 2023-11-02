@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/load-qcPass', [workOrderController::class, 'handleQCPass'])->name('handleQCPass');
     Route::get('/persuratan', [workOrderController::class, 'persuratan'])->name('persuratan');
     Route::post('/load-persuratan', [workOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
+    Route::get('/add-persuratan', [workOrderController::class, 'addPersuratan'])->name('addPersuratan');
     // Tambahkan rute untuk administration
         Route::resource('operational', OperationalController::class)->names([
             'index' => 'operational',
