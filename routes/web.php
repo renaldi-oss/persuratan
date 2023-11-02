@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
-use App\Http\Controllers\Dashboard\OperationalController; 
+use App\Http\Controllers\Dashboard\OperationalController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function() {
         // halaman manajemen instansi
         Route::resource('instansi', InstansiController::class);
 
-        // Tambahkan rute untuk data dashboard
+        //  rute untuk data dashboard
         Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
         Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
     });
