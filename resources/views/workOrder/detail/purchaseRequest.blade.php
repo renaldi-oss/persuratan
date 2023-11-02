@@ -93,6 +93,14 @@
                   <i class="fas fa-solid fa-trash"></i>&nbsp;
               </td>
             </tr>
+            <tr style="background-color: cornflowerblue">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td style="font-weight: bold">Total</td>
+              <td style="font-weight: bold">1.000.000</td>
+              <td></td>
+            </tr>
           </tbody>
         </table>
       </div>
