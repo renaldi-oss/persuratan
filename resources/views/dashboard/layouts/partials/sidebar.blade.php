@@ -31,8 +31,8 @@
             </a>
         </li>
         @hasrole('finance|manager')
-        <li class="nav-item {{ request()->routeIs('manage-users') ? 'menu-open' : '' }}">
-            <a href="{{ route("manage-users") }}" class="nav-link">
+        <li class="nav-item {{ request()->routeIs('manage-users.index') ? 'menu-open' : '' }}">
+            <a href="{{ route("manage-users.index") }}" class="nav-link">
             <i class="nav-icon far fa-user"></i>
             <p>
                 Users

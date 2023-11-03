@@ -24,7 +24,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     // proses login
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login.store');
-
     // auto login berdasarkan role DEVELOPMENT ONLY
     Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
 
@@ -39,19 +38,9 @@ Route::middleware(['auth'])->group(function() {
     // halaman kelola user khusus finance dan manager
     Route::middleware(['role:finance|manager'])->group(function() {
         // halaman manajemen user
-        Route::resource('manage-users', UserController::class)->names([
-            'index' => 'manage-users',
-            'create' => 'manage-users.create',
-            'store' => 'manage-users.store',
-            'edit' => 'manage-users.edit',
-            'update' => 'manage-users.update',
-            'destroy' => 'manage-users.destroy',
-        ])->except(['show']);
-
+        Route::resource('manage-users', UserController::class)->except(['show']);
         // halaman manajemen instansi
         Route::resource('instansi', InstansiController::class);
-
-
     });
     //halaman Work Order
     Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');

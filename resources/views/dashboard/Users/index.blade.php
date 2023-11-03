@@ -10,7 +10,7 @@
 
 @section('content')
   
-  <x-breadcrumb title="Manage users" link="{{ route('manage-users') }}" item="Users" subItem="Manage" />
+  <x-breadcrumb title="Manage users" link="{{ route('manage-users.index') }}" item="Users" subItem="Manage" />
 
   <!-- Main content -->
   <div class="content">
@@ -81,7 +81,7 @@
       info: true,
       autoWidth: true,
       responsive: true,
-      ajax: "{{ route('manage-users') }}",
+      ajax: "{{ route('manage-users.index') }}",
       columns: [
         {data: 'name', name: 'name'},
         {data: 'email', name: 'email'},
