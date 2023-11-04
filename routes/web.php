@@ -27,17 +27,16 @@ Route::middleware('guest')->group(function () {
 
     // auto login berdasarkan role DEVELOPMENT ONLY
     Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
-
 });
 
 // DASHBOARD
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
     // halaman utama dashboard setelah login
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
     Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
     // halaman kelola user khusus finance dan manager
-    Route::middleware(['role:finance|manager'])->group(function() {
+    Route::middleware(['role:finance|manager'])->group(function () {
         // halaman manajemen user
         Route::resource('manage-users', UserController::class)->names([
             'index' => 'manage-users',
@@ -50,8 +49,6 @@ Route::middleware(['auth'])->group(function() {
 
         // halaman manajemen instansi
         Route::resource('instansi', InstansiController::class);
-
-
     });
     //halaman Work Order
     Route::get('/workOrder', [workOrderController::class, 'index'])->name('workOrder');
@@ -71,7 +68,7 @@ Route::middleware(['auth'])->group(function() {
 
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary');
-    
+
     // Tambahkan rute untuk administration
     Route::resource('operational', OperationalController::class)->names([
         'index' => 'operational',
@@ -84,4 +81,25 @@ Route::middleware(['auth'])->group(function() {
 
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    //halaman penawaran
+    Route::get('/penawaran', function () {
+        return view('dashboard.Penawaran.index');
+    })->name('penawaran.index');
+
+    Route::get('/penawaran/view', function () {
+        return view('dashboard.Penawaran.view');
+    })->name('penawaran.view');
+
+    Route::get('/penawaran/create', function () {
+        return view('dashboard.Penawaran.create');
+    })->name('penawaran.create');
+
+    Route::get('/penawaran/edit', function () {
+        return view('dashboard.Penawaran.edit');
+    })->name('penawaran.edit');
+
+    Route::get('/penawaran/editPO', function () {
+        return view('dashboard.Penawaran.editPO');
+    })->name('penawaran.editPO');
 });
