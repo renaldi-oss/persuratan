@@ -60,8 +60,17 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-
+              
               <div class="d-flex justify-content-evenly">
+                <a href="/load-jadwal"><button type="submit" class="mx-1 flex-fill btn btn-primary">Jadwal Pelaksanaan</button></a>
+                <a href="/load-purchaseRequest"><button type="submit" class="mx-1 flex-fill btn btn-primary">Purchase Request</button></a>
+                <a href="/load-checklist"><button type="submit" class="mx-1 flex-fill btn btn-primary">Check List</button></a>
+                <a href="/load-qcPass"><button type="submit" class="mx-1 flex-fill btn btn-primary">QC Pass</button></a>
+                <a href="/load-persuratan"><button type="submit" class="mx-1 flex-fill btn btn-primary">Persuratan</button></a>
+              </div>
+
+
+              {{-- <div class="d-flex justify-content-evenly">
                   <div class="col-12">
                       <div class="card">
                           <table>
@@ -100,7 +109,7 @@
                           </table>
                       </div>
                   </div>
-              </div>
+              </div> --}}
 
               
 

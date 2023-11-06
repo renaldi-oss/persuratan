@@ -2,5 +2,5 @@
     <div class="float-right d-none d-sm-block">
         <b>Version</b> 0.0.1
     </div>
-    <strong>Copyright &copy; 2023 <a href="">team kelangsungan hidup makmur dan sentosa</a>.</strong> All rights reserved.
+    <strong>&copy; 2023 <a href="">PT Tekno Klop Indonesia</a>.</strong> All rights reserved.
 </footer>

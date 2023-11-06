@@ -5,7 +5,7 @@
     <div class="login-box">
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
-          <a href="#" class="h1"><b>TKI</b></a>
+        <img src="{{ asset('./assets/img/TEKNO-KLOP.png') }}" alt="Tekno Klop Indonesia" class="brand-image" style=" width: 210px; height: auto;">
         </div>
         <div class="card-body">
           <form id="loginForm" action="{{ route('login.store') }}" method="POST">

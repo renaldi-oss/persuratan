@@ -28,45 +28,45 @@
               <td>PEN</td>
               <td>PENAWARAN</td>
               <td>
-                  <i class="fas fa-solid fa-eye"></i>&nbsp;
-                  <i class="fas fa-solid fa-upload"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
+                  <a href="" class="btn btn-success btn-xs"><i class="fas fa-solid fa-upload"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
               <td>DO</td>
               <td>DELIVERY ORDER</td>
               <td>
-                  <i class="fas fa-solid fa-eye"></i>&nbsp;
-                  <i class="fas fa-solid fa-upload"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
+                  <a href="" class="btn btn-success btn-xs"><i class="fas fa-solid fa-upload"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
               <td>DOK</td>
               <td>DOKUMENTASI</td>
               <td>
-                  <i class="fas fa-solid fa-eye"></i>&nbsp;
-                  <i class="fas fa-solid fa-upload"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
+                  <a href="" class="btn btn-success btn-xs"><i class="fas fa-solid fa-upload"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
               <td>ST</td>
               <td>SURAT TUGAS</td>
               <td>
-                  <i class="fas fa-solid fa-eye"></i>&nbsp;
-                  <i class="fas fa-solid fa-upload"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
+                  <a href="" class="btn btn-success btn-xs"><i class="fas fa-solid fa-upload"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
               <td>BAST</td>
               <td>BERITA ACARA SERAH TERIMA</td>
               <td>
-                  <i class="fas fa-solid fa-eye"></i>&nbsp;
-                  <i class="fas fa-solid fa-upload"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
+                  <a href="" class="btn btn-success btn-xs"><i class="fas fa-solid fa-upload"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
           </tbody>
