@@ -6,6 +6,8 @@ use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\Dashboard\OperationalController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\Dashboard\purchaseController;
+use App\Http\Controllers\Dashboard\summaryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,8 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/load-qcPass', [WorkOrderController::class, 'handleQCPass'])->name('handleQCPass');
     Route::get('/persuratan', [WorkOrderController::class, 'persuratan'])->name('persuratan');
     Route::post('/load-persuratan', [WorkOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
-  
-    // Tambahkan rute untuk administration
+
+    // halaman Summary
+    Route::get('/summary', [WorkOrderController::class, 'index'])->name('summary');
+
+    // halaman Administration & Finance
     Route::resource('operational', OperationalController::class)->names([
         'index' => 'operational',
         'create' => 'operational.create',
@@ -63,6 +68,15 @@ Route::middleware(['auth'])->group(function () {
         'edit' => 'operational.edit',
         'update' => 'operational.update',
         'destroy' => 'operational.destroy',
+    ])->except(['show']);
+
+    Route::resource('purchase', PurchaseController::class)->names([
+        'index' => 'purchase',
+        'create' => 'purchase.create',
+        'store' => 'purchase.store',
+        'edit' => 'purchase.edit',
+        'update' => 'purchase.update',
+        'destroy' => 'purchase.destroy',
     ])->except(['show']);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
