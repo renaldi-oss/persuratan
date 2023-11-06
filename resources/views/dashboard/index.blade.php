@@ -32,8 +32,6 @@
                                             <th>Tanggal</th>
                                             <th>Kegiatan</th>
                                             <th>Instansi</th>
-                                            <th>Lokasi</th>
-                                            <th>Jumlah</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -56,8 +54,6 @@
                                             <th>Tanggal</th>
                                             <th>Nama Proyek</th>
                                             <th>Instansi</th>
-                                            <th>Lokasi</th>
-                                            <th>No PO</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -103,7 +99,8 @@
                 info: true,
                 autoWidth: true,
                 responsive: true,
-                ajax: "{{ route('getProyek') }}",
+                // ajax: "{{ route('getProyek') }}",
+                data: @json($proyek),
                 columns: [{
                         data: 'due_date',
                         name: 'tanggal'
@@ -113,16 +110,8 @@
                         name: 'nama'
                     },
                     {
-                        data: 'instansi_nama',
+                        data: 'nama_instansi',
                         name: 'instansi'
-                    },
-                    {
-                        data: 'lokasi',
-                        name: 'lokasi'
-                    },
-                    {
-                        data: 'no_po',
-                        name: 'no_po'
                     },
                     {
                         data: 'status',
@@ -161,16 +150,8 @@
                         name: 'kegiatan'
                     },
                     {
-                        data: 'instansi_nama',
+                        data: 'instansi',
                         name: 'instansi'
-                    },
-                    {
-                        data: 'lokasi',
-                        name: 'lokasi'
-                    },
-                    {
-                        data: 'jumlah',
-                        name: 'jumlah'
                     },
                     {
                         data: 'status',

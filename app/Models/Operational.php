@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Operational extends Model
 {
@@ -12,13 +14,13 @@ class Operational extends Model
     protected $table = 'operationals';
     protected $guarded = ['id'];
 
-    public function proyek()
+    public function proyek() : BelongsTo
     {
-        return $this->belongsTo(Proyek::class);
+        return $this->belongsTo(Proyek::class, 'proyek_id');
     }
 
-    public function instansi()
+    public function instansi(): HasOneThrough
     {
-        return $this->belongsTo(Instansi::class);
+        return $this->hasOneThrough(Instansi::class, Proyek::class);
     }
 }

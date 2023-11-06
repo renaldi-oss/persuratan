@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
     Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
+    Route::get('/api', [HomeController::class, 'api'])->name('api');
     // halaman kelola user khusus finance dan manager
     Route::middleware(['role:finance|manager'])->group(function () {
         // halaman manajemen user
@@ -54,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/load-qcPass', [WorkOrderController::class, 'handleQCPass'])->name('handleQCPass');
     Route::get('/persuratan', [WorkOrderController::class, 'persuratan'])->name('persuratan');
     Route::post('/load-persuratan', [WorkOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
-  
+
     // Tambahkan rute untuk administration
     Route::resource('operational', OperationalController::class)->names([
         'index' => 'operational',
