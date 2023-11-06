@@ -20,8 +20,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
+                <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
 
         <li class="nav-item">
             <a href="/" class="nav-link">
@@ -58,22 +57,6 @@
 
         <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-comment-exclamation"></i>
-            <p>
-                Penawaran
-            </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="/workOrder" class="nav-link">
-            <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
-            <p>
-                Work Order
-            </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-solid fa-money-check-dollar" style="color: #c2c7d0;"></i>
             <p>
                 Administration & Finance
@@ -91,88 +74,38 @@
                     </p>
                     </a>
                 </li>
-                @hasrole('finance|manager')
-                <li class="nav-item {{ request()->routeIs('manage-users') ? 'menu-open' : '' }}">
-                    <a href="{{ route("manage-users") }}" class="nav-link">
-                        <i class="nav-icon far fa-user"></i>
-                        <p>
-                            Users
-                            <span class="badge badge-info right"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item {{ request()->routeIs('instansi') ? 'menu-open' : '' }}">
-                    <a href="{{ route("instansi.index") }}" class="nav-link">
-                        <i class="nav-icon far fa-user"></i>
-                        <p>
-                            Instansi
-                            <span class="badge badge-info right"></span>
-                            <span class="fa-duotone fa-spinner-third fa-spin"></span>
-                        </p>
-                    </a>
-                </li>
                 @endhasrole
 
                 {{-- DIVIDER --}}
                 <hr class="my-12 mx-1 bg-secondary" />
-
-                <li class="nav-item">
-                    <a href="{{ route('penawaran.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-solid fa-file-signature"></i>
-                        <p>
-                            Penawaran
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/workOrder" class="nav-link">
-                        <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
-                        <p>
-                            Work Order
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-solid fa-money-check-dollar" style="color: #c2c7d0;"></i>
-                        <p>
-                            Administration & Finance
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        @hasrole('finance|manager')
-                        <li class="nav-item {{ request()->routeIs('operational') ? 'menu-open' : '' }}">
-                            <a href="{{ route("operational") }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Operational Request
-                                    <span class="badge badge-info right"></span>
-                                </p>
-                            </a>
-                        </li>
-                        @endhasrole
-                        @hasrole('finance|manager')
-                        <li class="nav-item {{ request()->routeIs('purchase') ? 'menu-open' : '' }}">
-                            <a href="/" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Purchase Order
-                                    <span class="badge badge-info right"></span>
-                                </p>
-                            </a>
-                        </li>
-                        @endhasrole
-                    </ul>
-                <li class="nav-item">
-                    <a href="/summary" class="nav-link">
-                        <i class="nav-icon fas fa-solid fa-list"></i>
-                        <p>
-                            Summary
-                        </p>
-                    </a>
-                </li>
             </ul>
+        </li>
+        
+        <li class="nav-item">
+            <a href="{{ route('penawaran.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-solid fa-file-signature"></i>
+                <p>
+                    Penawaran
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/workOrder" class="nav-link">
+                <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
+                <p>
+                    Work Order
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/summary" class="nav-link">
+                <i class="nav-icon fas fa-solid fa-list"></i>
+                <p>
+                    Summary
+                </p>
+            </a>
+        </li>
+        
         </nav>
         <!-- /.sidebar-menu -->
     </div>
