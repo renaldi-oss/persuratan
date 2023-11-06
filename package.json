@@ -12,6 +12,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "blueimp-file-upload": "^10.32.0",
         "i": "^0.3.7",
         "npm": "^10.2.1",
         "or": "^0.2.0"
