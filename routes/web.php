@@ -32,7 +32,7 @@ Route::middleware('guest')->group(function () {
 // DASHBOARD
 Route::middleware(['auth'])->group(function() {
     // halaman utama dashboard setelah login
-    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
     Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
     // halaman kelola user khusus finance dan manager
