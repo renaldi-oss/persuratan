@@ -69,7 +69,7 @@ class UserController extends Controller
         $role = Role::find($request->input('roles'));
         $user->assignRole($role->name);
         
-        return redirect()->route('manage-users')
+        return redirect()->route('manage-users.index')
             ->with('status', 'success')
             ->with('message', 'User ' . $user->name . ' created successfully.');
     }
@@ -102,7 +102,7 @@ class UserController extends Controller
         $user = User::find($id);
     
         if (!$user) {
-            return redirect()->route('manage-users')
+            return redirect()->route('manage-users.index')
             ->with('status', 'error')
             ->with('message', 'User ' . $user->name . ' not found.');
         }
@@ -128,7 +128,7 @@ class UserController extends Controller
         $user->update($request->all());
 
         return redirect()
-            ->route('manage-users')
+            ->route('manage-users.index')
             ->with('status', 'success')
             ->with('message', "Data ". $user->name ." updated successfully.");
     }
@@ -141,7 +141,7 @@ class UserController extends Controller
         $user = User::find($id);
         $name = $user->name;
         $user->delete();
-        return redirect()->route('manage-users')
+        return redirect()->route('manage-users.index')
         ->with('status', 'success')
         ->with('message', 'User ' . $name . ' deleted successfully.');
     }

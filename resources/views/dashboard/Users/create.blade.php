@@ -3,7 +3,7 @@
 
 @section('content')
 
-<x-breadcrumb title="Create user" link="{{ route('manage-users') }}" item="User" subItem="Create" />
+<x-breadcrumb title="Create user" link="{{ route('manage-users.index') }}" item="User" subItem="Create" />
 
 <div class="card m-3">
   <div class="card-body">
