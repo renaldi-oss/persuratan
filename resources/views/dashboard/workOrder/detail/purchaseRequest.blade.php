@@ -1,4 +1,4 @@
-@extends('workOrder.detail.index')
+@extends('dashboard.layouts.main')
 
 @section('content')
 <div class="row d-flex">
@@ -34,8 +34,8 @@
               <td>lokal</td>
               <td>1.000.000</td>
               <td>
-                  <i class="fas fa-solid fa-pen"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
@@ -45,8 +45,8 @@
               <td>lokal</td>
               <td>1.000.000</td>
               <td>
-                  <i class="fas fa-solid fa-pen"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
@@ -56,8 +56,8 @@
               <td>lokal</td>
               <td>1.000.000</td>
               <td>
-                  <i class="fas fa-solid fa-pen"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
@@ -67,8 +67,8 @@
               <td>lokal</td>
               <td>1.000.000</td>
               <td>
-                  <i class="fas fa-solid fa-pen"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
@@ -78,8 +78,8 @@
               <td>lokal</td>
               <td>1.000.000</td>
               <td>
-                  <i class="fas fa-solid fa-pen"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr>
@@ -89,8 +89,8 @@
               <td>lokal</td>
               <td>1.000.000</td>
               <td>
-                  <i class="fas fa-solid fa-pen"></i>&nbsp;
-                  <i class="fas fa-solid fa-trash"></i>&nbsp;
+                  <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
+                  <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
               </td>
             </tr>
             <tr style="background-color: cornflowerblue">

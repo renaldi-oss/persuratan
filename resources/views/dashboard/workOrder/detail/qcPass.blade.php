@@ -24,7 +24,7 @@
                             <td>2</td>
                             <td>online</td>
                             <td>
-                                <i class="fas fa-solid fa-camera"></i>&nbsp;
+                                <a href="" class="btn btn-warning btn-xs"><i class="fas fa-solid fa-camera"></i>&nbsp;</a>
                             </td>
                             <td>aman</td>
                           </tr>
@@ -34,7 +34,7 @@
                             <td>2</td>
                             <td>online</td>
                             <td>
-                                <i class="fas fa-solid fa-camera"></i>&nbsp;
+                                <a href="" class="btn btn-warning btn-xs"><i class="fas fa-solid fa-camera"></i>&nbsp;</a>
                             </td>
                             <td>aman</td>
                           </tr>
@@ -44,7 +44,7 @@
                             <td>2</td>
                             <td>online</td>
                             <td>
-                                <i class="fas fa-solid fa-camera"></i>&nbsp;
+                                <a href="" class="btn btn-warning btn-xs"><i class="fas fa-solid fa-camera"></i>&nbsp;</a>
                             </td>
                             <td>aman</td>
                           </tr>
@@ -54,7 +54,7 @@
                             <td>2</td>
                             <td>online</td>
                             <td>
-                                <i class="fas fa-solid fa-camera"></i>&nbsp;
+                                <a href="" class="btn btn-warning btn-xs"><i class="fas fa-solid fa-camera"></i>&nbsp;</a>
                             </td>
                             <td>aman</td>
                           </tr>
