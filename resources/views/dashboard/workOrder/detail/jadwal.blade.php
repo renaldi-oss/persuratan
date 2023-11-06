@@ -6,8 +6,10 @@
   <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
 <div>
 {{-- @include('workOrder.detail.index') --}}
-<div class="card card-primary">
-  <h1 class="ml-4">Jadwal Pelaksanaan</h1> 
+<div class="row d-flex">
+  <h1 class="ml-4">Jadwal Pelaksanaan</h1>
+</div>
+<div class="card card-primary p-2 m-3">
       <div class="card-body p-0">
         <!-- THE CALENDAR -->
         <div id="calendar" class="fc fc-media-screen fc-direction-ltr fc-theme-bootstrap">

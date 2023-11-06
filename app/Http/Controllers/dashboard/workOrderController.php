@@ -10,15 +10,15 @@ class WorkOrderController extends Controller
     //
     public function index()
     {
-        return view('workOrder.index');
+        return view('dashboard.WorkOrder.index');
     }
     public function detail()
     {
-        return view('workOrder.detail.index');
+        return view('dashboard.WorkOrder.detail.index');
     }
     public function jadwal()
     {
-        return view('workOrder.detail.jadwal');
+        return view('dashboard.WorkOrder.detail.jadwal');
     }
     public function handleJadwal(Request $request)
     {
@@ -26,15 +26,19 @@ class WorkOrderController extends Controller
     }
     public function purchaseRequest()
     {
-        return view('workOrder.detail.purchaseRequest');
+        return view('dashboard.WorkOrder.detail.purchaseRequest');
     }
     public function handlePurchaseRequest(Request $request)
     {
         return redirect('/purchaseRequest');
     }
+    public function addPrItem()
+    {
+        return view('dashboard.WorkOrder.detail.addPrItem');
+    }
     public function checklist()
     {
-        return view('workOrder.detail.checklist');
+        return view('dashboard.WorkOrder.detail.checklist');
     }
     public function handleChecklist(Request $request)
     {
@@ -42,7 +46,7 @@ class WorkOrderController extends Controller
     }
     public function qcPass()
     {
-        return view('workOrder.detail.qcPass');
+        return view('dashboard.WorkOrder.detail.qcPass');
     }
     public function handleQCPass(Request $request)
     {
@@ -50,10 +54,14 @@ class WorkOrderController extends Controller
     }
     public function persuratan()
     {
-        return view('workOrder.detail.persuratan');
+        return view('dashboard.WorkOrder.detail.persuratan');
     }
     public function handlePersuratan(Request $request)
     {
         return redirect('/persuratan');
+    }
+    public function addPersuratan()
+    {
+        return view('dashboard.WorkOrder.detail.addPersuratan');
     }
 }
