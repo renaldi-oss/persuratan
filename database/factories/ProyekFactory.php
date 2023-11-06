@@ -17,7 +17,7 @@ class ProyekFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama' => $this->faker->company(),
+            'nama_proyek' => $this->faker->company(),
             'pekerjaan' => $this->faker->jobTitle(),
             'lokasi' => $this->faker->address(),
             'due_date' => $this->faker->date(),

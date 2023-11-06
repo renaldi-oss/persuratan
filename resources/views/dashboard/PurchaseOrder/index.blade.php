@@ -9,28 +9,30 @@
 @endsection
 
 @section('content')
-  
-  <x-breadcrumb title="Manage users" link="{{ route('manage-users.index') }}" item="Users" subItem="Manage" />
+
+  <x-breadcrumb title="Purchase Order" link="{{ route('purchase') }}" item="Purchase" subItem="Manage" />
 
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          
+
           <div class="card" style="height: auto;">
             <!-- /.card-header -->
             <div class="card-body ">
               <div class="container-fluid my-2">
-                <a href="{{ route('manage-users.create') }}" class="btn btn-primary">Create</a>                
+                <a href="{{ route('purchase.create') }}" class="btn btn-primary">Create</a>
               </div>
-              <table id="usersTable" class="table table-bordered table-striped" style="text-align: center;">
+              <table id="usersTable" class="table table-bordered table-striped text-center">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Roles</th>
-                  <th>Action</th>
+                    <th>Tanggal</th>
+                    <th>Pemohon</th>
+                    <th>Divisi</th>
+                    <th>No PO</th>
+                    <th>proyek</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -80,26 +82,23 @@
       ordering: true,
       info: true,
       autoWidth: true,
-      responsive: true,
-      ajax: "{{ route('manage-users.index') }}",
+      ajax: "{{ route('purchase') }}",
       columns: [
+        {data: 'id', name: 'id'},
         {data: 'name', name: 'name'},
         {data: 'email', name: 'email'},
-        {data: 'roles', name: 'roles'}, 
+        {data: 'name', name: 'name'},
+        {data: 'roles', name: 'roles'},
         {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
+                data: 'action',
+                name: 'action',
+                orderable: true,
                 searchable: true,
                 class: 'd-flex justify-content-center'
         },
-      ],
-      drawCallback: function(settings) {
-          var data = this.api().rows({page:'current'}).data();
-          console.log(data);
-        },
+      ]
     });
-  });  
+  });
 </script>
 
 @endpush

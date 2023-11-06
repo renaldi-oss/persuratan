@@ -96,9 +96,10 @@ npm run dev
 
 | Nama fitur               | status            |
 |--------------------------|------------------|
-| Authentikasi User        | ✔️ _mari paleng_ |
-| Surat PO   | ❌               |
+| Authentikasi User        | ✔️ |
+| Upload File   | ❌               |
 | Surat WO   | ❌               |
+| Surat PO   | ❌               |
 
 ## FAQ
 
@@ -111,7 +112,7 @@ check requirements diatas, kemudian coba lagi sampai berhasil :)
 
 ## Show your support
 
-* Follow me on GitHub [@renaldi-oss](https://github.com/renaldi-oss) or my site [here](https://renaldi.tech)
+* Follow me on GitHub [@renaldi-oss](https://github.com/renaldi-oss) or my site [here](https://reynaldi.tech)
 
 ## Disclaimer
 

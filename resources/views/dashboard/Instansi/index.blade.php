@@ -9,27 +9,29 @@
 @endsection
 
 @section('content')
-  
-  <x-breadcrumb title="Manage users" link="{{ route('manage-users.index') }}" item="Users" subItem="Manage" />
+
+  <x-breadcrumb title="Manage Instansi" link="{{ route('instansi.index') }}" item="Instansi" subItem="Manage" />
 
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          
+
           <div class="card" style="height: auto;">
             <!-- /.card-header -->
             <div class="card-body ">
               <div class="container-fluid my-2">
-                <a href="{{ route('manage-users.create') }}" class="btn btn-primary">Create</a>                
+                <a href="{{ route('instansi.create') }}" class="btn btn-primary">Create</a>
               </div>
-              <table id="usersTable" class="table table-bordered table-striped" style="text-align: center;">
+              <table id="table" class="table table-bordered table-striped" style="text-align: center;">
                 <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Nama</th>
+                  <th>Alamat</th>
+                  <th>Kontak</th>
                   <th>Email</th>
-                  <th>Roles</th>
+                  <th>Lokasi</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -66,10 +68,11 @@
 <script src="{{ asset('./plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('./plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
+
 {{-- script table user --}}
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#usersTable').DataTable({
+    $('#table').DataTable({
       deferRender: false,
       processing: true,
       serverSide: true,
@@ -78,28 +81,29 @@
       lengthChange: true,
       searching: true,
       ordering: true,
+      orderable: true,
       info: true,
       autoWidth: true,
       responsive: true,
-      ajax: "{{ route('manage-users.index') }}",
+      ajax: "{{ route('instansi.index') }}",
       columns: [
-        {data: 'name', name: 'name'},
+        {data: 'nama_instansi', name: 'nama'},
+        {data: 'alamat', name: 'alamat'},
+        {data: 'kontak', name: 'kontak'},
         {data: 'email', name: 'email'},
-        {data: 'roles', name: 'roles'}, 
+        {data: 'lokasi', name: 'lokasi'},
         {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true,
-                class: 'd-flex justify-content-center'
+            data: 'action',
+            name: 'action',
+            class: 'd-flex justify-content-center'
         },
-      ],
-      drawCallback: function(settings) {
+        ],
+        drawCallback: function(settings) {
           var data = this.api().rows({page:'current'}).data();
           console.log(data);
         },
     });
-  });  
+  });
 </script>
 
 @endpush

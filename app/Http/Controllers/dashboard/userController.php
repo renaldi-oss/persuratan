@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
 use DataTables;
-use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
 
-class userController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class userController extends Controller
         // get user data with roles
         if($request->ajax()) {
             $users = User::with('roles')->get();
-        
+            
             return datatables()->of($users)
                 ->addColumn('roles', function($user) {
                     return $user->roles->pluck('name')->implode(', ');
@@ -69,7 +69,7 @@ class userController extends Controller
         $role = Role::find($request->input('roles'));
         $user->assignRole($role->name);
         
-        return redirect()->route('manage-users')
+        return redirect()->route('manage-users.index')
             ->with('status', 'success')
             ->with('message', 'User ' . $user->name . ' created successfully.');
     }
@@ -102,7 +102,7 @@ class userController extends Controller
         $user = User::find($id);
     
         if (!$user) {
-            return redirect()->route('manage-users')
+            return redirect()->route('manage-users.index')
             ->with('status', 'error')
             ->with('message', 'User ' . $user->name . ' not found.');
         }
@@ -128,7 +128,7 @@ class userController extends Controller
         $user->update($request->all());
 
         return redirect()
-            ->route('manage-users')
+            ->route('manage-users.index')
             ->with('status', 'success')
             ->with('message', "Data ". $user->name ." updated successfully.");
     }
@@ -141,7 +141,7 @@ class userController extends Controller
         $user = User::find($id);
         $name = $user->name;
         $user->delete();
-        return redirect()->route('manage-users')
+        return redirect()->route('manage-users.index')
         ->with('status', 'success')
         ->with('message', 'User ' . $name . ' deleted successfully.');
     }

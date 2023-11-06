@@ -3,13 +3,14 @@
 
 @section('content')
 
-<x-breadcrumb title="Create Operational request" link="{{ route('operational') }}" item="Operational" subItem="Create" />
+<x-breadcrumb title="Create user" link="{{ route('purchase') }}" item="User" subItem="Create" />
 
 <div class="card m-3">
   <div class="card-body">
-    <form id="Form" action="{{ route('operational.store') }}" method="POST">
+    <form id="Form" action="{{ route('purchase.update', $user->id) }}" method="POST">
         {{ csrf_field() }}
-        @include('dashboard.OperationalRequest.form', ['tombol' => 'Create'])
+        @method('PUT')
+        @include('dashboard.PurchaseOrder.form', ['tombol' => 'Update'])
     </form>
   </div>
 </div>
@@ -26,7 +27,7 @@
        username: {
          required: true,
        },
-       date:{
+       name:{
          required: true,
        },
         email: {
@@ -49,6 +50,7 @@
        },
         email: {
           required: "Please enter a valid email address",
+
         },
        password: {
          required: "Please provide a password",
@@ -73,5 +75,5 @@
    });
  });
 </script>
-  
+
 @endpush
