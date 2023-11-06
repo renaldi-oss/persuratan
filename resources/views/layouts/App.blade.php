@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tekno Klop Indonesia</title>
   <link rel="icon" href="{{ url(asset('./assets/img/LOGO1.png')) }}" type="image/png" sizes="32x32">
+
+  <!-- token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -17,8 +20,10 @@
   <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="{{ asset('./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+
   @yield('style')
-  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     @yield('main')
@@ -51,8 +56,6 @@
         })
       @endif
     </script>
-
-
     @stack('script')
 </body>
 
