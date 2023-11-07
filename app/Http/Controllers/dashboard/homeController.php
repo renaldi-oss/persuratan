@@ -13,8 +13,9 @@ class HomeController extends Controller
     //
     public function index(Request $request)
     {
-        $proyeks = Proyek::with('instansi')->get();
-        $operationals = Operational::with('proyek.instansi')->get();
+        $proyeks = json_encode(Proyek::with('instansi')->get());
+        $operationals = json_encode(Operational::with('proyek.instansi')->get());
+
 
         return view('dashboard.index', ['proyek' => $proyeks, 'operational' => $operationals]);
     }

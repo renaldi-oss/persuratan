@@ -99,8 +99,8 @@
                 info: true,
                 autoWidth: true,
                 responsive: true,
-                // ajax: "{{ route('getProyek') }}",
-                data: @json($proyek),
+                ajax: "{{ route('getProyek') }}",
+                // data: @json($proyek),
                 columns: [{
                         data: 'due_date',
                         name: 'tanggal'
@@ -110,7 +110,7 @@
                         name: 'nama'
                     },
                     {
-                        data: 'nama_instansi',
+                        data: 'instansi',
                         name: 'instansi'
                     },
                     {
