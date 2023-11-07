@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->foreignIdfor(WorkOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama_material');
+            $table->string('nama');
             $table->enum('tipe', ['primary', 'additional']);
             $table->integer('jumlah');
             $table->string('file')->nullable();
