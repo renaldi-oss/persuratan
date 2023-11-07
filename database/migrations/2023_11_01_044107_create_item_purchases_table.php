@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('item_purchases', function (Blueprint $table) {
             $table->id();
             $table->foreignIdfor(PurchaseOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama_item');
+            $table->string('nama');
             $table->string('merk');
             $table->integer('qty');
             $table->integer('estimated_price');
