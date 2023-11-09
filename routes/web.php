@@ -4,12 +4,14 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\Dashboard\OperationalController;
+use App\Http\Controllers\dashboard\PekerjaanController;
 use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
-use App\Http\Controllers\ProyekController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 /*
@@ -45,8 +47,9 @@ Route::middleware(['auth'])->group(function () {
         // halaman manajemen instansi
         Route::resource('instansi', InstansiController::class);
     });
-    // route Proyek
-    Route::resource('proyek',ProyekController::class);
+    // route Pekerjaan
+    Route::resource('pekerjaan', PekerjaanController::class);
+    
     //halaman Work Order
     Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');
     Route::get('/workOrder/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
