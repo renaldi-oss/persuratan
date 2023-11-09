@@ -24,7 +24,7 @@ class PekerjaanFactory extends Factory
             'nominal' => $this->faker->randomElement([null, $this->faker->randomNumber()]),
             'no_surat' => $this->faker->randomElement([null, $this->faker->randomNumber()]),
             'file' => $this->faker->randomElement([null, $this->faker->url()]),
-            'due_date' => $this->faker->randomElement([null, $this->faker->date()]),
+            'due_date' => $this->faker->randomElement([null, $this->faker->dateTimeBetween('now', '+1 years')]),
             'status' => $this->faker->randomElement(['pending', 'accepted', 'rejected']),
         ];
     }
