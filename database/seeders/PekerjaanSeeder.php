@@ -3,18 +3,18 @@
 namespace Database\Seeders;
 
 use App\Models\Instansi;
-use App\Models\Proyek;
+use App\Models\Pekerjaan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProyekSeeder extends Seeder
+class PekerjaanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Proyek::factory()->count(5)->create([
+        Pekerjaan::factory()->count(10)->create([
             'instansi_id' => Instansi::inRandomOrder()->first()->id,
         ]);
     }

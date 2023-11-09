@@ -10,7 +10,7 @@
 
 @section('content')
 
-<x-breadcrumb title="Penawaran" link="{{ route('penawaran.index') }}" item="penawaran" subItem="Manage" />
+<x-breadcrumb title="proyek" link="{{ route('proyek.index') }}" item="proyek" subItem="Manage" />
 
 <!-- Main content -->
 <div class="page-content">
@@ -20,7 +20,7 @@
             <div class="row align-items-center">
 
                 <div class="container-fluid d-flex justify-content-end my-2">
-                    <a href="{{ route('penawaran.index') }}" class="btn btn-primary">Kembali</a>
+                    <a href="{{ route('proyek.index') }}" class="btn btn-primary">Kembali</a>
 
                 </div>
 
@@ -35,7 +35,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Penawaran</h4>
+                            <h4 class="header-title">proyek</h4>
 
                             <br />
                             <table class="table table-bordered table-striped" style="border-collapse: collapse; border-spacing: 0">
@@ -116,7 +116,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="header-title">
-                                Detail Penawaran
+                                Detail proyek
                                 <div style="float: right"></div>
                             </h5>
                             <br />
@@ -184,10 +184,10 @@
                                         <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
                                             <ul class="pagination">
                                                 <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous">
-                                                    <a href="http://tekno.kimedaka.com/user/detail_penawaran/1#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                                    <a href="http://tekno.kimedaka.com/user/detail_proyek/1#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
                                                 </li>
                                                 <li class="paginate_button page-item next disabled" id="DataTables_Table_0_next">
-                                                    <a href="http://tekno.kimedaka.com/user/detail_penawaran/1#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">Next</a>
+                                                    <a href="http://tekno.kimedaka.com/user/detail_proyek/1#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">Next</a>
                                                 </li>
                                             </ul>
                                         </div>

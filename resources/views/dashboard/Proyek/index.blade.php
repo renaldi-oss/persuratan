@@ -10,7 +10,7 @@
 
 @section('content')
 
-<x-breadcrumb title="Penawaran" link="{{ route('penawaran.index') }}" item="Penawaran" subItem="Manage" />
+<x-breadcrumb title="proyek" link="{{ route('proyek.index') }}" item="proyek" subItem="Manage" />
 
 <!-- Main content -->
 <div class="content">
@@ -22,7 +22,7 @@
                     <!-- /.card-header -->
                     <div class="card-body ">
                         <div class="container-fluid my-2">
-                            <a href="{{ route('penawaran.create') }}" class="btn btn-primary">Tambah</a>
+                            <a href="{{ route('proyek.create') }}" class="btn btn-primary">Create</a>
                         </div>
                         <table id="table1" class="table table-bordered table-striped" style="text-align: center;">
                             <thead>
@@ -123,11 +123,11 @@
                     class: 'project-actions text-center',
                     render: function(data, type, full, meta) {
                         return `
-                        <a class="btn btn-primary btn-sm" href="{{ route('penawaran.view') }}">
+                        <a class="btn btn-primary btn-sm" href="{{ route('proyek.view') }}">
     <i class="fas fa-eye"></i>
 </a>
 
-            <a class="btn btn-info btn-sm" href="{{ route('penawaran.edit') }}">
+            <a class="btn btn-info btn-sm" href="{{ route('proyek.edit') }}">
                 <i class="fas fa-pencil-alt"></i>
             </a>
             <a class="btn btn-danger btn-sm" href="#">

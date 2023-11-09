@@ -19,7 +19,7 @@
             <div class="col-md-12"> <!-- Menggunakan col-md-12 agar formulir mengisi seluruh lebar -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Tambah Penawaran</h3>
+                        <h3 class="card-title">Tambah proyek</h3>
                     </div>
                     <div class="card-body">
                         <form>
@@ -55,7 +55,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{{ route('penawaran.index') }}" class="btn btn-primary">Kembali</a>
+                        <a href="{{ route('proyek.index') }}" class="btn btn-primary">Kembali</a>
                     </div>
 
 
@@ -163,7 +163,7 @@
                     class: 'project-actions text-center',
                     render: function(data, type, full, meta) {
                         return `
-                        <a class="btn btn-primary btn-sm" href="{{ route('penawaran.view') }}">
+                        <a class="btn btn-primary btn-sm" href="{{ route('proyek.view') }}">
     <i class="fas fa-eye"></i>
 </a>
 
