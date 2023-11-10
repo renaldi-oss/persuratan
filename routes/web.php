@@ -9,7 +9,6 @@ use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
-use App\Http\Controllers\Dashboard\summaryController;
 use Illuminate\Support\Facades\Route;
 
 

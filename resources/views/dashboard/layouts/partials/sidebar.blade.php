@@ -92,7 +92,7 @@
         </li> 
         
         <li class="nav-item">
-            <a href="{{ route('penawaran.index') }}" class="nav-link {{ request()->routeIs('penawaran') ? 'active' : '' }}">
+            <a href="{{ route('pekerjaan.index') }}" class="nav-link {{ request()->routeIs('penawaran') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-file-signature"></i>
                 <p>
                     Pekerjaan
