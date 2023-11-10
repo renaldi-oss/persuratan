@@ -52,7 +52,6 @@
 
 @endsection
 
-
 @push('script')
 {{-- script datatable --}}
 <script src="{{ asset('./plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -63,7 +62,6 @@
 {{-- script table user --}}
 <script type="text/javascript">
     $(document).ready(function() {
-        
         $('#pekerjaan').DataTable({
             deferRender: false,
             processing: true,
