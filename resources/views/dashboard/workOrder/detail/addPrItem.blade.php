@@ -7,11 +7,11 @@
 <div class="card ml-3 mr-3">
     <div class="form-group ml-3 mr-3 mt-3">
         <label for="namaBarang">Nama Barang</label>
-        <input type="input" class="form-control" id="namaBarang" placeholder="Enter email">
+        <input type="input" class="form-control" id="namaBarang">
     </div>
     <div class="form-group ml-3 mr-3 mt-3">
         <label for="jumlah">Jumlah</label>
-        <input type="input" class="form-control" id="jumlah" placeholder="Enter email">
+        <input type="input" class="form-control" id="jumlah">
     </div>
     <div class="form-group ml-3 mr-3 mt-3">
         <label>Pembelian</label>
@@ -24,7 +24,7 @@
     </div>
     <div class="form-group ml-3 mr-3 mt-3">
         <label for="harga">Harga</label>
-        <input type="input" class="form-control" id="harga" placeholder="Enter email">
+        <input type="input" class="form-control" id="harga">
     </div>
     <div>
         <button type="button" class="btn btn-primary ml-3 mb-3">Submit</button>

@@ -20,7 +20,7 @@ class OperationalController extends Controller
         // get user data with roles
         if($request->ajax()) {
             $users = User::with('roles')->get();
-        
+
             return datatables()->of($users)
     ->addColumn('roles', function($user) {
         return $user->roles->pluck('name')->implode(', ');
@@ -38,8 +38,8 @@ class OperationalController extends Controller
     ->rawColumns(['action', 'roles'])
     ->make(true);
 
-        
-        
+
+
         }
         return view('dashboard.operationalrequest.index');
     }
@@ -49,7 +49,7 @@ class OperationalController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id')->all(); 
+        $roles = Role::pluck('name', 'id')->all();
         return view('dashboard.operationalrequest.create',
         [
             'roles' => $roles
@@ -68,13 +68,12 @@ class OperationalController extends Controller
             'location' => 'required',
             'po' => 'required',
             'amount' => 'required',
-            'location' => 'required',
         ]);
 
         $user = User::create($request->all());
         $role = Role::find($request->input('roles'));
         $user->assignRole($role->name);
-        
+
         return redirect()->route('operational')
             ->with('status', 'success')
             ->with('message', 'User ' . $user->name . ' created successfully.');
@@ -106,7 +105,7 @@ class OperationalController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-    
+
         if (!$user) {
             return redirect()->route('operational')
             ->with('status', 'error')
@@ -138,7 +137,7 @@ class OperationalController extends Controller
             ->with('status', 'success')
             ->with('message', "Data ". $user->name ." updated successfully.");
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */

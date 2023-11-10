@@ -9,12 +9,7 @@
 @endsection
 
 @section('content')
-
-
-
-<!-- Main content -->
-<section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid mt-2">
         <div class="row">
             <div class="col-md-12"> <!-- Menggunakan col-md-12 agar formulir mengisi seluruh lebar -->
                 <div class="card card-primary">
@@ -55,7 +50,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{{ route('proyek.index') }}" class="btn btn-primary">Kembali</a>
+                        <a href="{{ route('pekerjaan.index') }}" class="btn btn-primary">Kembali</a>
                     </div>
 
 
@@ -63,10 +58,6 @@
             </div>
         </div>
     </div>
-</section>
-
-
-
 @endsection
 
 
@@ -84,107 +75,11 @@
 <script src="{{ asset('./plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('./plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('./plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Select2 -->
-<script src="../../plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- InputMask -->
-<script src="../../plugins/moment/moment.min.js"></script>
-<script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
-<!-- date-range-picker -->
-<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-<!-- BS-Stepper -->
-<script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
-<!-- dropzonejs -->
-<script src="../../plugins/dropzone/min/dropzone.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<!-- Page specific script -->
 
 {{-- script table user --}}
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#table').DataTable({
-            deferRender: false,
-            processing: true,
-            serverSide: true,
-            paging: true,
-            pageLength: 10,
-            lengthChange: true,
-            searching: true,
-            ordering: true,
-            orderable: true,
-            info: true,
-            autoWidth: true,
-            responsive: true,
-            ajax: "{{ route('instansi.index') }}",
-            columns: [{
-                    data: 'nama_proyek',
-                    name: 'nama_proyek'
-                },
-                {
-                    data: 'id_instansi',
-                    name: 'id_instansi'
-                },
-                {
-                    data: 'pekerjaan',
-                    name: 'pekerjaan'
-                },
-                {
-                    data: 'lokasi',
-                    name: 'lokasi'
-                },
-                {
-                    data: 'due_date',
-                    name: 'due_date'
-                },
-                {
-                    data: 'no_po',
-                    name: 'no_po'
-                },
-                {
-                    data: 'file_po',
-                    name: 'file_po'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    class: 'project-actions text-center',
-                    render: function(data, type, full, meta) {
-                        return `
-                        <a class="btn btn-primary btn-sm" href="{{ route('proyek.view') }}">
-    <i class="fas fa-eye"></i>
-</a>
-
-            <a class="btn btn-info btn-sm" href="#">
-                <i class="fas fa-pencil-alt"></i>
-            </a>
-            <a class="btn btn-danger btn-sm" href="#">
-                <i class="fas fa-trash"></i>
-            </a>
-        `;
-                    }
-                },
-
-            ],
-            drawCallback: function(settings) {
-                var data = this.api().rows({
-                    page: 'current'
-                }).data();
-                console.log(data);
-            },
-        });
+        
     });
     $(function() {
         //Initialize Select2 Elements

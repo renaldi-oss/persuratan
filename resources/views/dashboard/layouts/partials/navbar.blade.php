@@ -10,19 +10,6 @@
         </li>
     </ul>
 
-    <script>
-        // JavaScript to update the date and time in the "Current DateTime" link
-        function updateCurrentDateTimeLink() {
-            const currentDateTime = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            const formattedDateTime = currentDateTime.toLocaleDateString('id-ID', options);
-            document.getElementById('currentDateTimeLink').textContent = formattedDateTime;
-        }
-
-        // Update the date and time initially and every second
-        updateCurrentDateTimeLink();
-        setInterval(updateCurrentDateTimeLink, 1000);
-    </script>
     {{-- btn keluar --}}
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
@@ -37,3 +24,20 @@
     </ul>
 </nav>
 <!-- /.navbar -->
+
+
+@push('script')
+<script>
+    // JavaScript to update the date and time in the "Current DateTime" link
+    function updateCurrentDateTimeLink() {
+        const currentDateTime = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const formattedDateTime = currentDateTime.toLocaleDateString('id-ID', options);
+        document.getElementById('currentDateTimeLink').textContent = formattedDateTime;
+    }
+
+    // Update the date and time initially and every second
+    updateCurrentDateTimeLink();
+    setInterval(updateCurrentDateTimeLink, 1000);
+</script>
+@endpush

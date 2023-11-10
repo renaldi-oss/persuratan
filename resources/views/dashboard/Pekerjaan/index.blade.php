@@ -23,21 +23,23 @@
                         <div class="container-fluid my-2">
                             <a href="{{ route('pekerjaan.create') }}" class="btn btn-primary">Create</a>
                         </div>
-                        <table id="pekerjaan" class="table1 table-bordered table-striped" style="text-align: center;">
-                            <thead>
-                                <tr>
-                                    <th>No Surat</th>
-                                    <th>Client</th>
-                                    <th>Pekerjaan</th>
-                                    <th>Attn</th>
-                                    <th>Due Date</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table id="pekerjaan" class="table1 table-bordered table-striped" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>No Surat</th>
+                                        <th>Client</th>
+                                        <th>pekerjaan</th>
+                                        <th>Attn</th>
+                                        <th>Due Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -52,7 +54,6 @@
 
 @endsection
 
-
 @push('script')
 {{-- script datatable --}}
 <script src="{{ asset('./plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -63,7 +64,6 @@
 {{-- script table user --}}
 <script type="text/javascript">
     $(document).ready(function() {
-
         $('#pekerjaan').DataTable({
             deferRender: false,
             processing: true,
@@ -76,6 +76,8 @@
             orderable: true,
             info: true,
             responsive: true,
+            autoWidth: false,
+
             ajax: "{{ route('pekerjaan.index') }}",
             columns: [
                 {

@@ -2,7 +2,7 @@
 
 {{-- format main content dashboard --}}
 @section('content')
-        <h1 class="ml-4">Detail Work Order</h1> 
+        <h1 class="ml-4">Detail Work Order</h1>
         <div class="row ml-3 mr-3">
             <div class="col-12">
               <div class="card">
@@ -60,58 +60,56 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-              
+
               <div class="d-flex justify-content-evenly">
-                <a href="/load-jadwal"><button type="submit" class="mx-1 flex-fill btn btn-primary">Jadwal Pelaksanaan</button></a>
-                <a href="/load-purchaseRequest"><button type="submit" class="mx-1 flex-fill btn btn-primary">Purchase Request</button></a>
-                <a href="/load-checklist"><button type="submit" class="mx-1 flex-fill btn btn-primary">Check List</button></a>
-                <a href="/load-qcPass"><button type="submit" class="mx-1 flex-fill btn btn-primary">QC Pass</button></a>
-                <a href="/load-persuratan"><button type="submit" class="mx-1 flex-fill btn btn-primary">Persuratan</button></a>
+                <a href="/jadwal"><button type="submit" class="mx-1 flex-fill btn btn-primary">Jadwal Pelaksanaan</button></a>
+                <a href="/purchaseRequest"><button type="submit" class="mx-1 flex-fill btn btn-primary">Purchase Request</button></a>
+                <a href="/checklist"><button type="submit" class="mx-1 flex-fill btn btn-primary">Check List</button></a>
+                <a href="/qcPass"><button type="submit" class="mx-1 flex-fill btn btn-primary">QC Pass</button></a>
+                <a href="/persuratan"><button type="submit" class="mx-1 flex-fill btn btn-primary">Persuratan</button></a>
               </div>
 
 
               {{-- <div class="d-flex justify-content-evenly">
                   <div class="col-12">
-                      <div class="card">
-                          <table>
+                          <table style="width: 100%">
                               <tr>
-                                  <td>
+                                  <td style="width: 20%">
                                     <form action="/load-jadwal" method="POST">
                                       @csrf
                                       <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Jadwal Pelaksanaan</button>
                                     </form>
                                   </td>
-                                  <td>
+                                  <td style="width: 20%">
                                     <form action="/load-purchaseRequest" method="post">
                                       @csrf
                                       <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Purchase Request</button>
                                     </form>
-                                  </td> 
+                                  </td>
                                   <td>
                                     <form action="/load-checklist" method="post">
                                       @csrf
                                       <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Check List</button>
                                     </form>
-                                  </td> 
+                                  </td>
                                   <td>
                                     <form action="/load-qcPass" method="post">
                                       @csrf
                                       <button type="submit" class="btn btn-block btn-primary btn-lg p-2">QC Pass</button>
                                     </form>
-                                  </td> 
+                                  </td>
                                   <td>
                                     <form action="/load-persuratan" method="post">
                                       @csrf
                                       <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Persuratan</button>
                                     </form>
-                                  </td> 
+                                  </td>
                               </tr>
                           </table>
-                      </div>
                   </div>
-              </div> --}}
+              </div>
 
-              
+
 
             </div>
           </div>

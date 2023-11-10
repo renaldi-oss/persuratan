@@ -3,14 +3,36 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
 
 class WorkOrderController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard.WorkOrder.index');
+        // get pekerjaan data with instansi
+        if($request->ajax()) {
+            $pekerjaans = Pekerjaan::with('instansi')
+            ->get();
+
+            return datatables()->of($pekerjaans)
+            ->addColumn('instansi', function($pekerjaan) {
+                return $pekerjaan->instansi->nama;
+            })
+            ->addColumn('action', function($pekerjaan) {
+                $btn = '<a href="' . route("manage-users.edit", $pekerjaan->id) . '" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>';
+                $btn .= '<a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>';
+                $btn .= '<form action="' . route("manage-users.destroy", $pekerjaan->id) . '" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="' . csrf_token() . '">
+                        <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</button>';
+                return $btn;
+            })
+            ->make(true);
+        } else {
+            return view('dashboard.WorkOrder.index');
+        }
     }
     public function detail()
     {
