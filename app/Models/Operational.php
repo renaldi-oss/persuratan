@@ -14,13 +14,13 @@ class Operational extends Model
     protected $table = 'operationals';
     protected $guarded = ['id'];
 
-    public function proyek() : BelongsTo
+    public function pekerjaan() : BelongsTo
     {
-        return $this->belongsTo(Proyek::class, 'proyek_id');
+        return $this->belongsTo(Pekerjaan::class, 'pekerjaan_id');
     }
 
     public function instansi(): HasOneThrough
     {
-        return $this->hasOneThrough(Instansi::class, Proyek::class);
+        return $this->hasOneThrough(Instansi::class, Pekerjaan::class);
     }
 }
