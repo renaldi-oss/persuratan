@@ -17,7 +17,7 @@ class InstansiFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama_instansi' => $this->faker->company(),
+            'nama' => $this->faker->company(),
             'alamat' => $this->faker->address(),
             'kontak' => $this->faker->phoneNumber(),
             'email' => $this->faker->companyEmail(),

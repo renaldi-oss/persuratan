@@ -106,7 +106,7 @@
                         name: 'tanggal'
                     },
                     {
-                        data: 'nama_proyek',
+                        data: 'nama',
                         name: 'nama'
                     },
                     {

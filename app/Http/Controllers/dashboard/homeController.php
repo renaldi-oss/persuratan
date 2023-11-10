@@ -37,7 +37,7 @@ class HomeController extends Controller
 
             return datatables()->of($proyeks)
             ->addColumn('instansi', function($proyek) {
-                return $proyek->instansi->nama_instansi;
+                return $proyek->instansi->nama;
             })
             ->make(true);
         }
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
             return datatables()->of($operationals)
             ->addColumn('instansi', function($operational) {
-                return $operational->proyek->instansi->nama_instansi;
+                return $operational->proyek->instansi->nama;
             })
             ->make(true);
         }
