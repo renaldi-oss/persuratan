@@ -4,8 +4,9 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Instansi;
-use App\Models\Proyek;
 use App\Models\Operational;
+use App\Models\Pekerjaan;
+use App\Models\Proyek;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,9 +14,9 @@ class HomeController extends Controller
     //
     public function index(Request $request)
     {
-        $proyek = Proyek::all();
-        response()->json($proyek);
-        return view('dashboard.index', ['proyek' => $proyek]);
+        $pekerjaan = Pekerjaan::limit(5)->get();
+        response()->json($pekerjaan);
+        return view('dashboard.index', ['pekerjaan' => $pekerjaan]);
     }
 
     public function viewProyek()

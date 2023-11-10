@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="{{ route('home') }}" class="brand-link">
         <img src="{{ asset('./assets/img/LOGO.png') }}" alt="Tekno Klop Indonesia" class="brand-image" style="opacity: .8">
     </a>
 
@@ -57,7 +57,7 @@
 
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-solid fa-money-check-dollar" style="color: #c2c7d0;"></i>
+            <i class="nav-icon fas fa-solid fa-comment-dollar"></i>
             <p>
                 Administration & Finance
                 <i class="right fas fa-angle-left"></i>
@@ -75,7 +75,17 @@
                     </a>
                 </li>
                 @endhasrole
-
+                @hasrole('finance|manager')
+                <li class="nav-item {{ request()->routeIs('purchase') ? 'menu-open' : '' }}">
+                    <a href="{{ route("purchase") }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                    <p>
+                        Purchase Order
+                        <span class="badge badge-info right"></span>
+                    </p>
+                    </a>
+                </li>
+                @endhasrole
                 {{-- DIVIDER --}}
                 <hr class="my-12 mx-1 bg-secondary" />
             </ul>
@@ -85,7 +95,7 @@
             <a href="{{ route('penawaran.index') }}" class="nav-link {{ request()->routeIs('penawaran') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-file-signature"></i>
                 <p>
-                    Penawaran
+                    Pekerjaan
                 </p>
             </a>
         </li>

@@ -87,7 +87,7 @@
       responsive: true,
       ajax: "{{ route('instansi.index') }}",
       columns: [
-        {data: 'nama_instansi', name: 'nama'},
+        {data: 'nama', name: 'nama'},
         {data: 'alamat', name: 'alamat'},
         {data: 'kontak', name: 'kontak'},
         {data: 'email', name: 'email'},

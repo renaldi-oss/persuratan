@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Proyek;
+use App\Models\PurchaseOrder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('work_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(Proyek::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('kode');
+            $table->foreignIdfor(PurchaseOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('no_surat');
             $table->timestamps();
         });
     }
