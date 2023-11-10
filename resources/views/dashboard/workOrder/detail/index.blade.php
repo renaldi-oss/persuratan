@@ -72,16 +72,15 @@
 
               {{-- <div class="d-flex justify-content-evenly">
                   <div class="col-12">
-                      <div class="card">
-                          <table>
+                          <table style="width: 100%">
                               <tr>
-                                  <td>
+                                  <td style="width: 20%">
                                     <form action="/load-jadwal" method="POST">
                                       @csrf
                                       <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Jadwal Pelaksanaan</button>
                                     </form>
                                   </td>
-                                  <td>
+                                  <td style="width: 20%">
                                     <form action="/load-purchaseRequest" method="post">
                                       @csrf
                                       <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Purchase Request</button>
@@ -107,9 +106,8 @@
                                   </td>
                               </tr>
                           </table>
-                      </div>
                   </div>
-              </div> --}}
+              </div>
 
 
 
