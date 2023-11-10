@@ -19,10 +19,9 @@ return new class extends Migration
             $table->string('lokasi');
             $table->string('deskripsi');
             $table->string('jenis');
-            // table ini sementara tidak perlu karena sudah ada di instansi
-            // $table->string('to_email');
-            // $table->string('to_attn');
-            // $table->string('kontak');
+            $table->string('to_email');
+            $table->string('to_attn');
+            $table->string('kontak');
             $table->integer('nominal')->nullable();
             $table->string('no_surat')->nullable();
             $table->string('file')->nullable();
