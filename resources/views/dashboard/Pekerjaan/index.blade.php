@@ -9,7 +9,7 @@
 
 @section('content')
 
-<x-breadcrumb title="pekerjaan" link="{{ route('pekerjaan.index') }}" item="pekerjaan" subItem="Manage" />
+<x-breadcrumb title="Pekerjaan" link="{{ route('pekerjaan.index') }}" item="pekerjaan" subItem="Manage" />
 
 <!-- Main content -->
 <div class="content">
@@ -23,12 +23,12 @@
                         <div class="container-fluid my-2">
                             <a href="{{ route('pekerjaan.create') }}" class="btn btn-primary">Create</a>
                         </div>
-                        <table id="pekerjaan" class="table table-bordered table-striped" style="text-align: center;">
+                        <table id="pekerjaan" class="table1 table-bordered table-striped" style="text-align: center;">
                             <thead>
                                 <tr>
                                     <th>No Surat</th>
                                     <th>Client</th>
-                                    <th>pekerjaan</th>
+                                    <th>Pekerjaan</th>
                                     <th>Attn</th>
                                     <th>Due Date</th>
                                     <th>Status</th>
@@ -63,7 +63,7 @@
 {{-- script table user --}}
 <script type="text/javascript">
     $(document).ready(function() {
-        
+
         $('#pekerjaan').DataTable({
             deferRender: false,
             processing: true,
@@ -107,7 +107,7 @@
                     name: 'action',
                     class: 'd-flex justify-content-center'
                 }
-                
+
             ],
             drawCallback: function(settings) {
                 var data = this.api().rows({

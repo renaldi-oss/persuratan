@@ -31,11 +31,11 @@ class PekerjaanController extends Controller
                 ->addColumn('status', function($pekerjaan) {
                     $status = $pekerjaan->status;
                     if ($status == 'pending') {
-                        return '<span class="badge badge-warning">Pending</span>';
+                        return '<span class="badge1 badge-warning">Pending</span>';
                     } elseif ($status == 'accepted') {
-                        return '<span class="badge badge-success">Accepted</span>';
+                        return '<span class="badge1 badge-success">Accepted</span>';
                     } elseif ($status == 'rejected') {
-                        return '<span class="badge badge-danger">Rejected</span>';
+                        return '<span class="badge1 badge-danger">Rejected</span>';
                     }
                 })
                 ->addColumn('action', function($pekerjaan) {

@@ -3,7 +3,7 @@
 {{-- format main content dashboard --}}
 @section('content')
 
-        <h1 class="ml-4">Work Order</h1> 
+        <h1 class="ml-4">Work Order</h1>
         <div class="row ml-3 mr-3">
             <div class="col-12">
               <div class="card">
