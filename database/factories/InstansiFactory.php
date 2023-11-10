@@ -21,7 +21,6 @@ class InstansiFactory extends Factory
             'alamat' => $this->faker->address(),
             'kontak' => $this->faker->phoneNumber(),
             'email' => $this->faker->companyEmail(),
-            'lokasi' => $this->faker->city(),
         ];
     }
 }

@@ -34,7 +34,7 @@
         <label for="jumlah">Tipe Surat</label>
         <div class="form-group">
             <select class="form-control">
-                <option>PENAWARAN</option>
+                <option>proyek</option>
                 <option>DELIVERY ORDER</option>
                 <option>BERITA ACARA UJI COBA</option>
                 <option>BERITA ACARA PELATIHAN</option>

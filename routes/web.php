@@ -4,11 +4,15 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\Dashboard\OperationalController;
-use App\Http\Controllers\Dashboard\UserController;
-use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\dashboard\PekerjaanController;
 use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
+use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\WorkOrderController;
 use Illuminate\Support\Facades\Route;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
         // halaman manajemen instansi
         Route::resource('instansi', InstansiController::class);
     });
+    // route Pekerjaan
+    Route::resource('pekerjaan', PekerjaanController::class);
+    
     //halaman Work Order
     Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');
     Route::get('/workOrder/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
@@ -81,25 +88,4 @@ Route::middleware(['auth'])->group(function () {
     ])->except(['show']);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-    //halaman penawaran
-    Route::get('/penawaran', function () {
-        return view('dashboard.Penawaran.index');
-    })->name('penawaran.index');
-
-    Route::get('/penawaran/view', function () {
-        return view('dashboard.Penawaran.view');
-    })->name('penawaran.view');
-
-    Route::get('/penawaran/create', function () {
-        return view('dashboard.Penawaran.create');
-    })->name('penawaran.create');
-
-    Route::get('/penawaran/edit', function () {
-        return view('dashboard.Penawaran.edit');
-    })->name('penawaran.edit');
-
-    Route::get('/penawaran/editPO', function () {
-        return view('dashboard.Penawaran.editPO');
-    })->name('penawaran.editPO');
 });

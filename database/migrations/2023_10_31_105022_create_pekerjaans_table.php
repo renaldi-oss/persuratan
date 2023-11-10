@@ -12,17 +12,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proyeks', function (Blueprint $table) {
+        Schema::create('pekerjaans', function (Blueprint $table) {
             $table->id();
             $table->foreignIdfor(Instansi::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
-            $table->string('pekerjaan');
             $table->string('lokasi');
-            $table->string('no_po')->nullable();
-            $table->timestamp('due_date');
-            $table->enum('status', ['pending', 'on_going', 'over_time', 'done']);
-            // penyimpanan file hanya path saja
-            $table->string('file_po')->nullable();
+            $table->string('deskripsi');
+            $table->string('jenis');
+            $table->string('to_email');
+            $table->string('to_attn');
+            $table->string('kontak');
+            $table->integer('nominal')->nullable();
+            $table->string('no_surat')->nullable();
+            $table->string('file')->nullable();
+            $table->timestamp('due_date')->nullable();
+            $table->enum('status', ['pending', 'accepted', 'rejected']);
             $table->timestamps();
         });
     }
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proyeks');
+        Schema::dropIfExists('pekerjaans');
     }
 };

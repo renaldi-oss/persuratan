@@ -92,10 +92,10 @@
         </li>
         
         <li class="nav-item">
-            <a href="{{ route('penawaran.index') }}" class="nav-link">
+            <a href="{{ route('pekerjaan.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-solid fa-file-signature"></i>
                 <p>
-                    Penawaran
+                    Pekerjaan
                 </p>
             </a>
         </li>

@@ -26,7 +26,7 @@
           <tbody>
             <tr>
               <td>PEN</td>
-              <td>PENAWARAN</td>
+              <td>proyek</td>
               <td>
                   <a href="" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
                   <a href="" class="btn btn-success btn-xs"><i class="fas fa-solid fa-upload"></i>&nbsp;</a>

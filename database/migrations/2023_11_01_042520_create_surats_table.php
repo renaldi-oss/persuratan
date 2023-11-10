@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\KodeSurat;
-use App\Models\Proyek;
+use App\Models\Pekerjaan;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(Proyek::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdfor(Pekerjaan::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignIdfor(KodeSurat::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('file')->nullable();
             $table->timestamps();

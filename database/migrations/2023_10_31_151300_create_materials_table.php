@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\WorkOrder;
+use App\Models\PurchaseOrder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +14,15 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(WorkOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdfor(PurchaseOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
+            $table->string('brand');
+            $table->integer('qty');
+            $table->integer('estimated_price');
+            $table->integer('real_price')->nullable();
+            $table->enum('toko', ['offline', 'online']);
             $table->enum('tipe', ['primary', 'additional']);
-            $table->integer('jumlah');
+            // sub total dihitung di frontend
             $table->string('file')->nullable();
             $table->timestamps();
         });
