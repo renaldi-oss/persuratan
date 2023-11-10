@@ -19,8 +19,11 @@ class HomeController extends Controller
         return view('dashboard.index', ['pekerjaan' => $pekerjaan]);
     }
 
-    public function viewProyek()
+    public function api()
     {
+        $proyeks = Proyek::with('instansi')->get();
+        $operationals = Operational::with('proyek.instansi')->get();
+        dd($proyeks, $operationals);
 
     }
 
@@ -28,12 +31,14 @@ class HomeController extends Controller
     {
         // get proyeks data with instansi
         if($request->ajax()) {
-            $proyeks = Proyek::join('instansis', 'proyeks.instansi_id', '=', 'instansis.id')
-            ->select('proyeks.*', 'instansis.nama_instansi as instansi_nama')
+            $proyeks = Proyek::with('instansi')
             ->get();
+
             return datatables()->of($proyeks)
-                ->rawColumns(['instansi'])
-                ->make(true);
+            ->addColumn('instansi', function($proyek) {
+                return $proyek->instansi->nama;
+            })
+            ->make(true);
         }
     }
 
@@ -41,14 +46,14 @@ class HomeController extends Controller
     {
         // get proyeks data with instansi
         if($request->ajax()) {
-            $operationals = Operational::join('proyeks', 'operationals.proyek_id', '=', 'proyeks.id')
-                            ->join('instansis', 'proyeks.instansi_id', '=', 'instansis.id')
-                            ->select('operationals.*', 'instansis.nama_instansi as instansi_nama')
-                            ->get();
+            $operationals = Operational::with('proyek.instansi')
+            ->get();
 
             return datatables()->of($operationals)
-                ->rawColumns(['instansi'])
-                ->make(true);
+            ->addColumn('instansi', function($operational) {
+                return $operational->proyek->instansi->nama;
+            })
+            ->make(true);
         }
     }
 }

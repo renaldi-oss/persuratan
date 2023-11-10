@@ -15,4 +15,9 @@ class WorkOrder extends Model
     {
         return $this->belongsTo(Proyek::class);
     }
+
+    public function purchaseRequest()
+    {
+        return $this->hasMany(PurchaseRequest::class);
+    }
 }

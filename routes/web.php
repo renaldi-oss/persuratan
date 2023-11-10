@@ -9,7 +9,6 @@ use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
-use App\Http\Controllers\Dashboard\summaryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -41,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
     Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
+    Route::get('/api', [HomeController::class, 'api'])->name('api');
     // halaman kelola user khusus finance dan manager
     Route::middleware(['role:finance|manager'])->group(function () {
         // halaman manajemen user
@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     });
     // route Pekerjaan
     Route::resource('pekerjaan', PekerjaanController::class);
-    
+
     //halaman Work Order
     Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');
     Route::get('/workOrder/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
 
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary');
-  
+
     // Tambahkan rute untuk administration
     Route::resource('operational', OperationalController::class)->names([
         'index' => 'operational',

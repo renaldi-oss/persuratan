@@ -12,4 +12,8 @@ class Instansi extends Model
     protected $table = 'instansis';
     protected $guarded = ['id'];
 
+    public function proyek()
+    {
+        return $this->hasMany(Proyek::class, 'instansi_id');
+    }
 }
