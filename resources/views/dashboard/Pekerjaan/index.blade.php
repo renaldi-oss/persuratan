@@ -9,7 +9,7 @@
 
 @section('content')
 
-<x-breadcrumb title="pekerjaan" link="{{ route('pekerjaan.index') }}" item="pekerjaan" subItem="Manage" />
+<x-breadcrumb title="Pekerjaan" link="{{ route('pekerjaan.index') }}" item="pekerjaan" subItem="Manage" />
 
 <!-- Main content -->
 <div class="content">
@@ -24,7 +24,7 @@
                             <a href="{{ route('pekerjaan.create') }}" class="btn btn-primary">Create</a>
                         </div>
                         <div class="table-responsive">
-                            <table id="pekerjaan" class="table table-bordered table-striped " style="text-align: center;">
+                            <table id="pekerjaan" class="table1 table-bordered table-striped" style="text-align: center;">
                                 <thead>
                                     <tr>
                                         <th>No Surat</th>
@@ -40,7 +40,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -110,7 +109,7 @@
                     name: 'action',
                     class: 'd-flex justify-content-center'
                 }
-                
+
             ],
             drawCallback: function(settings) {
                 var data = this.api().rows({
