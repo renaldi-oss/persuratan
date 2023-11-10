@@ -32,7 +32,7 @@
         </li>
         @hasrole('finance|manager')
         <li class="nav-item {{ request()->routeIs('manage-users.index') ? 'menu-open' : '' }}">
-            <a href="{{ route("manage-users.index") }}" class="nav-link">
+            <a href="{{ route("manage-users.index") }}" class="nav-link {{ request()->routeIs('manage-users.index') ? 'active' : '' }}">
             <i class="nav-icon far fa-user"></i>
             <p>
                 Users
@@ -41,7 +41,7 @@
             </a>
         </li>
         <li class="nav-item {{ request()->routeIs('instansi') ? 'menu-open' : '' }}">
-            <a href="{{ route("instansi.index") }}" class="nav-link">
+            <a href="{{ route("instansi.index") }}" class="nav-link {{ request()->routeIs('instansi.index') ? 'active' : '' }}">
             <i class="nav-icon far fa-user"></i>
             <p>
                 Instansi
@@ -66,7 +66,7 @@
             <ul class="nav nav-treeview">
                 @hasrole('finance|manager')
                 <li class="nav-item {{ request()->routeIs('operational') ? 'menu-open' : '' }}">
-                    <a href="{{ route("operational") }}" class="nav-link">
+                    <a href="{{ route("operational") }}" class="nav-link {{ request()->routeIs('operational') ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                     <p>
                         Operational Request
@@ -79,10 +79,10 @@
                 {{-- DIVIDER --}}
                 <hr class="my-12 mx-1 bg-secondary" />
             </ul>
-        </li>
+        </li> 
         
         <li class="nav-item">
-            <a href="{{ route('penawaran.index') }}" class="nav-link">
+            <a href="{{ route('penawaran.index') }}" class="nav-link {{ request()->routeIs('penawaran') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-file-signature"></i>
                 <p>
                     Penawaran
@@ -90,7 +90,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/workOrder" class="nav-link">
+            <a href="/workOrder" class="nav-link {{ request()->routeIs('workOrder') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
                 <p>
                     Work Order
@@ -98,7 +98,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/summary" class="nav-link">
+            <a href="/summary" class="nav-link {{ request()->routeIs('summary') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-list"></i>
                 <p>
                     Summary
