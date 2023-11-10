@@ -100,7 +100,6 @@
                 autoWidth: true,
                 responsive: true,
                 ajax: "{{ route('getProyek') }}",
-                // data: @json($proyek),
                 columns: [{
                         data: 'due_date',
                         name: 'tanggal'

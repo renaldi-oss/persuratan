@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Instansi;
 use App\Models\Operational;
 use App\Models\Pekerjaan;
 use App\Models\Proyek;
@@ -29,14 +28,14 @@ class HomeController extends Controller
 
     public function getProyek (Request $request)
     {
-        // get proyeks data with instansi
+        // get pekerjaan data with instansi
         if($request->ajax()) {
-            $proyeks = Proyek::with('instansi')
+            $pekerjaans = Pekerjaan::with('instansi')
             ->get();
 
-            return datatables()->of($proyeks)
-            ->addColumn('instansi', function($proyek) {
-                return $proyek->instansi->nama;
+            return datatables()->of($pekerjaans)
+            ->addColumn('instansi', function($pekerjaan) {
+                return $pekerjaan->instansi->nama;
             })
             ->make(true);
         }
@@ -46,12 +45,12 @@ class HomeController extends Controller
     {
         // get proyeks data with instansi
         if($request->ajax()) {
-            $operationals = Operational::with('proyek.instansi')
+            $operationals = Operational::with('pekerjaan.instansi')
             ->get();
 
             return datatables()->of($operationals)
             ->addColumn('instansi', function($operational) {
-                return $operational->proyek->instansi->nama;
+                return $operational->pekerjaan->instansi->nama;
             })
             ->make(true);
         }
