@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\Dashboard\summaryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -57,17 +58,19 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/load-jadwal', [WorkOrderController::class, 'handleJadwal'])->name('handleJadwal');
     Route::get('/purchaseRequest', [WorkOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
     Route::post('/load-purchaseRequest', [WorkOrderController::class, 'handlePurchaseRequest'])->name('handlePurchaseRequest');
+    Route::get('/add-pr-item', [WorkOrderController::class, 'addPrItem'])->name('addPrItem');
     Route::get('/checklist', [WorkOrderController::class, 'checklist'])->name('checklist');
     Route::post('/load-checklist', [WorkOrderController::class, 'handleChecklist'])->name('handleChecklist');
     Route::get('/qcPass', [WorkOrderController::class, 'qcPass'])->name('qcPass');
     Route::post('/load-qcPass', [WorkOrderController::class, 'handleQCPass'])->name('handleQCPass');
     Route::get('/persuratan', [WorkOrderController::class, 'persuratan'])->name('persuratan');
+    Route::get('/add-persuratan', [WorkOrderController::class, 'addPersuratan'])->name('addPersuratan');
     Route::post('/load-persuratan', [WorkOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
 
-    // halaman Summary
-    Route::get('/summary', [WorkOrderController::class, 'index'])->name('summary');
-
-    // halaman Administration & Finance
+    //halaman summary
+    Route::get('/summary', [summaryController::class, 'index'])->name('summary');
+  
+    // Tambahkan rute untuk administration
     Route::resource('operational', OperationalController::class)->names([
         'index' => 'operational',
         'create' => 'operational.create',
