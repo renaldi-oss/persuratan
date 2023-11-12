@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="{{ asset('./assets/css/css.css') }}">
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+  
   @yield('style')
 </head>
 <body>

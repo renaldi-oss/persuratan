@@ -40,6 +40,7 @@ all in one installer [XAMPP](https://www.apachefriends.org/download.html)
 
 [laravel cheatsheet](https://github.com/syofyanzuhad/Laravel-Trik-Indonesia/blob/main/README.md)
 
+[laravel filepond](https://laravel-news.com/laravel-filepond)
 
 ## Installation
 
