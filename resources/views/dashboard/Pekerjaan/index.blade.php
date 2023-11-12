@@ -28,7 +28,7 @@
                                 <thead>
                                     <tr>
                                         <th>No Surat</th>
-                                        <th>Client</th>
+                                        <th>Instansi</th>
                                         <th>pekerjaan</th>
                                         <th>Attn</th>
                                         <th>Due Date</th>
@@ -43,7 +43,6 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-
             </div>
             <!-- /.col-md-6 -->
         </div>
@@ -77,7 +76,6 @@
             info: true,
             responsive: true,
             autoWidth: false,
-
             ajax: "{{ route('pekerjaan.index') }}",
             columns: [
                 {
@@ -85,15 +83,15 @@
                     name: 'no surat'
                 },
                 {
-                    data: 'client',
-                    name: 'client'
+                    data: 'instansi',
+                    name: 'instansi'
                 },
                 {
                     data: 'nama',
                     name: 'pekerjaan'
                 },
                 {
-                    data: 'attn',
+                    data: 'to_attn',
                     name: 'attn'
                 },
                 {
@@ -102,14 +100,13 @@
                 },
                 {
                     data: 'status',
-                    name: 'status'
+                    name: 'Status'
                 },
                 {
                     data: 'action',
                     name: 'action',
                     class: 'd-flex justify-content-center'
                 }
-
             ],
             drawCallback: function(settings) {
                 var data = this.api().rows({
