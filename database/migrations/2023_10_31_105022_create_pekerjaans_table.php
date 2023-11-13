@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('to_email');
             $table->string('to_attn');
+            $table->string('no_kontrak')->nullable();
             $table->integer('nominal')->nullable();
             $table->timestamp('due_date')->nullable();
             $table->enum('status', ['penawaran', 'on-going', 'over-time', 'done'])->default('penawaran');

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\dashboard\auth\test;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\Dashboard\OperationalController;
@@ -95,4 +96,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('file.upload');
     Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('file.destroy');
 
+    Route::resource('/test', test::class);
 });

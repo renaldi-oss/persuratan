@@ -25,4 +25,8 @@ class Pekerjaan extends Model implements HasMedia
     {
         return $this->hasMany(WorkOrder::class);
     }
+
+    public static function Last(){
+        return static::all()->last();
+    }
 }
