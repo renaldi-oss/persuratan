@@ -38,7 +38,7 @@
                             <h4 class="header-title">proyek</h4>
 
                             <br />
-                            <table class="table table-bordered table-striped" style="border-collapse: collapse; border-spacing: 0">
+                            <table class="table1 table-bordered table-striped" style="border-collapse: collapse; border-spacing: 0">
                                 <thead>
                                     <tr>
                                         <th width="200px;">No Surat</th>
@@ -142,7 +142,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <table class="table table-bordered dt-responsive table-striped datatables dataTable no-footer dtr-inline collapsed" style="border-collapse: collapse; border-spacing: 0px; width: 100%" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                        <table class="table1 table-bordered dt-responsive table-striped datatables dataTable no-footer dtr-inline collapsed" style="border-collapse: collapse; border-spacing: 0px; width: 100%" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                                             <thead>
                                                 <tr role="row">
                                                     <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 67.3333px" aria-sort="ascending" aria-label="No: activate to sort column descending">No</th>
@@ -204,7 +204,7 @@
    <!-- /.row -->
 <div class="page-content-wrapper">
     <div class="container-fluid">
-       
+
 
         <div class="row">
             <div class="col-md-12">
@@ -241,7 +241,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="table table-striped files" id="previews">
+                        <div class="table1 table-striped files" id="previews">
                             <div id="template" class="row mt-2">
                                 <div class="col-auto">
                                     <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
@@ -278,7 +278,7 @@
                         </div>
                     </div>
                     <!-- /.card-body -->
-                    
+
                 </div>
                 <!-- /.card -->
             </div>

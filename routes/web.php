@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\dashboard\auth\test;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\Dashboard\OperationalController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
     Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
+    Route::get('/api', [HomeController::class, 'api'])->name('api');
     // halaman kelola user khusus finance dan manager
     Route::middleware(['role:finance|manager'])->group(function () {
         // halaman manajemen user
@@ -49,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     });
     // route Pekerjaan
     Route::resource('pekerjaan', PekerjaanController::class);
-    
+
     //halaman Work Order
     Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');
     Route::get('/workOrder/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
@@ -68,7 +71,7 @@ Route::middleware(['auth'])->group(function () {
 
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary');
-  
+
     // Tambahkan rute untuk administration
     Route::resource('operational', OperationalController::class)->names([
         'index' => 'operational',
@@ -89,4 +92,9 @@ Route::middleware(['auth'])->group(function () {
     ])->except(['show']);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    // route untuk handle file upload temporary digunakan filepond
+    Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('file.upload');
+    Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('file.destroy');
+
+    Route::resource('/test', test::class);
 });

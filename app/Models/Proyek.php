@@ -14,7 +14,7 @@ class Proyek extends Model
 
     public function instansi()
     {
-        return $this->belongsTo(Instansi::class);
+        return $this->belongsTo(Instansi::class, 'instansi_id');
     }
 
     public function workOrder()

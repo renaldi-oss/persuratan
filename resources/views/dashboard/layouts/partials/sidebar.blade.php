@@ -89,10 +89,10 @@
                 {{-- DIVIDER --}}
                 <hr class="my-12 mx-1 bg-secondary" />
             </ul>
-        </li> 
-        
+        </li>
+
         <li class="nav-item">
-            <a href="{{ route('pekerjaan.index') }}" class="nav-link {{ request()->routeIs('penawaran') ? 'active' : '' }}">
+            <a href="{{ route('pekerjaan.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-solid fa-file-signature"></i>
                 <p>
                     Pekerjaan
@@ -115,7 +115,7 @@
                 </p>
             </a>
         </li>
-        
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>
