@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Instansi;
+use App\Models\Surat;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,19 +16,19 @@ return new class extends Migration
         Schema::create('pekerjaans', function (Blueprint $table) {
             $table->id();
             $table->foreignIdfor(Instansi::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('no_surat')->unique();
             $table->string('nama');
             $table->string('lokasi');
             $table->string('deskripsi');
             $table->string('jenis');
             $table->string('to_email');
             $table->string('to_attn');
-            $table->string('kontak');
+            $table->string('no_kontrak')->nullable();
             $table->integer('nominal')->nullable();
-            $table->string('no_surat')->nullable();
-            $table->string('file')->nullable();
             $table->timestamp('due_date')->nullable();
-            $table->enum('status', ['pending', 'accepted', 'rejected']);
+            $table->enum('status', ['penawaran', 'on-going', 'over-time', 'done'])->default('penawaran');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

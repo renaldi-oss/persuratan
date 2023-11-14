@@ -9,7 +9,7 @@
 
 @section('content')
 
-<x-breadcrumb title="pekerjaan" link="{{ route('pekerjaan.index') }}" item="pekerjaan" subItem="Manage" />
+<x-breadcrumb title="Pekerjaan" link="{{ route('pekerjaan.index') }}" item="pekerjaan" subItem="Manage" />
 
 <!-- Main content -->
 <div class="content">
@@ -23,25 +23,26 @@
                         <div class="container-fluid my-2">
                             <a href="{{ route('pekerjaan.create') }}" class="btn btn-primary">Create</a>
                         </div>
-                        <table id="pekerjaan" class="table table-bordered table-striped" style="text-align: center;">
-                            <thead>
-                                <tr>
-                                    <th>No Surat</th>
-                                    <th>Client</th>
-                                    <th>pekerjaan</th>
-                                    <th>Attn</th>
-                                    <th>Due Date</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table id="pekerjaan" class="table1 table-bordered table-striped" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>No Surat</th>
+                                        <th>Instansi</th>
+                                        <th>pekerjaan</th>
+                                        <th>Attn</th>
+                                        <th>Due Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
-
             </div>
             <!-- /.col-md-6 -->
         </div>
@@ -74,6 +75,7 @@
             orderable: true,
             info: true,
             responsive: true,
+            autoWidth: false,
             ajax: "{{ route('pekerjaan.index') }}",
             columns: [
                 {
@@ -81,15 +83,15 @@
                     name: 'no surat'
                 },
                 {
-                    data: 'client',
-                    name: 'client'
+                    data: 'instansi',
+                    name: 'instansi'
                 },
                 {
                     data: 'nama',
                     name: 'pekerjaan'
                 },
                 {
-                    data: 'attn',
+                    data: 'to_attn',
                     name: 'attn'
                 },
                 {
@@ -98,14 +100,13 @@
                 },
                 {
                     data: 'status',
-                    name: 'status'
+                    name: 'Status'
                 },
                 {
                     data: 'action',
                     name: 'action',
                     class: 'd-flex justify-content-center'
                 }
-                
             ],
             drawCallback: function(settings) {
                 var data = this.api().rows({

@@ -11,11 +11,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 
-/**
- * Load blueimp-file-upload
- */
-
-import 'blueimp-file-upload';
 
 
 
