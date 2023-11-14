@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/getProyek', [HomeController::class, 'getProyek'])->name('getProyek');
     Route::get('/getOperational', [HomeController::class, 'getOperational'])->name('getOperational');
     Route::get('/api', [HomeController::class, 'api'])->name('api');
+
     // halaman kelola user khusus finance dan manager
     Route::middleware(['role:finance|manager'])->group(function () {
         // halaman manajemen user
@@ -52,8 +53,15 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('pekerjaan', PekerjaanController::class);
 
     //halaman Work Order
-    Route::get('/workOrder', [WorkOrderController::class, 'index'])->name('workOrder');
-    Route::get('/workOrder/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
+    Route::resource('workOrder', WorkOrderController::class)->names([
+        'index' => 'workOrder',
+        'create' => 'workOrder.create',
+        'store' => 'workOrder.store',
+        'edit' => 'workOrder.edit',
+        'update' => 'workOrder.update',
+        'destroy' => 'workOrder.destroy',
+    ])->except(['show']);
+    Route::get('/workOrder/{id}/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
     Route::get('/jadwal', [WorkOrderController::class, 'jadwal'])->name('jadwal');
     Route::post('/load-jadwal', [WorkOrderController::class, 'handleJadwal'])->name('handleJadwal');
     Route::get('/purchaseRequest', [WorkOrderController::class, 'purchaseRequest'])->name('purchaseRequest');

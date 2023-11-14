@@ -39,54 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {{-- <tr>
-                                    <td>PT Tekno Klop</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Malang</td>
-                                    <td>13/05/2022</td>
-                                    <td>
-                                        <a href="/workOrder/detail" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
-                                        <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
-                                        <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>PT Tekno Klop</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Malang</td>
-                                    <td>13/05/2022</td>
-                                    <td>
-                                    <a href="/workOrder/detail" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
-                                    <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
-                                    <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>PT Tekno Klop</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Malang</td>
-                                    <td>13/05/2022</td>
-                                    <td>
-                                    <a href="/workOrder/detail" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
-                                    <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
-                                    <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>PT Tekno Klop</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Instalasi Jaringan</td>
-                                    <td>Malang</td>
-                                    <td>13/05/2022</td>
-                                    <td>
-                                    <a href="/workOrder/detail" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>
-                                    <a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>
-                                    <a href="" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</a>
-                                    </td>
-                                </tr> --}}
+
                                 </tbody>
                             </table>
                             </div>

@@ -21,8 +21,8 @@ class WorkOrderController extends Controller
                 return $pekerjaan->instansi->nama;
             })
             ->addColumn('action', function($pekerjaan) {
-                $btn = '<a href="' . route("manage-users.edit", $pekerjaan->id) . '" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>';
-                $btn .= '<a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>';
+                $btn = '<a href="/workOrder/' . $pekerjaan->id . '/detail" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>';
+                $btn .= '<a href="' . route("manage-users.edit", $pekerjaan->id) . '" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>';
                 $btn .= '<form action="' . route("manage-users.destroy", $pekerjaan->id) . '" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
@@ -34,9 +34,14 @@ class WorkOrderController extends Controller
             return view('dashboard.WorkOrder.index');
         }
     }
-    public function detail()
+    public function detail(string $id)
     {
-        return view('dashboard.WorkOrder.detail.index');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        // Use regular expression to extract numeric part until the first '/'
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.index', compact('pekerjaans'));
     }
     public function jadwal()
     {
