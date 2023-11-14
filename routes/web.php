@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\dashboard\auth\test;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\Dashboard\OperationalController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -90,4 +92,9 @@ Route::middleware(['auth'])->group(function () {
     ])->except(['show']);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    // route untuk handle file upload temporary digunakan filepond
+    Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('file.upload');
+    Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('file.destroy');
+
+    Route::resource('/test', test::class);
 });

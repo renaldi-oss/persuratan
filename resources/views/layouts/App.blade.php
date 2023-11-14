@@ -20,9 +20,10 @@
   <link rel="stylesheet" href="{{ asset('/dist/css/adminlte.min.css') }}">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="{{ asset('./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('./assets/css/css.css') }}">
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+  
   @yield('style')
 </head>
 <body>

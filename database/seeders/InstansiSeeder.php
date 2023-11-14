@@ -14,6 +14,6 @@ class InstansiSeeder extends Seeder
      */
     public function run(): void
     {
-        Instansi::factory()->count(5)->create();
+        Instansi::factory()->count(10)->create();
     }
 }

@@ -23,12 +23,11 @@ class PekerjaanFactory extends Factory
             'jenis' => $this->faker->randomElement(['AWLR', 'ARR', 'EWS']),
             'to_email' =>$this->faker->unique()->safeEmail(),
             'to_attn' => $this->faker->name(),
-            'kontak' => $this->faker->phoneNumber(),
             'nominal' => $this->faker->randomElement([null, $this->faker->randomNumber()]),
             'no_surat' => $this->faker->unique()->randomNumber() .'/PEN/KET/TKI/I/VI/2023', 
-            'file' => $this->faker->randomElement([null, $this->faker->url()]),
+            'no_kontrak' => $this->faker->randomElement([null, $this->faker->randomNumber()]),
             'due_date' => $this->faker->randomElement([null, $this->faker->dateTimeBetween('now', '+1 years')]),
-            'status' => $this->faker->randomElement(['pending', 'accepted', 'rejected']),
+            'status' => $this->faker->randomElement(['penawaran', 'on-going', 'over-time', 'done']),
         ];
     }
 }
