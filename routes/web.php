@@ -96,5 +96,4 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('file.upload');
     Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('file.destroy');
 
-    Route::resource('/test', test::class);
 });
