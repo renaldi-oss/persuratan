@@ -21,74 +21,68 @@ class WorkOrderController extends Controller
                 return $pekerjaan->instansi->nama;
             })
             ->addColumn('action', function($pekerjaan) {
-                $btn = '<a href="/workOrder/' . $pekerjaan->id . '/detail" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>';
-                $btn .= '<a href="' . route("manage-users.edit", $pekerjaan->id) . '" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>';
-                $btn .= '<form action="' . route("manage-users.destroy", $pekerjaan->id) . '" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="' . csrf_token() . '">
-                        <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</button>';
+                $btn = '<a href="/workOrder/' . $pekerjaan->id . '/detail" class="edit btn btn-primary btn-sm">View</a>';
                 return $btn;
             })
             ->make(true);
-        } else {
-            return view('dashboard.WorkOrder.index');
         }
+        return view('dashboard.WorkOrder.index');
+
     }
     public function detail(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        // Use regular expression to extract numeric part until the first '/'
         preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
         $pekerjaans->no_wo = $matches[0];
 
-        return view('dashboard.WorkOrder.detail.index', compact('pekerjaans'));
+        return view('dashboard.WorkOrder.detail.index', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function jadwal()
+    public function jadwal(string $id)
     {
-        return view('dashboard.WorkOrder.detail.jadwal');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.jadwal', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function handleJadwal(Request $request)
+    public function purchaseRequest(string $id)
     {
-        return redirect('/jadwal');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.purchaseRequest', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function purchaseRequest()
+    public function addPrItem(string $id)
     {
-        return view('dashboard.WorkOrder.detail.purchaseRequest');
+        return view('dashboard.WorkOrder.detail.addPrItem', ['id' => $id]);
     }
-    public function handlePurchaseRequest(Request $request)
+    public function checklist(string $id)
     {
-        return redirect('/purchaseRequest');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.checklist', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function addPrItem()
+    public function qcPass(string $id)
     {
-        return view('dashboard.WorkOrder.detail.addPrItem');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.qcPass', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function checklist()
+    public function persuratan(string $id)
     {
-        return view('dashboard.WorkOrder.detail.checklist');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.persuratan', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function handleChecklist(Request $request)
+    public function addPersuratan(string $id)
     {
-        return redirect('/checklist');
-    }
-    public function qcPass()
-    {
-        return view('dashboard.WorkOrder.detail.qcPass');
-    }
-    public function handleQCPass(Request $request)
-    {
-        return redirect('/qcPass');
-    }
-    public function persuratan()
-    {
-        return view('dashboard.WorkOrder.detail.persuratan');
-    }
-    public function handlePersuratan(Request $request)
-    {
-        return redirect('/persuratan');
-    }
-    public function addPersuratan()
-    {
-        return view('dashboard.WorkOrder.detail.addPersuratan');
+        return view('dashboard.WorkOrder.detail.addPersuratan', ['id' => $id]);
     }
 }

@@ -9,6 +9,7 @@ use DataTables;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Models\Pekerjaan;
 
 class PurchaseController extends Controller
 {
@@ -46,10 +47,12 @@ class PurchaseController extends Controller
      */
     public function create()
     {
+        $pekerjaans = Pekerjaan::all();
         $roles = Role::pluck('name', 'id')->all();
         return view('dashboard.PurchaseOrder.create',
         [
-            'roles' => $roles
+            'roles' => $roles,
+            'pekerjaans' => $pekerjaans
         ]);
     }
 

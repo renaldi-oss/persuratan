@@ -110,11 +110,15 @@
                     {
                         data: 'action',
                         name: 'action',
-                        orderable: true,
-                        searchable: true,
-
+                        class: 'flex justify-content-center'
                     },
-                ]
+                ],
+                drawCallback: function(settings) {
+                var data = this.api().rows({
+                    page: 'current'
+                }).data();
+                console.log(data);
+            },
             });
         });
     </script>

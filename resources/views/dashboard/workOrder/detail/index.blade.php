@@ -2,12 +2,12 @@
 
 {{-- format main content dashboard --}}
 @section('content')
-        <h1 class="ml-4">Detail Work Order</h1>
+<x-breadcrumb title="Detail Work Order" link="{{ route('workOrder') }}" item="Work Order" subItem="Detail" />
         <div class="row ml-3 mr-3">
             <div class="col-12">
               <div class="card">
                 <div class="card-body table-responsive p-0">
-                  <table class="table table-hover text-nowrap">
+                  <table id="detailWO" class="table table-hover text-nowrap">
                     <tbody>
                       <tr>
                         <td class="col-2 p-2">No WO</td>
@@ -66,34 +66,34 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 15%">
-                            <form action="/load-jadwal" method="POST">
+                            <a href="jadwal" >
                                 @csrf
                                 <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Jadwal Pelaksanaan</button>
-                            </form>
+                            </a>
                             </td>
                             <td style="width: 15%">
-                            <form action="/load-purchaseRequest" method="post">
+                            <a href="purchaseRequest" >
                                 @csrf
                                 <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Purchase Request</button>
-                            </form>
+                            </a>
                             </td>
                             <td style="width: 15%">
-                            <form action="/load-checklist" method="post">
+                            <a href="checklist" >
                                 @csrf
                                 <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Check List</button>
-                            </form>
+                            </a>
                             </td>
                             <td style="width: 15%">
-                            <form action="/load-qcPass" method="post">
+                            <a href="qcPass" >
                                 @csrf
                                 <button type="submit" class="btn btn-block btn-primary btn-lg p-2">QC Pass</button>
-                            </form>
+                            </a>
                             </td>
                             <td style="width: 15%">
-                            <form action="/load-persuratan" method="post">
+                            <a href="persuratan" >
                                 @csrf
                                 <button type="submit" class="btn btn-block btn-primary btn-lg p-2">Persuratan</button>
-                            </form>
+                            </a>
                             </td>
                         </tr>
                     </table>
@@ -102,3 +102,5 @@
             </div>
         </div>
 @endsection
+
+
