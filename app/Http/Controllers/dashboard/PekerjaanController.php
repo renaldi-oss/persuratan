@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Romans\Filter\IntToRoman;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\Support\MediaStream;
 
 class PekerjaanController extends Controller
 {
@@ -21,7 +23,7 @@ class PekerjaanController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()) {
-            return datatables()->of(Pekerjaan::all())
+            return datatables()->of(Pekerjaan::latest('updated_at')->get())
                 ->addColumn('instansi', function($pekerjaan) {
                     return $pekerjaan->instansi->nama;
                 })
@@ -49,7 +51,9 @@ class PekerjaanController extends Controller
                     return $badge;
                 })
                 ->addColumn('action', function($pekerjaan) {
-                    $btn = '<a href="' . route("pekerjaan.edit", $pekerjaan->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn = '<a href="' . route("pekerjaan.show", $pekerjaan->id) . '" class="show btn btn-warning btn-sm">Show</a>';
+                    $btn .= '  ';
+                    $btn .= '<a href="' . route("pekerjaan.edit", $pekerjaan->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
                     $btn .= '  ';
                     $btn .= '<form action="' . route("pekerjaan.destroy", $pekerjaan->id) . '" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
@@ -111,7 +115,12 @@ class PekerjaanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pekerjaan = Pekerjaan::find($id)->load('instansi');
+        $media = $pekerjaan->getMedia('pekerjaan');
+        return view('dashboard.pekerjaan.show', [
+            'pekerjaan' => $pekerjaan,
+            'media' => $media,
+        ]);
     }
 
     /**
@@ -180,5 +189,21 @@ class PekerjaanController extends Controller
         return redirect()->route('pekerjaan.index')
                         ->with('status', 'success')
                         ->with('message', 'Pekerjaan '. $nama .' berhasil dihapus');
+    }
+
+    public function download(Media $media)
+    {
+        return response()->download($media->getPath(), $media->file_name);
+    }
+
+    public function downloadAll(Pekerjaan $pekerjaan){
+        $mediaItems = $pekerjaan->getMedia('pekerjaan');
+        $mediaStream = MediaStream::create($pekerjaan->nama . '.zip')->addMedia($mediaItems);
+    
+        return $mediaStream->toResponse(request());
+    }
+    Public function deleteFile(Media $media){
+        $media->delete();
+        return redirect()->back()->with('status', 'success')->with('message', 'File berhasil dihapus');
     }
 }
