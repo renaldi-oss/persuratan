@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('app:delete-temp-uploaded-files')->daily();
+        $schedule->command('app:database-backup')->weekly();
     }
 
     /**

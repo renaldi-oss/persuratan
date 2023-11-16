@@ -4,39 +4,18 @@
 {{-- style select2 --}}
 <link rel="stylesheet" href="{{ asset('./plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('./plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-{{-- style summernote --}}
-<link rel="stylesheet" href="{{ asset('./plugins/summernote/summernote-bs4.css') }}">
-
 @endsection
 
 
 {{-- ISI FORM --}}
-<div class="form-group">
-    <label for="input-name">Nama</label>
-    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="input-nama" name="nama" placeholder="Masukkan nama" value="{{ old('nama', ($pekerjaan->nama ?? '')) }}">
-    <x-errormessage error="nama" />
-</div>
 
-<div class="form-group">
-  <label for="input-deskripsi">Deskripsi</label>
-  <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="input-deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" value="{{ old('deskripsi', ($pekerjaan->deskripsi ?? '')) }}"></textarea>
-  <x-errormessage error="deskripsi" />
-</div>
+<x-forms.input id="input-nama" label="Nama" name="nama" placeholder="Masukkan nama" :value="$pekerjaan->nama ?? ''" />
 
-<div class="form-group">
-  <label for="input-jenis">Jenis</label>
-  <input type="text" class="form-control @error('jenis') is-invalid @enderror" id="input-jenis" name="jenis" placeholder="Masukkan jenis" value="{{ old('jenis', ($pekerjaan->jenis ?? '')) }}" autofocus>
-  <x-errormessage error="jenis" />
-</div>
+<x-forms.textarea id="input-deskripsi" label="Deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" :value="$pekerjaan->deskripsi ?? ''" />
 
-<div class="form-group">
-  <label for="input-Instansi">Instansi</label>
-  <select class="form-control select2 @error('instansi_id') is-invalid @enderror" id="input-instansi_id" name="instansi_id" value="{{ old('instansi_id', ($pekerjaan->instansi_id ?? '')) }}">
-    @foreach ($instansi as $item)
-    <option value="{{ $item->id }}">{{ $item->nama }}</option>
-    @endforeach
-  </select>
-</div>
+<x-forms.input id="input-jenis" label="Jenis" name="jenis" placeholder="Masukkan jenis" :value="$pekerjaan->jenis ?? ''" />
+  
+<x-forms.select id="input-instansi_id" label="Instansi" name="instansi_id" :value="$pekerjaan->instansi_id ?? ''" :options="$instansi" />
 
 <div class="form-group">
     <label for="input-lokasi">Lokasi</label>
@@ -111,8 +90,6 @@
 <script src="{{ asset('./plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 {{-- script select2 --}}
 <script src="{{ asset('./plugins/select2/js/select2.full.min.js') }}"></script>
-{{-- script summernote --}}
-<script src="{{ asset('./plugins/summernote/summernote-bs4.min.js') }}"></script>
 
 <script>
   $(document).ready(function(){
@@ -190,11 +167,6 @@
     });
     // select2
     $('.select2').select2({theme: 'bootstrap4'});
-
-    // summernote
-    $('#input-deskripsi').summernote({
-      height: 200,
-    });
   });
 </script>
 {{-- script filepond --}}
