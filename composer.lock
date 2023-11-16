@@ -4,158 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "35620c3832bccf09c33405c1d1ceca37",
+    "content-hash": "8ed9cffe68d76eab822373a2516a61be",
     "packages": [
-        {
-            "name": "blade-ui-kit/blade-heroicons",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/blade-ui-kit/blade-heroicons.git",
-                "reference": "f756c807b0d04afd2caf7079bac26492da9cc6d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-heroicons/zipball/f756c807b0d04afd2caf7079bac26492da9cc6d4",
-                "reference": "f756c807b0d04afd2caf7079bac26492da9cc6d4",
-                "shasum": ""
-            },
-            "require": {
-                "blade-ui-kit/blade-icons": "^1.1",
-                "illuminate/support": "^9.0|^10.0",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^7.0|^8.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "BladeUI\\Heroicons\\BladeHeroiconsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "BladeUI\\Heroicons\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dries Vints",
-                    "homepage": "https://driesvints.com"
-                }
-            ],
-            "description": "A package to easily make use of Heroicons in your Laravel Blade views.",
-            "homepage": "https://github.com/blade-ui-kit/blade-heroicons",
-            "keywords": [
-                "Heroicons",
-                "blade",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/blade-ui-kit/blade-heroicons/issues",
-                "source": "https://github.com/blade-ui-kit/blade-heroicons/tree/2.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/caneco",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/driesvints",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-01-11T08:38:22+00:00"
-        },
-        {
-            "name": "blade-ui-kit/blade-icons",
-            "version": "1.5.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/blade-ui-kit/blade-icons.git",
-                "reference": "b5e6603218e2347ac81cb780bc6f71c8c3b31f5b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/b5e6603218e2347ac81cb780bc6f71c8c3b31f5b",
-                "reference": "b5e6603218e2347ac81cb780bc6f71c8c3b31f5b",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^8.0|^9.0|^10.0",
-                "illuminate/filesystem": "^8.0|^9.0|^10.0",
-                "illuminate/support": "^8.0|^9.0|^10.0",
-                "illuminate/view": "^8.0|^9.0|^10.0",
-                "php": "^7.4|^8.0",
-                "symfony/console": "^5.3|^6.0",
-                "symfony/finder": "^5.3|^6.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.3",
-                "orchestra/testbench": "^6.0|^7.0|^8.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "bin": [
-                "bin/blade-icons-generate"
-            ],
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "BladeUI\\Icons\\BladeIconsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
-                "psr-4": {
-                    "BladeUI\\Icons\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dries Vints",
-                    "homepage": "https://driesvints.com"
-                }
-            ],
-            "description": "A package to easily make use of icons in your Laravel Blade views.",
-            "homepage": "https://github.com/blade-ui-kit/blade-icons",
-            "keywords": [
-                "blade",
-                "icons",
-                "laravel",
-                "svg"
-            ],
-            "support": {
-                "issues": "https://github.com/blade-ui-kit/blade-icons/issues",
-                "source": "https://github.com/blade-ui-kit/blade-icons"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/sponsors/driesvints",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.paypal.com/paypalme/driesvints",
-                    "type": "paypal"
-                }
-            ],
-            "time": "2023-10-18T10:50:13+00:00"
-        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -2119,34 +1969,33 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.1.0",
+            "version": "v2.12.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "db1e02c645ae12a7cdee9b1ea0d65bf3aafc0f08"
+                "reference": "7d3a57b3193299cf1a0639a3935c696f4da2cf92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/db1e02c645ae12a7cdee9b1ea0d65bf3aafc0f08",
-                "reference": "db1e02c645ae12a7cdee9b1ea0d65bf3aafc0f08",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/7d3a57b3193299cf1a0639a3935c696f4da2cf92",
+                "reference": "7d3a57b3193299cf1a0639a3935c696f4da2cf92",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^10.0",
-                "illuminate/support": "^10.0",
-                "illuminate/validation": "^10.0",
+                "illuminate/database": "^7.0|^8.0|^9.0|^10.0",
+                "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
+                "illuminate/validation": "^7.0|^8.0|^9.0|^10.0",
                 "league/mime-type-detection": "^1.9",
-                "php": "^8.1",
-                "symfony/http-kernel": "^6.2"
+                "php": "^7.2.5|^8.0",
+                "symfony/http-kernel": "^5.0|^6.0"
             },
             "require-dev": {
                 "calebporzio/sushi": "^2.1",
-                "laravel/framework": "^10.0",
-                "laravel/prompts": "^0.1.6",
+                "laravel/framework": "^7.0|^8.0|^9.0|^10.0",
                 "mockery/mockery": "^1.3.1",
-                "orchestra/testbench": "^8.0",
-                "orchestra/testbench-dusk": "^8.0",
-                "phpunit/phpunit": "^9.0",
+                "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0",
+                "orchestra/testbench-dusk": "^5.2|^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^8.4|^9.0",
                 "psy/psysh": "@stable"
             },
             "type": "library",
@@ -2181,7 +2030,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.1.0"
+                "source": "https://github.com/livewire/livewire/tree/v2.12.6"
             },
             "funding": [
                 {
@@ -2189,7 +2038,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-03T15:05:18+00:00"
+            "time": "2023-08-11T04:02:34+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -3563,32 +3412,30 @@
         },
         {
             "name": "rappasoft/laravel-livewire-tables",
-            "version": "v3.1.2",
+            "version": "v2.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rappasoft/laravel-livewire-tables.git",
-                "reference": "b554a83c7f59248ba374aa228cbf636db72d055c"
+                "reference": "26c596d4d4bb0e0efdfcd48de16071fc5ed969ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/b554a83c7f59248ba374aa228cbf636db72d055c",
-                "reference": "b554a83c7f59248ba374aa228cbf636db72d055c",
+                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/26c596d4d4bb0e0efdfcd48de16071fc5ed969ef",
+                "reference": "26c596d4d4bb0e0efdfcd48de16071fc5ed969ef",
                 "shasum": ""
             },
             "require": {
-                "blade-ui-kit/blade-heroicons": "^2.1",
-                "illuminate/contracts": "^10.0|^11.0",
-                "livewire/livewire": "^3.0|dev-main",
-                "php": "^8.1|^8.2"
+                "illuminate/contracts": "^8.0|^9.0|^10.0",
+                "livewire/livewire": "^2.6",
+                "php": "^7.4|^8.0|^8.1|^8.2",
+                "spatie/laravel-package-tools": "^1.4.3"
             },
             "require-dev": {
-                "brianium/paratest": "^5.0|^6.0|^7.0|^8.0",
+                "brianium/paratest": "^4.0|^5.0|^6.0|^7.0",
                 "ext-sqlite3": "*",
-                "laravel/pint": "^1.10",
-                "nunomaduro/collision": "^6.0|^7.0|^8.0",
-                "nunomaduro/larastan": "^2.6",
-                "orchestra/testbench": "^7.0|^8.0|^9.0",
-                "phpunit/phpunit": "^9.0|^10.0|^11.0"
+                "nunomaduro/collision": "^4.0|^5.0|^6.0|^7.0",
+                "orchestra/testbench": "^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^9.0|^10.0"
             },
             "type": "library",
             "extra": {
@@ -3625,7 +3472,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rappasoft/laravel-livewire-tables/issues",
-                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v3.1.2"
+                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v2.15.0"
             },
             "funding": [
                 {
@@ -3633,7 +3480,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-03T21:36:51+00:00"
+            "time": "2023-07-15T19:50:12+00:00"
         },
         {
             "name": "spatie/image",
@@ -3866,6 +3713,66 @@
                 }
             ],
             "time": "2023-11-03T13:09:19+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "cc7c991555a37f9fa6b814aa03af73f88026a83d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/cc7c991555a37f9fa6b814aa03af73f88026a83d",
+                "reference": "cc7c991555a37f9fa6b814aa03af73f88026a83d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-23T09:04:39+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -4167,7 +4074,7 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
@@ -4214,7 +4121,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -4388,7 +4295,7 @@
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
@@ -4444,7 +4351,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -5764,16 +5671,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "40da9cc13ec349d9e4966ce18b5fbcd724ab10a4"
+                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/40da9cc13ec349d9e4966ce18b5fbcd724ab10a4",
-                "reference": "40da9cc13ec349d9e4966ce18b5fbcd724ab10a4",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
+                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
                 "shasum": ""
             },
             "require": {
@@ -5826,7 +5733,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -5842,7 +5749,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-23T14:45:45+00:00"
+            "time": "2023-07-30T20:28:31+00:00"
         },
         {
             "name": "symfony/string",
@@ -6027,16 +5934,16 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "02c24deb352fb0d79db5486c0c79905a85e37e86"
+                "reference": "dee0c6e5b4c07ce851b462530088e64b255ac9c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/02c24deb352fb0d79db5486c0c79905a85e37e86",
-                "reference": "02c24deb352fb0d79db5486c0c79905a85e37e86",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/dee0c6e5b4c07ce851b462530088e64b255ac9c5",
+                "reference": "dee0c6e5b4c07ce851b462530088e64b255ac9c5",
                 "shasum": ""
             },
             "require": {
@@ -6085,7 +5992,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/translation-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -6101,7 +6008,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-30T17:17:10+00:00"
+            "time": "2023-07-25T15:08:44+00:00"
         },
         {
             "name": "symfony/uid",
