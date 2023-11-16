@@ -52,9 +52,9 @@ Route::middleware(['auth'])->group(function () {
     });
     // route Pekerjaan
     Route::resource('pekerjaan', PekerjaanController::class);
-    Route::get('/file/{media}', [PekerjaanController::class, 'download'])->name('pekerjaan.download');
-    Route::get('/file/{pekerjaan}/downloadAll', [PekerjaanController::class, 'downloadAll'])->name('pekerjaan.downloadAll');
-    Route::delete('/file/{media}', [PekerjaanController::class, 'deletefile'])->name('pekerjaan.delete');
+    Route::get('pekerjaan/file/{media}', [PekerjaanController::class, 'download'])->name('pekerjaan.download');
+    Route::get('pekerjaan/file/{pekerjaan}/downloadAll', [PekerjaanController::class, 'downloadAll'])->name('pekerjaan.downloadAll');
+    Route::delete('pekerjaan/file/{media}', [PekerjaanController::class, 'deletefile'])->name('pekerjaan.delete');
     
 
     //halaman Work Order

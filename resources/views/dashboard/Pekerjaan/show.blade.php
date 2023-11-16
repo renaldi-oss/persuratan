@@ -24,8 +24,10 @@
 <div class="card m-3">
     <div class="card-body">
         <h5 class="card-title">File pendukung</h5>
-        {{-- btn download all media --}}
-        <a href="{{ route('pekerjaan.downloadAll', $pekerjaan->id) }}" class="btn btn-sm btn-success mb-2" title="download all"><i class="fas fa-download"></i> Download All</a>
+        @if (count($media) > 0)
+            {{-- btn download all media --}}
+            <a href="{{ route('pekerjaan.downloadAll', $pekerjaan->id) }}" class="btn btn-sm btn-success mb-2" title="download all"><i class="fas fa-download"></i> Download All</a>
+        @endif
         <br>
         <table id="suratTable" class="table table-bordered table-striped" style="text-align: center;">
             <thead>
