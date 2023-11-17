@@ -1,17 +1,17 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\dashboard\auth\test;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\Dashboard\OperationalController;
 use App\Http\Controllers\dashboard\PekerjaanController;
 use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
+use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
-use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -53,6 +53,10 @@ Route::middleware(['auth'])->group(function () {
     });
     // route Pekerjaan
     Route::resource('pekerjaan', PekerjaanController::class);
+    Route::get('pekerjaan/file/{media}', [PekerjaanController::class, 'download'])->name('pekerjaan.download');
+    Route::get('pekerjaan/file/{pekerjaan}/downloadAll', [PekerjaanController::class, 'downloadAll'])->name('pekerjaan.downloadAll');
+    Route::delete('pekerjaan/file/{media}', [PekerjaanController::class, 'deletefile'])->name('pekerjaan.delete');
+    
 
     //halaman Work Order
     Route::resource('workOrder', WorkOrderController::class)->names([
@@ -105,8 +109,6 @@ Route::middleware(['auth'])->group(function () {
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     // route untuk handle file upload temporary digunakan filepond
-    Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('file.upload');
-    Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('file.destroy');
-
-    // Route::resource('/test', test::class);
+    Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('tempfile.upload');
+    Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('tempfile.destroy');
 });

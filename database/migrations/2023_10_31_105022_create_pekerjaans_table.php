@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('no_surat')->unique();
             $table->string('nama');
             $table->string('lokasi');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('jenis');
             $table->string('to_email');
             $table->string('to_attn');

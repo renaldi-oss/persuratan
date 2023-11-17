@@ -178,13 +178,13 @@
       credits: false,
       server: {
         process: {
-          url: '{{ route('file.upload') }}',
+          url: '{{ route('tempfile.upload') }}',
           headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
           }
         },
         revert: {
-          url: '{{ route('file.destroy') }}',
+          url: '{{ route('tempfile.destroy') }}',
           headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
           }
