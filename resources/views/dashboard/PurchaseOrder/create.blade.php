@@ -3,7 +3,7 @@
 
 @section('content')
 
-<x-breadcrumb title="Purchase Order" link="{{ route('purchase') }}" item="purchase" subItem="Create" />
+<x-breadcrumb title="Purchase Order" link="{{ route('purchase') }}" item="Purchase Order" subItem="Create" />
 
 <div class="card m-3">
   <div class="card-body">

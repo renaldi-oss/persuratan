@@ -16,7 +16,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdfor(Pekerjaan::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('no_surat');
-            $table->string('kegiatan');
+            $table->string('pekerjaan');
+            $table->string('requester');
+            $table->string('division');
+            $table->enum('status', ['pending', 'manager', 'accepted'])->default('pending');
             $table->timestamps();
         });
     }

@@ -1,43 +1,33 @@
 {{-- ISI FORM --}}
 <div class="form-group">
-    <label for="input-date">Tanggal</label>
-    <input type="date" class="form-control @error('date') is-invalid @enderror" id="input-date" name="date" placeholder="Masukkan tanggal" value="{{ old('date', ($user->date ?? '')) }}">
-    <x-errormessage error="date" />
-</div>
-
-
-<div class="form-group">
     <label for="input-type">Pemohon</label>
-    <input type="text" class="form-control @error('type') is-invalid @enderror" id="input-type" name="type" placeholder="Masukkan Jenis kegiatan" value="{{ old('type', ($user->type ?? '')) }}" autofocus>
-    <x-errormessage error="type" />
+    <input type="text" class="form-control @error('pemohon') is-invalid @enderror" id="input-pemohon" name="type" placeholder="Masukkan nama pemohon" value="{{ old('type', ($user->type ?? '')) }}" autofocus>
+    <x-errormessage error="pemohon" />
 </div>
 
 <div class="form-group">
-    <label for="input-instance">Divisi</label>
-    <input type="text" class="form-control @error('instance') is-invalid @enderror" id="input-instance" name="instance" placeholder="Masukkan instansi" value="{{ old('instance', ($user->instance ?? '')) }}">
-    <x-errormessage error="instance" />
+    <label for="input-divisi">Divisi</label>
+    <select class="form-control" name="divisi" id="divisi">
+        <option value="" selected disabled>Pilih Divisi</option>
+        <option value="automasi">Automasi</option>
+        <option value="it">IT</option>
+        <option value="lab">Lab</option>
+    </select>
+    {{-- <input type="text" class="form-control @error('instance') is-invalid @enderror" id="input-instance" name="instance" placeholder="" value="{{ old('instance', ($user->instance ?? '')) }}"> --}}
+    <x-errormessage error="divisi" />
 </div>
 <div class="form-group">
-    <label for="input-location">Nomor PO</label>
-    <input type="text" class="form-control @error('location') is-invalid @enderror" id="input-location" name="location" placeholder="Masukkan lokasi" value="{{ old('location', ($user->location ?? '')) }}" autofocus>
-    <x-errormessage error="location" />
-</div>
-<div class="form-group">
-    <label for="input-po">Proyek</label>
-    <input type="text" class="form-control @error('po') is-invalid @enderror" id="input-po" name="po" placeholder="Masukkan po" value="{{ old('po', ($user->po ?? '')) }}" autofocus>
-    <x-errormessage error="po" />
-</div>
-
-<div class="form-group">
-    <label for="input-status">Status</label>
-    <select class="form-control @error('status') is-invalid @enderror" id="input-status" name="status">
-        @foreach ($roles as $id => $name)
-            <option value="{{ $id }}"
-            {{  (isset($user) && $user->roles->pluck('id')->contains($id)) ? 'selected' : '' }}
-            >{{ $name }}</option>
+    <label for="input-pekerjaan">Pekerjaan</label>
+    <select class="form-control @error('pekerjaan') is-invalid @enderror" id="input-pekerjaan" name="pekerjaan" autofocus>
+        <option value="" selected disabled>Pilih Pekerjaan</option>
+        @foreach($pekerjaans as $pekerjaan)
+            <option value="{{ $pekerjaan->id }}" {{ old('pekerjaan', ($user->pekerjaan ?? '')) == $pekerjaan->id ? 'selected' : '' }}>
+                {{ $pekerjaan->nama }}
+            </option>
         @endforeach
     </select>
-    <x-errormessage error="roles" />
+    <x-errormessage error="pekerjaan" />
+
 </div>
 
 <div class="d-flex justify-content-between ">
