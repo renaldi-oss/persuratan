@@ -39,6 +39,7 @@
                 <div class="form-group ml-3 mr-3 mt-1">
                     <label for="pembelian">Pembelian</label>
                     <select class="form-control" name="pembelian">
+                        <option disabled>Pilih tipe toko</option>
                         <option value="offline">Offline</option>
                         <option value="online">Online</option>
                     </select>
