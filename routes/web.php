@@ -57,8 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('pekerjaan/file/{pekerjaan}/downloadAll', [PekerjaanController::class, 'downloadAll'])->name('pekerjaan.downloadAll');
     Route::delete('pekerjaan/file/{media}', [PekerjaanController::class, 'deletefile'])->name('pekerjaan.delete');
     
-
-    //halaman Work Order
+    //route Work Order
     Route::resource('workOrder', WorkOrderController::class)->names([
         'index' => 'workOrder',
         'create' => 'workOrder.create',

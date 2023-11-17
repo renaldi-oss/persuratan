@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pekerjaans', function (Blueprint $table) {
             $table->id();
             $table->foreignIdfor(Instansi::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('no_surat')->unique();
+            $table->foreignIdfor(Surat::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
             $table->string('lokasi');
             $table->text('deskripsi');
