@@ -12,4 +12,11 @@ class KodeSurat extends Model
     protected $table = 'kode_surats';
     protected $guarded = ['id'];
 
+    public function kodeSurat()
+{
+    return $this->hasMany(KodeSurat::class);
+}
+
+  
+
 }

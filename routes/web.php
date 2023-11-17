@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\dashboard\kodeSuratController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -99,4 +100,10 @@ Route::middleware(['auth'])->group(function () {
     // route untuk handle file upload temporary digunakan filepond
     Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('tempfile.upload');
     Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('tempfile.destroy');
+    
+    //kodesurat
+
+    Route::resource('kodeSurat', KodeSuratController::class);
+
+
 });

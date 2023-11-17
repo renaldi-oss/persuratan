@@ -99,6 +99,16 @@
                 </p>
             </a>
         </li>
+     
+                <li class="nav-item">
+            <a href="{{ route('kodeSurat.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-solid  fa-solid fa-envelope"></i>
+                <p>
+                    Kode Surat
+                </p>
+            </a>
+        </li>
+                
         <li class="nav-item">
             <a href="/workOrder" class="nav-link {{ request()->routeIs('workOrder') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
