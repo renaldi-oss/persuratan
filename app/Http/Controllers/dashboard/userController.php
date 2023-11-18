@@ -20,18 +20,18 @@ class UserController extends Controller
         // get user data with roles
         if($request->ajax()) {
             $users = User::with('roles')->get();
-            
+
             return datatables()->of($users)
                 ->addColumn('roles', function($user) {
                     return $user->roles->pluck('name')->implode(', ');
                 })
                 ->addColumn('action', function($user) {
-                    $btn = '<a href="' . route("manage-users.edit", $user->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn = '<a href="' . route("manage-users.edit", $user->id) . '"class=" btn btn-block btn-outline-primary" style="width: 38px; height:38px; color:#fff;"><i class="fas fa-solid fa-pen" style="color:#007bff;"></i></a>';
                     $btn .= '  ';
                     $btn .= '<form action="' . route("manage-users.destroy", $user->id) . '" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="' . csrf_token() . '">
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-block btn-outline-danger"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>
                             </form>';
                     return $btn;
                 })
@@ -46,7 +46,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id')->all(); 
+        $roles = Role::pluck('name', 'id')->all();
         return view('dashboard.users.create',
         [
             'roles' => $roles
@@ -68,7 +68,7 @@ class UserController extends Controller
         $user = User::create($request->all());
         $role = Role::find($request->input('roles'));
         $user->assignRole($role->name);
-        
+
         return redirect()->route('manage-users.index')
             ->with('status', 'success')
             ->with('message', 'User ' . $user->name . ' created successfully.');
@@ -100,7 +100,7 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-    
+
         if (!$user) {
             return redirect()->route('manage-users.index')
             ->with('status', 'error')
@@ -132,7 +132,7 @@ class UserController extends Controller
             ->with('status', 'success')
             ->with('message', "Data ". $user->name ." updated successfully.");
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */

@@ -21,19 +21,22 @@ class WorkOrderController extends Controller
                 return $pekerjaan->instansi->nama;
             })
             ->addColumn('action', function($pekerjaan) {
-                $btn = '<a href="' . route("manage-users.edit", $pekerjaan->id) . '" class="btn btn-primary btn-xs"><i class="fas fa-solid fa-eye"></i>&nbsp;</a>';
-                $btn .= '<a href="" class="btn btn-info btn-xs"><i class="fas fa-solid fa-pen"></i>&nbsp;</a>';
+                $btn = '<a href="' . route("manage-users.edit", $pekerjaan->id) . '"class=" btn btn-block btn-outline-secondary"><i class="fas fa-solid fa-eye"></i></a>';
+                $btn .= '  ';
+                $btn .= '<a href="'. route("manage-users.edit", $pekerjaan->id) .'"class=" btn btn-block btn-outline-primary mb-01"><i class="fas fa-solid fa-pen"></i></a>';
+                $btn .= '  ';
                 $btn .= '<form action="' . route("manage-users.destroy", $pekerjaan->id) . '" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
-                        <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-solid fa-trash"></i>&nbsp;</button>';
+                        <button type="submit" class="btn btn-block btn-outline-danger"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>';
                 return $btn;
             })
             ->make(true);
         } else {
             return view('dashboard.WorkOrder.index');
         }
-    }
+
+}
     public function detail()
     {
         return view('dashboard.WorkOrder.detail.index');
