@@ -11,7 +11,7 @@
 
 <x-forms.input id="input-nama" label="Nama" name="nama" placeholder="Masukkan nama" :value="$pekerjaan->nama ?? ''" />
 
-<x-forms.textarea id="input-deskripsi" label="Deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" :value="$pekerjaan->deskripsi ?? ''" />
+{{-- <x-forms.textarea id="input-deskripsi" label="Deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" :value="$pekerjaan->deskripsi ?? ''" /> --}}
 
 <x-forms.input id="input-jenis" label="Jenis" name="jenis" placeholder="Masukkan jenis" :value="$pekerjaan->jenis ?? ''" />
   
@@ -39,7 +39,7 @@
 @role('manager|finance')
 <div class="form-group">
   <label for="input-due_date">Due Date</label>
-  <input type="text" class="form-control @error('due_date') is-invalid @enderror datetimepicker-input" data-toggle="datetimepicker" data-target="#input-due_date" id="input-due_date" name="due_date" value="{{ old('due_date', ($pekerjaan->due_date ?? '')) }}">
+  <input type="text" class="form-control @error('due_date') is-invalid @enderror datetimepicker-input" data-toggle="datetimepicker" data-target="#input-due_date" id="input-due_date" name="due_date" value="{{ old('due_date', ($pekerjaan->due_date ?? '')) }}" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
   <x-errormessage error="due_date" />
 </div>
 
@@ -120,7 +120,7 @@
         },
         due_date : {
           required: true,
-        },
+        }
      },
      messages: {
         name: {
@@ -164,6 +164,8 @@
     // datetimepicker
     $('#input-due_date').datetimepicker({
       format: 'YYYY/MM/DD',
+      locale: 'id',
+      minDate: moment().format('YYYY/MM/DD'),
     });
     // select2
     $('.select2').select2({theme: 'bootstrap4'});
