@@ -19,8 +19,15 @@ class PekerjaanSeeder extends Seeder
         ->count(10)
         ->create([
             'instansi_id' => function () {
-                return Instansi::count() > 0 ? Instansi::all()->random()->id : Instansi::factory()->create()->id;
+                return Instansi::factory()->create()->id;
             },
-        ]);
+            'surat_id' => function () {
+                return Surat::factory()->create()->id;
+            },
+        ])->each(function (Pekerjaan $pekerjaan) {
+            $pekerjaan->addMedia(public_path('assets/img/bruh.jpg'))
+                      ->preservingOriginal()
+                      ->toMediaCollection('pekerjaan');
+        });
     }
 }

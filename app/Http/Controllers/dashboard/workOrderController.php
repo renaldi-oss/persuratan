@@ -29,13 +29,11 @@ class WorkOrderController extends Controller
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
                         <button type="submit" class="btn btn-block btn-outline-danger"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>';
+                $btn = '<a href="/workOrder/' . $pekerjaan->id . '/detail" class="edit btn btn-primary btn-sm">View</a>';
                 return $btn;
             })
             ->make(true);
-        } else {
-            return view('dashboard.WorkOrder.index');
         }
-
 }
     public function detail()
     {
@@ -58,35 +56,62 @@ class WorkOrderController extends Controller
         return redirect('/purchaseRequest');
     }
     public function addPrItem()
-    {
-        return view('dashboard.WorkOrder.detail.addPrItem');
+        return view('dashboard.WorkOrder.index');
     }
-    public function checklist()
+    public function detail(string $id)
     {
-        return view('dashboard.WorkOrder.detail.checklist');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.index', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function handleChecklist(Request $request)
+    public function jadwal(string $id)
     {
-        return redirect('/checklist');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.jadwal', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function qcPass()
+    public function purchaseRequest(string $id)
     {
-        return view('dashboard.WorkOrder.detail.qcPass');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.purchaseRequest', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function handleQCPass(Request $request)
+    public function addPrItem(string $id)
     {
-        return redirect('/qcPass');
+        return view('dashboard.WorkOrder.detail.addPrItem', ['id' => $id]);
     }
-    public function persuratan()
+    public function checklist(string $id)
     {
-        return view('dashboard.WorkOrder.detail.persuratan');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.checklist', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function handlePersuratan(Request $request)
+    public function qcPass(string $id)
     {
-        return redirect('/persuratan');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.qcPass', ['id' => $id, 'pekerjaans' => $pekerjaans]);
     }
-    public function addPersuratan()
+    public function persuratan(string $id)
     {
-        return view('dashboard.WorkOrder.detail.addPersuratan');
+        $pekerjaans = Pekerjaan::with('instansi')->find($id);
+        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        $pekerjaans->no_wo = $matches[0];
+
+        return view('dashboard.WorkOrder.detail.persuratan', ['id' => $id, 'pekerjaans' => $pekerjaans]);
+    }
+    public function addPersuratan(string $id)
+    {
+        return view('dashboard.WorkOrder.detail.addPersuratan', ['id' => $id]);
     }
 }

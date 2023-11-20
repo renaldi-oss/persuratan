@@ -29,7 +29,7 @@
                                     <tr>
                                         <th>No Surat</th>
                                         <th>Instansi</th>
-                                        <th>pekerjaan</th>
+                                        <th>Pekerjaan</th>
                                         <th>Attn</th>
                                         <th>Due Date</th>
                                         <th>Status</th>

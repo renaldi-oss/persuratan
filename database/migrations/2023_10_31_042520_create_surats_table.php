@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(Pekerjaan::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignIdfor(KodeSurat::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('file')->nullable();
+            $table->string('no_surat')->unique();
             $table->timestamps();
         });
     }

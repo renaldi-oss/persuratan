@@ -2,23 +2,69 @@
 
 @section('content')
 
-<x-breadcrumb title="Detail Pekerjaan" link="{{ route('pekerjaan.index') }}" item="Pekerjaan" subItem="" />
+<x-breadcrumb title="Detail Pekerjaan" link="{{ route('pekerjaan.index') }}" item="Pekerjaan" subItem="{{$pekerjaan->nama}}" />
 
 <div class="card m-3">
     <div class="card-body">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">No Surat : {{ $pekerjaan->no_surat }}</li>
-            <li class="list-group-item">No Kontrak : {{ $pekerjaan->no_kontrak }}</li>
-            <li class="list-group-item">Instansi : {{ $pekerjaan->instansi->nama }}</li>
-            <li class="list-group-item">Nama Pekerjaan : {{ $pekerjaan->nama }}</li>
-            <li class="list-group-item">Deskripsi : {!! $pekerjaan->deskripsi !!}</li>
-            <li class="list-group-item">Lokasi : {{ $pekerjaan->lokasi }}</li>
-            <li class="list-group-item">Jenis Pekerjaan : {{ $pekerjaan->jenis }}</li>
-            <li class="list-group-item">To Email : {{ $pekerjaan->to_email }}</li>
-            <li class="list-group-item">To Attn : {{ $pekerjaan->to_attn }}</li>
-            <li class="list-group-item">Due Date : {{ ($pekerjaan->due_date) ? Carbon\Carbon::parse($pekerjaan->due_date)->format('d-m-Y') : '-' }}</li>
-            <li class="list-group-item">Nominal : {{ $pekerjaan->nominal }}</li>
-        </ul>
+        <table width="100%">
+            <tbody>
+                <tr>
+                    <td width="15%">No Surat</td>
+                    <td></i></td>
+                    <td>{{ $pekerjaan->no_surat }}</td>
+                </tr>
+                <tr>
+                    <td>No Kontrak</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->no_kontrak }}</td>
+                </tr>
+                <tr>
+                    <td>Instansi</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->instansi->nama }}</td>
+                </tr>
+                <tr>
+                    <td>Nama Pekerjaan</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->nama }}</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top">Deskripsi</td>
+                    <td style="vertical-align: top">:</td>
+                    <td>{!! $pekerjaan->deskripsi !!}</td>
+                </tr>
+                <tr>
+                    <td>Lokasi</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->lokasi }}</td>
+                </tr>
+                <tr>
+                    <td>Jenis Pekerjaan</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->jenis }}</td>
+                </tr>
+                <tr>
+                    <td>To Email</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->to_email }}</td>
+                </tr>
+                <tr>
+                    <td>To Attn</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->to_attn }}</td>
+                </tr>
+                <tr>
+                    <td>Due Date</td>
+                    <td>:</td>
+                    <td>{{ ($pekerjaan->due_date) ? Carbon\Carbon::parse($pekerjaan->due_date)->format('d-m-Y') : '-' }}</td>
+                </tr>
+                <tr>
+                    <td>Nominal</td>
+                    <td>:</td>
+                    <td>{{ $pekerjaan->nominal }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <div class="card m-3">
@@ -78,7 +124,7 @@
       $('#suratTable').DataTable({
             deferRender: false,
             processing: true,
-            paging: true,
+            paging: false,
             searching: false,
         });
     });  

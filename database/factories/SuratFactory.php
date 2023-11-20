@@ -17,8 +17,7 @@ class SuratFactory extends Factory
     public function definition(): array
     {
         return [
-            'nomor' => $this->faker->unique()->randomNumber() .'/PEN/KET/TKI/I/VI/2023',
-            'file' => $this->faker->randomElement([null, $this->faker->url()]),
+            'no_surat' => $this->faker->unique()->randomNumber(3,true) .'/PEN/KET/TKI/I/VI/2023', 
         ];
     }
 }

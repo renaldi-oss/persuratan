@@ -10,7 +10,7 @@
 
 @section('content')
 
-  <x-breadcrumb title="Purchase Order" link="{{ route('purchase') }}" item="Purchase" subItem="Manage" />
+  <x-breadcrumb title="Purchase Order" link="{{ route('purchase') }}" item="Purchase Order " subItem="Manage" />
 
   <!-- Main content -->
   <div class="content">
@@ -26,14 +26,14 @@
               </div>
               <table id="usersTable" class="table table-bordered table-striped text-center">
                 <thead>
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Pemohon</th>
-                    <th>Divisi</th>
-                    <th>No PO</th>
-                    <th>proyek</th>
-                    <th>Status</th>
-                </tr>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Pemohon</th>
+                        <th>Divisi</th>
+                        <th>No PO</th>
+                        <th>Proyek</th>
+                        <th>Status</th>
+                    </tr>
                 </thead>
                 <tbody>
                 </tbody>
