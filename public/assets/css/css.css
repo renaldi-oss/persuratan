@@ -64,7 +64,105 @@ body {
     margin-bottom: 0;
     padding: 0
 }
-
+.mb-01{
+margin-top:-0.01rem !important;
+}
 .text-sm .content-header .breadcrumb {
     line-height: 1.5rem
+}
+.btn.btn-block.btn-outline-warning:hover i.fa-pen {
+    color: white !important;
+}
+.btn.btn-block.btn-outline-primary:hover i.fa-pen {
+    color: white !important;
+}
+.btn.btn-block.btn-outline-secondary{
+width: 42px;
+height:38px; 
+color:#fff;
+}
+.a .btn .btn-block .btn-outline-primary .mb-01{
+width: 42px;
+height:38px; 
+ color:#fff;
+}
+.btn .btn-block .btn-outline-primary .mb-01{
+    width: 42px;
+    height:38px; 
+     color:#fff;
+    }
+.btn.btn-block.btn-outline-primary i.fa-pen {
+color:#007bff;
+}
+.btn.btn-block.btn-outline-secondary i.fa-eye {
+    color:#6c757d
+}
+.btn.btn-block.btn-outline-secondary:hover i.fa-eye {
+    color: white !important;
+}
+.btn.btn-block.btn-outline-warning:hover i.fa-eye {
+    color: white !important;
+}
+.btn.btn-block.btn-outline-danger:hover i.fa-trash {
+    color: white !important;
+}
+.btn .btn-block.btn-outline-primary:hover i.fa-pen{
+    color: white !important;
+}
+.btn-outline-danger {
+    border-color: transparent;
+    width: 42px;
+    height: 38px;
+}
+.btn-outline-danger:hover {
+
+    border-color: transparent;
+}
+.btn-outline-danger:not(:disabled):not(.disabled).active,
+.btn-outline-danger:not(:disabled):not(.disabled):active,
+.show>.btn-outline-danger.dropdown-toggle {
+    border-color: transparent;
+}
+.btn-outline-primary {
+    border-color:transparent;
+    width: 42px;
+    height: 38px;
+}
+.btn-outline-primary:hover {
+    border-color:transparent;
+}
+.btn-outline-secondary {
+    border-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+    border-color: transparent;
+}
+.btn-outline-secondary:not(:disabled):not(.disabled).active,
+.btn-outline-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-secondary.dropdown-toggle {
+    border-color: transparent;
+}
+
+/* Menggunakan display: flex hanya untuk bagian 'Action' */
+#proyeksTable td:last-child {
+    display: flex;
+}
+.badge-warning {
+    color: #324050;
+    background-color: #f5e04b;
+}
+.badge-danger {
+    color: #fff;
+    background-color: #fb4759;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #43b15c;
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #429bfb;
 }
