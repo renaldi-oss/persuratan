@@ -19,12 +19,12 @@ class InstansiController extends Controller
 
             return datatables()->of($instansi)
                 ->addColumn('action', function($instansi) {
-                    $btn = '<a href="' . route("instansi.edit", $instansi->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
+                    $btn = '<a href="' . route("instansi.edit", $instansi->id) . '"class=" btn btn-block btn-outline-primary mb-01"><i class="fas fa-solid fa-pen"></i></a>';
                     $btn .= '  ';
                     $btn .= '<form action="' . route("instansi.destroy", $instansi->id) . '" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="' . csrf_token() . '">
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-block btn-outline-danger"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>
                             </form>';
                     return $btn;
                 })

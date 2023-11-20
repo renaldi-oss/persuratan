@@ -10,7 +10,9 @@
         td,
         th {
             font-size: 20px;
+           
         }
+        
     </style>
 @endsection
 

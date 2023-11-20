@@ -1339,7 +1339,6 @@ pre code {
         flex: 0 0 100%;
         max-width: 100%
     }
-
     .order-md-first {
         -ms-flex-order: -1;
         order: -1
@@ -3405,7 +3404,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-warning:hover {
-    color: #1f2d3d;
+    color: white;
     background-color: #ffc107;
     border-color: #ffc107
 }
