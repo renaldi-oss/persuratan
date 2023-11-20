@@ -22,7 +22,7 @@ class PekerjaanSeeder extends Seeder
                 return Instansi::factory()->create()->id;
             },
             'surat_id' => function () {
-                return Surat::factory()->create()->id;
+                return Surat::factory()->penawaran()->create()->id;
             },
         ])->each(function (Pekerjaan $pekerjaan) {
             $pekerjaan->addMedia(public_path('assets/img/bruh.jpg'))

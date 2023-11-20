@@ -15,6 +15,7 @@ class KodeSuratSeeder extends Seeder
     {
         $kode = [
             "PEN" => "PENAWARAN",
+            "PO" => "PURCHASE ORDER",
             "DO" => "DELIVERY ORDER",
             "BAC" => "BERITA ACARA UJI COBA",
             "BAP" => "BERITA ACARA PELATIHAN",
@@ -27,7 +28,6 @@ class KodeSuratSeeder extends Seeder
             "PINV" => "PERFORMA INVOICE",
             "KWT" => "KWITANSI",
             "SR" => "SERVICE REPORT",
-            "PO" => "PURCHASE ORDER",
             "ST" => "SURAT TUGAS",
             "GAR" => "SURAT GARANSI",
             "STP" => "SURAT TUGAS PENGERJAAN",

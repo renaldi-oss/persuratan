@@ -17,7 +17,7 @@
 {{-- format main content dashboard --}}
 @section('content')
 
-<x-breadcrumb title="Work Order" link="{{ route('workOrder') }}" item="Work Order" subItem="Manage" />
+<x-breadcrumb title="Work Order" link="{{ route('workorder.index') }}" item="Work Order" subItem="Manage" />
 
 <div class="content">
     <div class="container-fluid">
@@ -63,12 +63,6 @@
     <script src="{{ asset('./plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('./plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('./plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('./plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('./plugins/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('./plugins/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('./plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('./plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('./plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
     {{-- script table user --}}
     <script type="text/javascript">
@@ -85,7 +79,7 @@
                 info: true,
                 autoWidth: false,
                 responsive: true,
-                ajax: "{{ route('workOrder') }}",
+                ajax: "{{ route('workorder.index') }}",
                 columns: [
                     {
                         data: 'nama',
@@ -97,7 +91,7 @@
                     },
                     {
                         data: 'deskripsi',
-                        name: 'pekerjaan'
+                        name: 'deskripsi'
                     },
                     {
                         data: 'lokasi',
@@ -105,7 +99,7 @@
                     },
                     {
                         data: 'due_date',
-                        name: 'tanggal'
+                        name: 'due_date'
                     },
                     {
                         data: 'action',

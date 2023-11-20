@@ -100,7 +100,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/workOrder" class="nav-link {{ request()->routeIs('workOrder') ? 'active' : '' }}">
+            <a href="{{ route('workorder.index') }}" class="nav-link {{ request()->routeIs('workorder.index') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
                 <p>
                     Work Order

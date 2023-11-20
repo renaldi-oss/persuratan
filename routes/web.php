@@ -9,7 +9,8 @@ use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
-use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\Dashboard\workorderController;
+use App\Http\Livewire\Dashboard\workorder\DetailWO;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,31 +59,25 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('pekerjaan/file/{media}', [PekerjaanController::class, 'deletefile'])->name('pekerjaan.delete');
     
     //route Work Order
-    Route::resource('workOrder', WorkOrderController::class)->names([
-        'index' => 'workOrder',
-        'create' => 'workOrder.create',
-        'store' => 'workOrder.store',
-        'edit' => 'workOrder.edit',
-        'update' => 'workOrder.update',
-        'destroy' => 'workOrder.destroy',
-    ])->except(['show']);
-    Route::get('/workOrder/{id}/detail', [WorkOrderController::class, 'detail'])->name('detailWorkOrder');
-    Route::get('/workOrder/{id}/jadwal', [WorkOrderController::class, 'jadwal'])->name('jadwal');
-    Route::get('/workOrder/{id}/purchaseRequest', [WorkOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
-    Route::get('/workOrder/{id}/add-pr-item', [WorkOrderController::class, 'addPrItem'])->name('addPrItem');
-    Route::get('/workOrder/{id}/checklist', [WorkOrderController::class, 'checklist'])->name('checklist');
-    Route::get('/workOrder/{id}/qcPass', [WorkOrderController::class, 'qcPass'])->name('qcPass');
-    Route::get('/workOrder/{id}/persuratan', [WorkOrderController::class, 'persuratan'])->name('persuratan');
-    // Route::post('/load-jadwal', [WorkOrderController::class, 'handleJadwal'])->name('handleJadwal');
-    // Route::get('/purchaseRequest', [WorkOrderController::class, 'purchaseRequest'])->name('purchaseRequest');
-    // Route::get('/add-pr-item', [WorkOrderController::class, 'addPrItem'])->name('addPrItem');
-    // Route::get('/checklist', [WorkOrderController::class, 'checklist'])->name('checklist');
-    // Route::post('/load-checklist', [WorkOrderController::class, 'handleChecklist'])->name('handleChecklist');
-    // Route::get('/qcPass', [WorkOrderController::class, 'qcPass'])->name('qcPass');
-    // Route::post('/load-qcPass', [WorkOrderController::class, 'handleQCPass'])->name('handleQCPass');
-    // Route::get('/persuratan', [WorkOrderController::class, 'persuratan'])->name('persuratan');
-    // Route::get('/add-persuratan', [WorkOrderController::class, 'addPersuratan'])->name('addPersuratan');
-    // Route::post('/load-persuratan', [WorkOrderController::class, 'handlePersuratan'])->name('handlePersuratan');
+    Route::resource('workorder', workorderController::class)->except(['create', 'edit', 'update', 'destroy','store']);
+    // route livewire work order
+    // Route::get('/workorder/{id}/detail', [workorderController::class, 'detail'])->name('detailworkorder');
+    // Route::get('/workorder/{id}/jadwal', [workorderController::class, 'jadwal'])->name('jadwal');
+    // Route::get('/workorder/{id}/purchaseRequest', [workorderController::class, 'purchaseRequest'])->name('purchaseRequest');
+    // Route::get('/workorder/{id}/add-pr-item', [workorderController::class, 'addPrItem'])->name('addPrItem');
+    // Route::get('/workorder/{id}/checklist', [workorderController::class, 'checklist'])->name('checklist');
+    // Route::get('/workorder/{id}/qcPass', [workorderController::class, 'qcPass'])->name('qcPass');
+    // Route::get('/workorder/{id}/persuratan', [workorderController::class, 'persuratan'])->name('persuratan');
+    // Route::post('/load-jadwal', [workorderController::class, 'handleJadwal'])->name('handleJadwal');
+    // Route::get('/purchaseRequest', [workorderController::class, 'purchaseRequest'])->name('purchaseRequest');
+    // Route::get('/add-pr-item', [workorderController::class, 'addPrItem'])->name('addPrItem');
+    // Route::get('/checklist', [workorderController::class, 'checklist'])->name('checklist');
+    // Route::post('/load-checklist', [workorderController::class, 'handleChecklist'])->name('handleChecklist');
+    // Route::get('/qcPass', [workorderController::class, 'qcPass'])->name('qcPass');
+    // Route::post('/load-qcPass', [workorderController::class, 'handleQCPass'])->name('handleQCPass');
+    // Route::get('/persuratan', [workorderController::class, 'persuratan'])->name('persuratan');
+    // Route::get('/add-persuratan', [workorderController::class, 'addPersuratan'])->name('addPersuratan');
+    // Route::post('/load-persuratan', [workorderController::class, 'handlePersuratan'])->name('handlePersuratan');
 
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary');

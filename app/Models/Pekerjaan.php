@@ -12,9 +12,16 @@ class Pekerjaan extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
-    protected $table = 'pekerjaans';
-
     protected $guarded = ['id'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($pekerjaan) {
+            $pekerjaan->surat->delete();
+        });
+    }
 
     public function instansi()
     {
@@ -24,6 +31,11 @@ class Pekerjaan extends Model implements HasMedia
     public function workOrder()
     {
         return $this->hasMany(WorkOrder::class);
+    }
+
+    public function surat()
+    {
+        return $this->belongsTo(Surat::class);
     }
 
     public static function Last(){

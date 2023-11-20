@@ -9,7 +9,6 @@ class KodeSurat extends Model
 {
     use HasFactory;
 
-    protected $table = 'kode_surats';
     protected $guarded = ['id'];
 
 }

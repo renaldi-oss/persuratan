@@ -5,13 +5,15 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Instansi;
 use App\Models\Pekerjaan;
+use App\Models\PurchaseOrder;
+use App\Models\Surat;
 use App\Models\TemporaryFile;
+use App\Models\WorkOrder;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Romans\Filter\IntToRoman;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\Support\MediaStream;
 
@@ -24,6 +26,9 @@ class PekerjaanController extends Controller
     {
         if($request->ajax()) {
             return datatables()->of(Pekerjaan::latest('updated_at')->get())
+                ->addColumn('no_surat', function($pekerjaan) {
+                    return $pekerjaan->surat->no_surat;
+                })
                 ->addColumn('instansi', function($pekerjaan) {
                     return $pekerjaan->instansi->nama;
                 })
@@ -93,17 +98,8 @@ class PekerjaanController extends Controller
             'to_attn' => 'required'
         ]);
          
-        $roman = new IntToRoman();
-        $month = $roman->filter(date('m'));
-        $id_surat = Pekerjaan::withTrashed()->max('id');
-        $id_surat = $id_surat == 0 ? '001' : sprintf('%03d', $id_surat + 1);
-        $no_surat = $id_surat . '/PEN/TKI/' . $month . '/' . date('Y');
-
-        $request->merge([
-            'no_surat' => $no_surat,
-        ]);
-
-        $pekerjaan = Pekerjaan::create(request()->all());
+        $surat = Surat::createPenawaran(['kode_surat_id' => 1]);
+        $pekerjaan = Pekerjaan::create($request->all() + ['surat_id' => $surat->id]);
 
         return redirect()->route('pekerjaan.index')
                         ->with('status', 'success')
@@ -149,18 +145,32 @@ class PekerjaanController extends Controller
             'to_attn' => 'required'
         ]);
         if(Auth::user()->role == 'manager|finance') {
-            $request->merge([
-                'due_date' => $request->due_date ? Carbon::parse($request->due_date)->format('Y-m-d') : null,
-            ]);     
             $request->validate([
                 'nominal' => 'required|numeric',
-                'no_kontrak' => 'required',
+                'no_kontrak' => 'required|exists:surats,no_surat',
                 'status' => 'required',
                 'due_date' => 'required|date|after_or_equal:today',
             ]);
+            $request->merge([
+                'due_date' => $request->due_date ? Carbon::parse($request->due_date)->format('Y-m-d') : null,
+                'status' => 'on-going'
+            ]);     
         }
-        $pekerjaan = Pekerjaan::find($id);
-        $pekerjaan->update(request()->all());
+
+        $pekerjaan = Pekerjaan::with('surat')->find($id);
+
+        $pekerjaan->update($request->all());
+
+        if(isset($request->no_kontrak)){
+            WorkOrder::updateOrCreate([
+                    'pekerjaan_id' => $pekerjaan->id,
+                    'surat_id' => Surat::createPurchaseOrder($pekerjaan->surat->no_surat)->id,
+                    'nama_proyek' => $pekerjaan->nama,
+                    'pekerjaan' => $pekerjaan->deskripsi,
+                    'lokasi' => $pekerjaan->lokasi,
+                    'due_date' => $pekerjaan->due_date,
+            ]);
+        }
         if($request->file) {
             foreach($request->file as $file) {
                 $tmpfolder = TemporaryFile::where('folder', $file)->first();

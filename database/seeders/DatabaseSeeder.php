@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\WorkOrder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(KodeSuratSeeder::class);
         $this->call(InstansiSeeder::class);
         $this->call(PekerjaanSeeder::class);
+        $this->call(WorkOrderSeeder::class);
         $this->call(OperationalSeeder::class);
     }
 }

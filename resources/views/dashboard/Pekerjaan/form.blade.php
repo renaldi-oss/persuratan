@@ -11,7 +11,7 @@
 
 <x-forms.input id="input-nama" label="Nama" name="nama" placeholder="Masukkan nama" :value="$pekerjaan->nama ?? ''" />
 
-{{-- <x-forms.textarea id="input-deskripsi" label="Deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" :value="$pekerjaan->deskripsi ?? ''" /> --}}
+<x-forms.textarea id="input-deskripsi" label="Deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" :value="$pekerjaan->deskripsi ?? ''" />
 
 <x-forms.input id="input-jenis" label="Jenis" name="jenis" placeholder="Masukkan jenis" :value="$pekerjaan->jenis ?? ''" />
   

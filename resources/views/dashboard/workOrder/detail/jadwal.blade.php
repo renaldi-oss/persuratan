@@ -2,7 +2,7 @@
 
 
 @section('content')
-<x-breadcrumb title="Detail Work Order" link="{{ route('workOrder') }}" item="Work Order" subItem="Detail" />
+<x-breadcrumb title="Detail Work Order" link="{{ route('workorder.index') }}" item="Work Order" subItem="Detail" />
         <div class="row ml-3 mr-3">
             <div class="col-12">
               <div class="card">
@@ -101,7 +101,7 @@
   <!-- fullCalendar -->
   <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
 <div>
-{{-- @include('workOrder.detail.index') --}}
+{{-- @include('workorder.detail.index') --}}
 <div class="row d-flex">
   <h1 class="ml-4">Jadwal Pelaksanaan</h1>
 </div>
