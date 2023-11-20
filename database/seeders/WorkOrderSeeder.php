@@ -15,14 +15,11 @@ class WorkOrderSeeder extends Seeder
      */
     public function run(): void
     {
-        Pekerjaan::Last()->each(function (Pekerjaan $pekerjaan) {   
+        Pekerjaan::whereNotNull('no_kontrak')->each(function (Pekerjaan $pekerjaan) {   
             WorkOrder::factory()
             ->count(1)
             ->create([
                 'pekerjaan_id' => $pekerjaan->id,
-                'surat_id' => function () {
-                    return Surat::factory()->purchaseOrder()->create()->id;
-                },
                 'nama' => $pekerjaan->nama,
                 'deskripsi' => $pekerjaan->deskripsi,
                 'lokasi' => $pekerjaan->lokasi,

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('work_orders', function (Blueprint $table) {
             $table->id();
             $table->foreignIdfor(Pekerjaan::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignIdfor(Surat::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
             $table->text('deskripsi');
             $table->string('lokasi');

@@ -58,11 +58,13 @@
                     <td>:</td>
                     <td>{{ ($pekerjaan->due_date) ? Carbon\Carbon::parse($pekerjaan->due_date)->format('d-m-Y') : '-' }}</td>
                 </tr>
+                @role('manager|finance')
                 <tr>
                     <td>Nominal</td>
                     <td>:</td>
                     <td>{{ $pekerjaan->nominal }}</td>
                 </tr>
+                @endrole
             </tbody>
         </table>
     </div>

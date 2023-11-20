@@ -26,9 +26,6 @@ class PekerjaanController extends Controller
     {
         if($request->ajax()) {
             return datatables()->of(Pekerjaan::latest('updated_at')->get())
-                ->addColumn('no_surat', function($pekerjaan) {
-                    return $pekerjaan->surat->no_surat;
-                })
                 ->addColumn('instansi', function($pekerjaan) {
                     return $pekerjaan->instansi->nama;
                 })
@@ -98,9 +95,8 @@ class PekerjaanController extends Controller
             'to_attn' => 'required'
         ]);
          
-        $surat = Surat::createPenawaran(['kode_surat_id' => 1]);
-        $pekerjaan = Pekerjaan::create($request->all() + ['surat_id' => $surat->id]);
-
+        $pekerjaan = Pekerjaan::createPenawaran($request->all());
+        
         return redirect()->route('pekerjaan.index')
                         ->with('status', 'success')
                         ->with('message', 'Pekerjaan '. $pekerjaan->nama .' berhasil ditambahkan');
@@ -164,9 +160,8 @@ class PekerjaanController extends Controller
         if(isset($request->no_kontrak)){
             WorkOrder::updateOrCreate([
                     'pekerjaan_id' => $pekerjaan->id,
-                    'surat_id' => Surat::createPurchaseOrder($pekerjaan->surat->no_surat)->id,
-                    'nama_proyek' => $pekerjaan->nama,
-                    'pekerjaan' => $pekerjaan->deskripsi,
+                    'nama' => $pekerjaan->nama,
+                    'deskripsi' => $pekerjaan->deskripsi,
                     'lokasi' => $pekerjaan->lokasi,
                     'due_date' => $pekerjaan->due_date,
             ]);

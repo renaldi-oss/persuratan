@@ -42,6 +42,8 @@ all in one installer [XAMPP](https://www.apachefriends.org/download.html)
 
 [laravel filepond](https://laravel-news.com/laravel-filepond)
 
+[alpine js example](https://js.hyperui.dev/)
+
 ## Installation
 
 1. Clone the repository

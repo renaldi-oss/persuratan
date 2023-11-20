@@ -15,14 +15,19 @@ class PekerjaanSeeder extends Seeder
      */
     public function run(): void
     {
+        static $id = 1;
+    
         Pekerjaan::factory()
         ->count(10)
         ->create([
             'instansi_id' => function () {
                 return Instansi::factory()->create()->id;
             },
-            'surat_id' => function () {
-                return Surat::factory()->penawaran()->create()->id;
+            'id_surat' => function () use (&$id) {
+                return sprintf('%03d', $id);
+            },
+            'no_surat' => function () use (&$id) {
+                return sprintf('%03d', $id++) . '/PEN/TKI/' . (new \Romans\Filter\IntToRoman())->filter(date('m')) . '/' . date('Y');
             },
         ])->each(function (Pekerjaan $pekerjaan) {
             $pekerjaan->addMedia(public_path('assets/img/bruh.jpg'))

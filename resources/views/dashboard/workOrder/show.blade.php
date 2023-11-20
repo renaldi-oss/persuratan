@@ -1,7 +1,12 @@
 @extends('dashboard.layouts.main')
 
-@section('content')
+@section('style')
 
+@livewireStyles
+
+@endsection
+
+@section('content')
 <x-breadcrumb title="Detail Work Order" link="{{ route('workorder.index') }}" item="WorkOrder" subItem="{{$wo->nama}}" />
 
 <div class="card m-3">
@@ -10,18 +15,18 @@
             <tbody>
                 <tr>
                     <td width="15%">No Surat</td>
-                    <td></i></td>
-                    <td>{{ $wo->surat->no_surat }}</td>
+                    <td>:</td>
+                    <td>{{ $wo->pekerjaan->no_surat }}</td>
                 </tr>
                 <tr>
                     <td>No Kontrak</td>
                     <td>:</td>
-                    <td>{{ $wo->no_kontrak }}</td>
+                    <td>{{ $wo->pekerjaan->no_kontrak }}</td>
                 </tr>
                 <tr>
                     <td>Instansi</td>
                     <td>:</td>
-                    <td>{{ $wo->nama }}</td>
+                    <td>{{ $wo->pekerjaan->instansi->nama }}</td>
                 </tr>
                 <tr>
                     <td>Nama Pekerjaan</td>
@@ -41,7 +46,7 @@
                 <tr>
                     <td>Due Date</td>
                     <td>:</td>
-                    <td>{{ ($wo->due_date) ? Carbon\Carbon::parse($wo->due_date)->format('d-m-Y') : '-' }}</td>
+                    <td>{{ ($wo->due_date) ? Carbon\Carbon::parse($wo->due_date)->format('d/m/Y') : '-' }}</td>
                 </tr>
             </tbody>
         </table>
@@ -49,10 +54,15 @@
 </div>
 <div class="card m-3">
     <div class="card-body">
-        <h5 class="card-title">ACTION</h5>
-        
+        <livewire:dashboard.work-order.detail />
     </div>
 </div>
 
 @endsection
+
+@push('script')
+
+@livewireScripts
+    
+@endpush
 
