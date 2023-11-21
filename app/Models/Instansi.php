@@ -10,10 +10,11 @@ class Instansi extends Model
     use HasFactory;
 
     protected $table = 'instansis';
+    
     protected $guarded = ['id'];
 
-    public function proyek()
+    public function pekerjaan()
     {
-        return $this->hasMany(Proyek::class, 'instansi_id');
+        return $this->hasMany(Pekerjaan::class);
     }
 }

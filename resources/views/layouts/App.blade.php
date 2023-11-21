@@ -21,6 +21,8 @@
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="{{ asset('./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('./assets/css/css.css') }}">
+  <!-- alpinejs -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   
@@ -38,26 +40,26 @@
     <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="{{ asset('./plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    @if (session('status'))
     <script>
-      @if (session('status'))
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
 
-        Toast.fire({
-          icon: '{{ session('status') }}',
-          title: '{{ session('message') }}'
-        })
-      @endif
+      Toast.fire({
+        icon: '{{ session('status') }}',
+        title: '{{ session('message') }}'
+      })
     </script>
+    @endif
     @stack('script')
 </body>
 

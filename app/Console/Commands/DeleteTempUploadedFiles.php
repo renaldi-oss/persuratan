@@ -20,7 +20,7 @@ class DeleteTempUploadedFiles extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Command ini digunakan untuk fungsi scheduled task yang akan menghapus file-file yang diupload ke dalam folder tmp setiap 24 jam sekali.';
 
     /**
      * Execute the console command.

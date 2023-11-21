@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('pekerjaans', function (Blueprint $table) {
             $table->id();
             $table->foreignIdfor(Instansi::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('no_surat')->unique();
             $table->string('nama');
             $table->string('lokasi');
             $table->text('deskripsi');
             $table->string('jenis');
             $table->string('to_email');
             $table->string('to_attn');
+            $table->string('surat_no');
+            $table->string('surat_id');
             $table->string('no_kontrak')->nullable();
             $table->integer('nominal')->nullable();
             $table->timestamp('due_date')->nullable();

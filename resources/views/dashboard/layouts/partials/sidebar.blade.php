@@ -13,7 +13,7 @@
                 <img src="{{ asset('assets/img/bruh.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a class="d-block">{{ Auth::user()->name }}</a>
+                <a href="{{ route('profile.edit') }}" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
         </li>
         <li class="nav-item {{ request()->routeIs('instansi') ? 'menu-open' : '' }}">
             <a href="{{ route("instansi.index") }}" class="nav-link {{ request()->routeIs('instansi.index') ? 'active' : '' }}">
-            <i class="nav-icon far fa-user"></i>
+            <i class="nav-icon far fa-building"></i>
             <p>
                 Instansi
                 <span class="badge badge-info right"></span>
@@ -57,7 +57,7 @@
 
         <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-solid fa-comment-dollar"></i>
+            <i class="nav-icon fas fa-solid fa-address-book"></i>
             <p>
                 Administration & Finance
                 <i class="right fas fa-angle-left"></i>
@@ -100,7 +100,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="/workOrder" class="nav-link {{ request()->routeIs('workOrder') ? 'active' : '' }}">
+            <a href="{{ route('workorder.index') }}" class="nav-link {{ request()->routeIs('workorder.index') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
                 <p>
                     Work Order

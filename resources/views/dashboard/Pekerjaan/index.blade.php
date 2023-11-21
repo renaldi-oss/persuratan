@@ -79,7 +79,7 @@
             ajax: "{{ route('pekerjaan.index') }}",
             columns: [
                 {
-                    data: 'no_surat',
+                    data: 'surat_no',
                     name: 'no surat'
                 },
                 {

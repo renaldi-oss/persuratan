@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\KodeSurat;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,28 @@ class SuratFactory extends Factory
     public function definition(): array
     {
         return [
-            'nomor' => $this->faker->unique()->randomNumber() .'/PEN/KET/TKI/I/VI/2023',
-            'file' => $this->faker->randomElement([null, $this->faker->url()]),
+           
         ];
     }
+
+    public function penawaran($kode = 'PEN', $idkode = 1): SuratFactory
+    {
+        static $id = 1;
+    
+        return $this->state([
+            'surat_no' => str_pad($id++, 3, '0', STR_PAD_LEFT) . '/' . $kode . '/TKI/I/VI/2023',
+            'kode_surat_id' => KodeSurat::where('kode', $kode)->first()->id,
+        ]);
+    }
+
+    public function PurchaseOrder($kode = 'PO', $idkode = 2): SuratFactory
+    {
+        static $id = 1;
+    
+        return $this->state([
+            'surat_no' => str_pad($id++, 3, '0', STR_PAD_LEFT) . '/' . $kode . '/TKI/I/VI/2023',
+            'kode_surat_id' => KodeSurat::where('kode', $kode)->first()->id,
+        ]);
+    }
+
 }

@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
         ])->assignRole('engineer');
         
 
-        User::factory()->count(10)->create()->each(function ($user) {
+        User::factory()->count(2)->create()->each(function ($user) {
             $user->assignRole(Role::all()->random());
         });
     }
