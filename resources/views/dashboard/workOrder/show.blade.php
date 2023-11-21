@@ -16,7 +16,7 @@
                 <tr>
                     <td width="15%">No Surat</td>
                     <td>:</td>
-                    <td>{{ $wo->pekerjaan->no_surat }}</td>
+                    <td>{{ $wo->pekerjaan->surat_no }}</td>
                 </tr>
                 <tr>
                     <td>No Kontrak</td>
@@ -48,6 +48,14 @@
                     <td>:</td>
                     <td>{{ ($wo->due_date) ? Carbon\Carbon::parse($wo->due_date)->format('d/m/Y') : '-' }}</td>
                 </tr>
+                <tr>
+                    <td>Resiko</td>
+                    <td>:</td>
+                    <td>
+                        @livewire('dashboard.work-order.resiko', ['WorkOrder' => $wo])
+                    </td>
+                </tr>
+
             </tbody>
         </table>
     </div>

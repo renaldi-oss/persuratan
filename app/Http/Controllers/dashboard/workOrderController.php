@@ -52,7 +52,7 @@ class WorkOrderController extends Controller
     public function detail(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
         $pekerjaans->no_wo = $matches[0];
 
         return view('dashboard.WorkOrder.detail.index', ['id' => $id, 'pekerjaans' => $pekerjaans]);
@@ -60,7 +60,7 @@ class WorkOrderController extends Controller
     public function jadwal(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
         $pekerjaans->no_wo = $matches[0];
 
         return view('dashboard.WorkOrder.detail.jadwal', ['id' => $id, 'pekerjaans' => $pekerjaans]);
@@ -68,7 +68,7 @@ class WorkOrderController extends Controller
     public function purchaseRequest(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
         $pekerjaans->no_wo = $matches[0];
 
         return view('dashboard.WorkOrder.detail.purchaseRequest', ['id' => $id, 'pekerjaans' => $pekerjaans]);
@@ -80,7 +80,7 @@ class WorkOrderController extends Controller
     public function checklist(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
         $pekerjaans->no_wo = $matches[0];
 
         return view('dashboard.WorkOrder.detail.checklist', ['id' => $id, 'pekerjaans' => $pekerjaans]);
@@ -88,7 +88,7 @@ class WorkOrderController extends Controller
     public function qcPass(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
         $pekerjaans->no_wo = $matches[0];
 
         return view('dashboard.WorkOrder.detail.qcPass', ['id' => $id, 'pekerjaans' => $pekerjaans]);
@@ -96,7 +96,7 @@ class WorkOrderController extends Controller
     public function persuratan(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->no_surat, $matches);
+        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
         $pekerjaans->no_wo = $matches[0];
 
         return view('dashboard.WorkOrder.detail.persuratan', ['id' => $id, 'pekerjaans' => $pekerjaans]);

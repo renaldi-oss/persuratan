@@ -23,10 +23,10 @@ class PekerjaanSeeder extends Seeder
             'instansi_id' => function () {
                 return Instansi::factory()->create()->id;
             },
-            'id_surat' => function () use (&$id) {
+            'surat_id' => function () use (&$id) {
                 return sprintf('%03d', $id);
             },
-            'no_surat' => function () use (&$id) {
+            'surat_no' => function () use (&$id) {
                 return sprintf('%03d', $id++) . '/PEN/TKI/' . (new \Romans\Filter\IntToRoman())->filter(date('m')) . '/' . date('Y');
             },
         ])->each(function (Pekerjaan $pekerjaan) {

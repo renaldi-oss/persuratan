@@ -37,13 +37,13 @@ class Surat extends Model
     }
 
     public static function createPenawaran(array $data){
-        $no_surat = sprintf('%03d', static::getCount('PEN') + 1) . '/PEN/TKI/' . static::getMonth() . '/' . date('Y');
-        return static::create($data + ['no_surat' => $no_surat]);
+        $surat_no = sprintf('%03d', static::getCount('PEN') + 1) . '/PEN/TKI/' . static::getMonth() . '/' . date('Y');
+        return static::create($data + ['surat_no' => $surat_no]);
     }
     
     public static function createPurchaseOrder(string $suratPenawaran){
-        $no_surat = explode('/', $suratPenawaran)[0] . '/PO/TKI/' . static::getMonth() . '/' . date('Y');
-        return static::updateOrCreate(['no_surat' => $no_surat , 'kode_surat_id' => 2]);
+        $surat_no = explode('/', $suratPenawaran)[0] . '/PO/TKI/' . static::getMonth() . '/' . date('Y');
+        return static::updateOrCreate(['surat_no' => $surat_no , 'kode_surat_id' => 2]);
     }
 
     public static function Last(){

@@ -11,7 +11,7 @@
                 <tr>
                     <td width="15%">No Surat</td>
                     <td></i></td>
-                    <td>{{ $pekerjaan->no_surat }}</td>
+                    <td>{{ $pekerjaan->surat_no }}</td>
                 </tr>
                 <tr>
                     <td>No Kontrak</td>

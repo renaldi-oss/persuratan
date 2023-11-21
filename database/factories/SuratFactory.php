@@ -27,7 +27,7 @@ class SuratFactory extends Factory
         static $id = 1;
     
         return $this->state([
-            'no_surat' => str_pad($id++, 3, '0', STR_PAD_LEFT) . '/' . $kode . '/TKI/I/VI/2023',
+            'surat_no' => str_pad($id++, 3, '0', STR_PAD_LEFT) . '/' . $kode . '/TKI/I/VI/2023',
             'kode_surat_id' => KodeSurat::where('kode', $kode)->first()->id,
         ]);
     }
@@ -37,7 +37,7 @@ class SuratFactory extends Factory
         static $id = 1;
     
         return $this->state([
-            'no_surat' => str_pad($id++, 3, '0', STR_PAD_LEFT) . '/' . $kode . '/TKI/I/VI/2023',
+            'surat_no' => str_pad($id++, 3, '0', STR_PAD_LEFT) . '/' . $kode . '/TKI/I/VI/2023',
             'kode_surat_id' => KodeSurat::where('kode', $kode)->first()->id,
         ]);
     }

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
-            $table->string('no_surat')->unique();
+            $table->string('surat_no')->unique();
             $table->foreignIdFor(KodeSurat::class);
             $table->timestamps();
             $table->softDeletes();

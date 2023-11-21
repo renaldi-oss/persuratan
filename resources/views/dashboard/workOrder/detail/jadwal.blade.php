@@ -52,7 +52,7 @@
                       <tr>
                         <td class="col-2 p-2">No Kontrak</td>
                         <td class="col-1 p-2">:</td>
-                        <td class="col-9 p-2">{{ $pekerjaans->no_surat }}</td>
+                        <td class="col-9 p-2">{{ $pekerjaans->surat_no }}</td>
                       </tr>
                     </tbody>
                   </table>

@@ -143,7 +143,7 @@ class PekerjaanController extends Controller
         if(Auth::user()->role == 'manager|finance') {
             $request->validate([
                 'nominal' => 'required|numeric',
-                'no_kontrak' => 'required|exists:surats,no_surat',
+                'no_kontrak' => 'required|exists:surats,surat_no',
                 'status' => 'required',
                 'due_date' => 'required|date|after_or_equal:today',
             ]);

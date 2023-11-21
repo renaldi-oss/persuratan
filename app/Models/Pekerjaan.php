@@ -38,9 +38,9 @@ class Pekerjaan extends Model implements HasMedia
         return (new IntToRoman())->filter(date('m'));
     }
     public static function createPenawaran(array $data){
-        $id_surat = Static::getCount() + 1;
-        $no_surat = sprintf('%03d', $id_surat) . '/PEN/TKI/' . static::getMonth() . '/' . date('Y');
-        return static::create($data + ['no_surat' => $no_surat, 'id_surat' => $id_surat]);
+        $surat_id = Static::getCount() + 1;
+        $surat_no = sprintf('%03d', $surat_id) . '/PEN/TKI/' . static::getMonth() . '/' . date('Y');
+        return static::create($data + ['surat_no' => $surat_no, 'surat_id' => $surat_id]);
     }
     
     public static function Last(){

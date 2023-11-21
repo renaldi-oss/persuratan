@@ -1,11 +1,18 @@
 <div x-data="{ tab: 'jadwal' }">
-    <div class="d-flex justify-content-center flex-wrap">
+    {{-- <div class="d-flex justify-content-center flex-wrap">
         <x-horizontal-button tab="jadwal">Jadwal Pelaksanaan</x-horizontal-button>
         <x-horizontal-button tab="purchaseRequest">Purchase Request</x-horizontal-button>
         <x-horizontal-button tab="checkList">Check List</x-horizontal-button>
         <x-horizontal-button tab="qcPass">QC Pass</x-horizontal-button>
         <x-horizontal-button tab="persuratan">Persuratan</x-horizontal-button>
-    </div>
+    </div> --}}
+    <ul class="nav nav-tabs justify-content-center flex-wrap">
+        <x-horizontal-button tab="jadwal">Jadwal Pelaksanaan</x-horizontal-button>
+        <x-horizontal-button tab="purchaseRequest">Purchase Request</x-horizontal-button>
+        <x-horizontal-button tab="checkList">Check List</x-horizontal-button>
+        <x-horizontal-button tab="qcPass">QC Pass</x-horizontal-button>
+        <x-horizontal-button tab="persuratan">Persuratan</x-horizontal-button>
+    </ul>
     <template x-if="tab === 'jadwal'">
         @livewire('dashboard.work-order.detail.jadwal-pelaksanaan')
     </template>

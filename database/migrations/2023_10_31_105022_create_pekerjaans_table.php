@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('to_email');
             $table->string('to_attn');
-            $table->string('no_surat');
-            $table->string('id_surat');
+            $table->string('surat_no');
+            $table->string('surat_id');
             $table->string('no_kontrak')->nullable();
             $table->integer('nominal')->nullable();
             $table->timestamp('due_date')->nullable();
