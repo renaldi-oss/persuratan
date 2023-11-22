@@ -3,11 +3,11 @@
 
 @section('content')
 
-<x-breadcrumb title="Create user" link="{{ route('operational') }}" item="User" subItem="Create" />
+<x-breadcrumb title="Edit Operational Request" link="{{ route('operational') }}" item="Operational" subItem="Edit" />
 
 <div class="card m-3">
   <div class="card-body">
-    <form id="Form" action="{{ route('operational.update', $user->id) }}" method="POST">
+    <form id="Form" action="{{ route('operational.update', $operational->id) }}" method="POST">
         {{ csrf_field() }}
         @method('PUT')
         @include('dashboard.OperationalRequest.form', ['tombol' => 'Update'])
@@ -24,41 +24,37 @@
   $(function () {
    $('#Form').validate({
      rules: {
-       username: {
+       kegiatan: {
          required: true,
        },
-       name:{
+       tanggal:{
          required: true,
        },
-        email: {
+        pekerjaan: {
           required: true,
         },
-       password: {
-         required: true,
-         minlength: 5
+       lokasi: {
+        required: true,
        },
-       roles: {
+       jumlah: {
          required: true,
        }
      },
      messages: {
-       name: {
-         required: "Please enter a valid name",
+       kegiatan: {
+         required: "Kegiatan tidak boleh kosong",
        },
-       username: {
-         required: "Please enter a valid username",
-       },
-        email: {
-          required: "Please enter a valid email address",
-
+        tanggal: {
+          required: "Tanggal tidak boleh kosong",
         },
-       password: {
-         required: "Please provide a password",
-         minlength: "Your password must be at least 5 characters long"
-       },
-        roles: {
-          required: "Please select a roles",
-          notEqual: "Please select a roles"
+        pekerjaan: {
+          required: "Pekerjaan tidak boleh kosong",
+        },
+        lokasi: {
+          required: "Lokasi tidak boleh kosong",
+        },
+        jumlah: {
+          required: "Jumlah tidak boleh kosong",
         }
      },
      errorElement: 'span',
@@ -75,5 +71,5 @@
    });
  });
 </script>
-  
+
 @endpush

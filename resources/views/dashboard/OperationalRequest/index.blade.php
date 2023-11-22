@@ -31,9 +31,9 @@
                     <th>Jenis Kegiatan</th>
                     <th>Instansi</th>
                     <th>Lokasi</th>
-                    <th>No PO</th>
                     <th>Jumlah</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -85,12 +85,12 @@
       autoWidth: true,
       ajax: "{{ route('operational') }}",
       columns: [
-        {data: 'id', name: 'id'},
-        {data: 'name', name: 'name'},
-        {data: 'email', name: 'email'},
-        {data: 'name', name: 'name'},
-        {data: 'email', name: 'email'},
-        {data: 'roles', name: 'roles'},
+        {data: 'tanggal', name: 'tanggal'},
+        {data: 'kegiatan', name: 'kegiatan'},
+        {data: 'instansi', name: 'instansi'},
+        {data: 'lokasi', name: 'lokasi'},
+        {data: 'jumlah', name: 'jumlah'},
+        {data: 'status', name: 'status'},
         {
                 data: 'action',
                 name: 'action',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Operational;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
 use DataTables;
 use Spatie\Permission\Models\Role;
@@ -19,24 +20,24 @@ class OperationalController extends Controller
     {
         // get operational data
         if($request->ajax()) {
-            $operationals = Operational::get();
+            $operationals = Operational::with('pekerjaan.instansi')->get();
 
             return datatables()->of($operationals)
-    ->addColumn('roles', function($operational) {
-        return $operational->roles->pluck('name')->implode(', ');
-    })
-    ->addColumn('action', function($operational) {
-        $btn = '<div style="display: flex; align-items: center;">';
-        $btn .= '<span style="background: #FFF8cc;  color: #FFA500; padding: 3px 8px; border-radius: 8px;">Menunggu Acc Admin</span>';
-        $btn .= '<a href="' . route("operational.edit", $operational->id) . '" class="edit btn btn-sm" style=" color: #666;"><i class="fas fa-edit"></i></a>';
-        $btn .= '</div>';
-        $btn .= '<form action="' . route("operational.destroy", $operational->id) . '" method="POST">';
-        $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        $btn .= '</form>';
-        return $btn;
-    })
-    ->rawColumns(['action', 'roles'])
-    ->make(true);
+            ->addColumn('instansi', function($operational) {
+                return $operational->pekerjaan->instansi->nama;
+            })
+            ->addColumn('action', function($operational) {
+                $btn = '<div style="display: flex; align-items: center;">';
+                $btn .= '<span style="background: #FFF8cc;  color: #FFA500; padding: 3px 8px; border-radius: 8px;">Menunggu Acc Admin</span>';
+                $btn .= '<a href="' . route("operational.edit", $operational->id) . '" class="edit btn btn-sm" style=" color: #666;"><i class="fas fa-edit"></i></a>';
+                $btn .= '</div>';
+                $btn .= '<form action="' . route("operational.destroy", $operational->id) . '" method="POST">';
+                $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+                $btn .= '</form>';
+                return $btn;
+            })
+            ->rawColumns(['action', 'instansi'])
+            ->make(true);
 
 
 
@@ -49,10 +50,10 @@ class OperationalController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id')->all();
+        $pekerjaan = Pekerjaan::all();
         return view('dashboard.operationalrequest.create',
         [
-            'roles' => $roles
+            'pekerjaan' => $pekerjaan
         ]);
     }
 
@@ -70,11 +71,11 @@ class OperationalController extends Controller
             'jumlah' => 'required',
         ]);
 
-        $operational = Operational::create($request->all);
+        $operational = Operational::create($request->all());
 
         return redirect()->route('operational')
             ->with('status', 'success')
-            ->with('message', 'operational ' . $operational->name . ' created successfully.');
+            ->with('message', 'operational ' . $operational->kegiatan . ' created successfully.');
     }
 
     /**
@@ -90,10 +91,11 @@ class OperationalController extends Controller
      */
     public function edit(string $id)
     {
-        $operational = operational::find($id);
+        $operational = Operational::find($id);
+        $pekerjaan = Pekerjaan::all();
         return view('dashboard.operationalrequest.edit',[
             'operational' => $operational,
-            'roles' => Role::pluck('name', 'id')->all() // akan mengembalikan associative array
+            'pekerjaan' => $pekerjaan
         ]);
     }
 
@@ -102,38 +104,20 @@ class OperationalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $operational = operational::find($id);
+        $operational = Operational::find($id);
 
         if (!$operational) {
             return redirect()->route('operational')
             ->with('status', 'error')
-            ->with('message', 'operational ' . $operational->name . ' not found.');
+            ->with('message', 'operational ' . $operational->kegiatan . ' not found.');
         }
-        Validator::make($request->all(), [
-            'name' => 'required',
-            'operationalname' => [
-                'required',
-                Rule::unique('operationals')->ignore($operational->id),
-            ],
-            'email' => [
-                'required',
-                Rule::unique('operationals')->ignore($operational->id),
-            ]
-        ])->validate();
-
-        if($request->input('password')) {
-            $request->merge(['password' => bcrypt($request->input('password'))]);
-        } else {
-            $request->merge(['password' => $operational->password]);
-        }
-        $operational->roles()->sync($request->input('roles'));
 
         $operational->update($request->all());
 
         return redirect()
             ->route('operational')
             ->with('status', 'success')
-            ->with('message', "Data ". $operational->name ." updated successfully.");
+            ->with('message', "Data ". $operational->kegiatan ." updated successfully.");
     }
 
     /**
@@ -141,8 +125,8 @@ class OperationalController extends Controller
      */
     public function destroy(string $id)
     {
-        $operational = operational::find($id);
-        $name = $operational->name;
+        $operational = Operational::find($id);
+        $name = $operational->kegiatan;
         $operational->delete();
         return redirect()->route('operational')
         ->with('status', 'success')
