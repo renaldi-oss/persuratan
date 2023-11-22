@@ -10,60 +10,66 @@
             <tbody>
                 <tr>
                     <td width="15%">No Surat</td>
-                    <td></i></td>
-                    <td>{{ $pekerjaan->surat_no }}</td>
+                    <td>:</td>
+                    <td>&nbsp;{{ $pekerjaan->surat_no }}</td>
                 </tr>
+                @if($pekerjaan->no_kontrak)
                 <tr>
                     <td>No Kontrak</td>
                     <td>:</td>
-                    <td>{{ $pekerjaan->no_kontrak }}</td>
+                    <td>&nbsp;{{ $pekerjaan->no_kontrak }}</td>
                 </tr>
+                @endif
                 <tr>
                     <td>Instansi</td>
                     <td>:</td>
-                    <td>{{ $pekerjaan->instansi->nama }}</td>
+                    <td>&nbsp;{{ $pekerjaan->instansi->nama }}</td>
                 </tr>
                 <tr>
                     <td>Nama Pekerjaan</td>
                     <td>:</td>
-                    <td>{{ $pekerjaan->nama }}</td>
+                    <td>&nbsp;{{ $pekerjaan->nama }}</td>
                 </tr>
                 <tr>
                     <td style="vertical-align: top">Deskripsi</td>
                     <td style="vertical-align: top">:</td>
-                    <td>{!! $pekerjaan->deskripsi !!}</td>
+                    <td>&nbsp;{!! $pekerjaan->deskripsi !!}</td>
                 </tr>
                 <tr>
                     <td>Lokasi</td>
                     <td>:</td>
-                    <td>{{ $pekerjaan->lokasi }}</td>
+                    <td>&nbsp;{{ $pekerjaan->lokasi }}</td>
                 </tr>
                 <tr>
                     <td>Jenis Pekerjaan</td>
                     <td>:</td>
-                    <td>{{ $pekerjaan->jenis }}</td>
+                    <td>&nbsp;{{ $pekerjaan->jenis }}</td>
                 </tr>
                 <tr>
                     <td>To Email</td>
                     <td>:</td>
-                    <td>{{ $pekerjaan->to_email }}</td>
+                    <td>&nbsp;{{ $pekerjaan->to_email }}</td>
                 </tr>
                 <tr>
                     <td>To Attn</td>
                     <td>:</td>
-                    <td>{{ $pekerjaan->to_attn }}</td>
+                    <td>&nbsp;{{ $pekerjaan->to_attn }}</td>
                 </tr>
+                @if($pekerjaan->due_date)
                 <tr>
                     <td>Due Date</td>
                     <td>:</td>
-                    <td>{{ ($pekerjaan->due_date) ? Carbon\Carbon::parse($pekerjaan->due_date)->format('d-m-Y') : '-' }}</td>
+                    <td>&nbsp;{{ ($pekerjaan->due_date) ? Carbon\Carbon::parse($pekerjaan->due_date)->format('d-m-Y') : '-' }}</td>
                 </tr>
+                @endif
                 @role('manager|finance')
+                @if($pekerjaan->nominal)
                 <tr>
                     <td>Nominal</td>
                     <td>:</td>
                     <td>{{ $pekerjaan->nominal }}</td>
                 </tr>
+                @endif
                 @endrole
             </tbody>
         </table>
@@ -73,7 +79,6 @@
     <div class="card-body">
         <h5 class="card-title">File pendukung</h5>
         @if (count($media) > 0)
-            {{-- btn download all media --}}
             <a href="{{ route('pekerjaan.downloadAll', $pekerjaan->id) }}" class="btn btn-sm btn-success mb-2" title="download all"><i class="fas fa-download"></i> Download All</a>
         @endif
         <br>

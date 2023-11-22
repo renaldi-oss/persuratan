@@ -48,7 +48,6 @@ class WorkOrderController extends Controller
         return view('dashboard.WorkOrder.show', ['wo' => $workorder]);
     }
 
-
     public function detail(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
@@ -105,4 +104,15 @@ class WorkOrderController extends Controller
     {
         return view('dashboard.WorkOrder.detail.addPersuratan', ['id' => $id]);
     }
+
+    // AJAX REQUEST
+    public function getMaterial(Request $request)
+    {
+        if($request->ajax()) {
+            // $data = Pekerjaan::with('instansi')->find($request->id);
+            // return datatables()->of($data->material)
+        }
+    }
+
+
 }
