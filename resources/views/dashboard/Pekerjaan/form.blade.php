@@ -1,9 +1,7 @@
 @section('style')
 {{-- style datetimepicker --}}
 <link rel="stylesheet" href="{{ asset('./plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-{{-- style select2 --}}
-<link rel="stylesheet" href="{{ asset('./plugins/select2/css/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('./plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
 @endsection
 
 
@@ -17,60 +15,39 @@
   
 <x-forms.select id="input-instansi_id" label="Instansi" name="instansi_id" :value="$pekerjaan->instansi_id ?? ''" :options="$instansi" />
 
-<div class="form-group">
-    <label for="input-lokasi">Lokasi</label>
-    <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="input-lokasi" name="lokasi" placeholder="Masukkan lokasi" value="{{ old('lokasi', ($pekerjaan->lokasi ?? '')) }}" autofocus>
-    <x-errormessage error="lokasi" />
-</div>
+<x-forms.input id="input-lokasi" label="Lokasi" name="lokasi" placeholder="Masukkan lokasi" :value="old('lokasi', ($pekerjaan->lokasi ?? ''))" />
 
-<div class="form-group">
-    <label for="input-to_email">To Email</label>
-    <input type="to_email" class="form-control @error('to_email') is-invalid @enderror" id="input-to_email" name="to_email" placeholder="Masukkan to_email" value="{{ old('to_email', ($pekerjaan->to_email ?? '')) }}">
-    <x-errormessage error="to_email" />
-</div>
-
-<div class="form-group">
-  <label for="input-to_attn">To Attn</label>
-  <input type="text" class="form-control @error('to_attn') is-invalid @enderror" id="input-to_attn" name="to_attn" placeholder="Masukkan attn" value="{{ old('to_attn', ($pekerjaan->to_attn ?? '')) }}">
-  <x-errormessage error="to_attn" />
-</div>
+<x-forms.input type="email" id="input-to_email" label="To Email" name="to_email" placeholder="Masukkan to_email" :value="old('to_email', ($pekerjaan->to_email ?? ''))" />
+    
+<x-forms.input id="input-to_attn" label="To Attn" name="to_attn" placeholder="Masukkan attn" :value="old('to_attn', ($pekerjaan->to_attn ?? ''))" />
 
 @if (Route::currentRouteName() == 'pekerjaan.edit')
 @role('manager|finance')
+
 <div class="form-group">
   <label for="input-due_date">Due Date</label>
   <input type="text" class="form-control @error('due_date') is-invalid @enderror datetimepicker-input" data-toggle="datetimepicker" data-target="#input-due_date" id="input-due_date" name="due_date" value="{{ old('due_date', ($pekerjaan->due_date ?? '')) }}" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
   <x-errormessage error="due_date" />
 </div>
 
-<div class="form-group">
-  <label for="input-no_kontrak">No Kontrak</label>
-  <input type="text" class="form-control @error('no_kontrak') is-invalid @enderror" id="input-no_kontrak" name="no_kontrak" placeholder="Masukkan no_kontrak" value="{{ old('no_kontrak', ($pekerjaan->no_kontrak ?? '')) }}">
-  <x-errormessage error="no_kontrak" />
-</div>
+<x-forms.input id="input-no_kontrak" label="No Kontrak" name="no_kontrak" placeholder="Masukkan no_kontrak" :value="old('no_kontrak', ($pekerjaan->no_kontrak ?? ''))" />
 
-<div class="form-group">
-  <label for="input-nominal">Nominal</label>
-  <input type="nominal" class="form-control @error('nominal') is-invalid @enderror" id="input-nominal" name="nominal" placeholder="Masukkan nominal" value="{{ old('nominal', ($pekerjaan->nominal ?? '')) }}">
-  <x-errormessage error="nominal" />
-</div>
+<x-forms.input id="input-nominal" label="Nominal" name="nominal" placeholder="Masukkan nominal" :value="old('nominal', ($pekerjaan->nominal ?? ''))" />
 
-<div class="form-group">
-  <label for="input-status">Status</label>
-  <select class="form-control select2 @error('status') is-invalid @enderror" id="input-status" name="status" value="{{ old('status', ($pekerjaan->status ?? '')) }}">
-    <option value="penawaran">Penawaran</option>
-    <option value="on-going">On Going</option>
-    <option value="over-time">Over Time</option>
-    <option value="done">Done</option>
-  </select>
-</div>
+<x-forms.select id="input-status" label="Status" name="status" :value="old('status', ($pekerjaan->status ?? ''))" 
+  :options="[
+      ['id' => 'penawaran', 'nama' => 'Penawaran'],
+      ['id' => 'on-going', 'nama' => 'On Going'],
+      ['id' => 'over-time', 'nama' => 'Over Time'],
+      ['id' => 'done', 'nama' => 'Done']
+  ]"
+/>
 
 <div class="form-group">
   <label for="input-kontak">File Kontrak</label>
   <input type="file" class="filepond @error('file_kontrak') is-invalid @enderror" id="input-file_kontrak" name="file[]" data-max-file-size="3MB" multiple>
   <x-errormessage error="file_kontrak" />
 </div>
-
 
 @endrole
 @endif
@@ -161,11 +138,13 @@
        $(element).removeClass('is-invalid');
      }
     });
+    var dateval = $('#input-due_date').val();
     // datetimepicker
     $('#input-due_date').datetimepicker({
       format: 'YYYY/MM/DD',
       locale: 'id',
-      minDate: moment().format('YYYY/MM/DD'),
+      minDate: moment().subtract(1, 'years').format('YYYY/MM/DD'),
+      defaultDate: dateval ? moment(dateval, 'YYYY/MM/DD') : moment(),
     });
     // select2
     $('.select2').select2({theme: 'bootstrap4'});

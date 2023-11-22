@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(PurchaseOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
             $table->string('brand');
             $table->integer('qty');

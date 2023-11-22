@@ -23,11 +23,6 @@
     <x-errormessage error="email" />
 </div>
 
-<div class="form-group">
-    <label for="input-lokasi">Lokasi</label>
-    <input type="lokasi" class="form-control @error('lokasi') is-invalid @enderror" id="input-lokasi" name="lokasi" placeholder="Masukkan lokasi" value="{{ old('lokasi', ($instansi->lokasi ?? '')) }}">
-    <x-errormessage error="lokasi" />
-</div>
 
 <div class="d-flex justify-content-between ">
     <button type="reset" class="btn btn-primary">Reset</button>
