@@ -31,7 +31,6 @@
                   <th>Alamat</th>
                   <th>Kontak</th>
                   <th>Email</th>
-                  <th>Lokasi</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -91,7 +90,6 @@
         {data: 'alamat', name: 'alamat'},
         {data: 'kontak', name: 'kontak'},
         {data: 'email', name: 'email'},
-        {data: 'lokasi', name: 'lokasi'},
         {
             data: 'action',
             name: 'action',
