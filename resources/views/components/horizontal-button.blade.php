@@ -3,5 +3,5 @@
     class="btn btn-block btn-primary btn-sm">{{ $slot }}</button>
 </div> --}}
 <li class="nav-item">
-    <a @click="tab = '{{ $tab }}'" class="nav-link" href="#">{{ $slot }}</a>
+    <a @click="tab = '{{ $tab }}'" class="nav-link" href="#{{ $tab }}">{{ $slot }}</a>
 </li>
