@@ -60,6 +60,9 @@
                                     <tr>
                                         <td colspan="7" class="text-right"><button type="button" class="btn btn-info" @click="addNewField()">+ Add Row</button></td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="7" class="text-right"><button type="button" class="btn btn-primary" @click="save()">Save</button></td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -72,23 +75,6 @@
               </div>
             </div>
         </div>
-    </div>
-    <div class="table-responsive">
-        <table id="tableMaterial" class="table1 table-bordered table-striped" style="text-align: center;">
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Brand</th>
-                    <th>Toko</th>
-                    <th>Qty</th>
-                    <th>Harga Estimasi</th>
-                    <th>Harga Asli</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
     </div>
     <div class="table-responsive">
         <table id="tableMaterial" class="table1 table-bordered table-striped" style="text-align: center;">
@@ -189,6 +175,9 @@ function handler() {
         },
         removeField(index) {
             this.fields.splice(index, 1);
+        },
+        save() {
+            console.log(this.fields);
         }
     }
 }
