@@ -74,7 +74,8 @@
         </div>
     </div>
     <div class="table-responsive">
-        <table id="tableMaterial" class="table1 table-bordered table-striped" style="text-align: center;">
+        <h2>Primary Material</h2>
+        <table id="tablePrimary" class="table1 table-bordered table-striped" style="text-align: center;">
             <thead>
                 <tr>
                     <th>Nama</th>
@@ -91,7 +92,8 @@
         </table>
     </div>
     <div class="table-responsive">
-        <table id="tableMaterial" class="table1 table-bordered table-striped" style="text-align: center;">
+        <h2>Additional Material</h2>
+        <table id="tableAdditional" class="table1 table-bordered table-striped" style="text-align: center;">
             <thead>
                 <tr>
                     <th>Nama</th>
@@ -119,12 +121,12 @@
 {{-- script table user --}}
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#tableMateria').DataTable({
+        $('#tablePrimary').DataTable({
             deferRender: false,
             processing: true,
             serverSide: true,
             paging: true,
-            pageLength: 10,
+            pageLength: 5,
             lengthChange: true,
             searching: true,
             ordering: true,
@@ -132,31 +134,100 @@
             info: true,
             responsive: true,
             autoWidth: false,
-            ajax: "{{ route('pekerjaan.index') }}",
+            ajax: {
+                url: "{{ route('material') }}",
+                data: {
+                    tipe: 'primary',
+                    id: {{ $id }}
+                }
+            },
             columns: [
                 {
-                    data: 'surat_no',
-                    name: 'no surat'
+                    data: 'nama',
+                    name: 'nama'
                 },
                 {
-                    data: 'instansi',
-                    name: 'instansi'
+                    data: 'brand',
+                    name: 'brand'
                 },
+                {
+                    data: 'toko',
+                    name: 'toko'
+                },
+                {
+                    data: 'qty',
+                    name: 'qty'
+                },
+                {
+                    data: 'estimated_price',
+                    name: 'harga_estimasi'
+                },
+                {
+                    data: 'real_price',
+                    name: 'harga_asli'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    class: 'd-flex justify-content-center'
+                }
+            ],
+            drawCallback: function(settings) {
+                var data = this.api().rows({
+                    page: 'current'
+                }).data();
+                console.log(data);
+            },
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableAdditional').DataTable({
+            deferRender: false,
+            processing: true,
+            serverSide: true,
+            paging: true,
+            pageLength: 5,
+            lengthChange: true,
+            searching: true,
+            ordering: true,
+            orderable: true,
+            info: true,
+            responsive: true,
+            autoWidth: false,
+            ajax: {
+                url: "{{ route('material') }}",
+                data: {
+                    tipe: 'additional',
+                    id: {{ $id }}
+                }
+            },
+            columns: [
                 {
                     data: 'nama',
-                    name: 'pekerjaan'
+                    name: 'nama'
                 },
                 {
-                    data: 'to_attn',
-                    name: 'attn'
+                    data: 'brand',
+                    name: 'brand'
                 },
                 {
-                    data:'due_date',
-                    name:'due date'
+                    data: 'toko',
+                    name: 'toko'
                 },
                 {
-                    data: 'status',
-                    name: 'Status'
+                    data: 'qty',
+                    name: 'qty'
+                },
+                {
+                    data: 'estimated_price',
+                    name: 'harga_estimasi'
+                },
+                {
+                    data: 'real_price',
+                    name: 'harga_asli'
                 },
                 {
                     data: 'action',

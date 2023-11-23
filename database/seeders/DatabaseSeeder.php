@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PekerjaanSeeder::class);
         $this->call(WorkOrderSeeder::class);
         $this->call(OperationalSeeder::class);
+        $this->call(MaterialSeeder::class);
     }
 }

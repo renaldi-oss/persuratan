@@ -11,7 +11,7 @@ use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
 use App\Http\Controllers\Dashboard\UserProfileController;
-
+use App\Http\Controllers\dashboard\MaterialController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('pekerjaan/file/{media}', [PekerjaanController::class, 'download'])->name('pekerjaan.download');
     Route::get('pekerjaan/file/{pekerjaan}/downloadAll', [PekerjaanController::class, 'downloadAll'])->name('pekerjaan.downloadAll');
     Route::delete('pekerjaan/file/{media}', [PekerjaanController::class, 'deletefile'])->name('pekerjaan.delete');
-    
+
     //route Work Order
     Route::resource('workorder', workorderController::class)->except(['create', 'edit', 'update', 'destroy','store']);
     // route livewire work order
@@ -101,11 +101,20 @@ Route::middleware(['auth'])->group(function () {
         'update' => 'purchase.update',
         'destroy' => 'purchase.destroy',
     ])->except(['show']);
+
+    Route::resource('material', MaterialController::class)->names([
+        'index' => 'material',
+        'create' => 'material.create',
+        'store' => 'material.store',
+        'edit' => 'material.edit',
+        'update' => 'material.update',
+        'destroy' => 'material.destroy',
+    ])->except(['show']);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     // route untuk handle file upload temporary digunakan filepond
     Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('tempfile.upload');
     Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('tempfile.destroy');
 
-Route::get('/dashboard/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/dashboard/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
 });

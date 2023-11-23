@@ -11,4 +11,9 @@ class Material extends Model
 
     protected $table = 'materials';
     protected $guarded = ['id'];
+
+    public function pekerjaan()
+    {
+        return $this->belongsTo(Pekerjaan::class);
+    }
 }
