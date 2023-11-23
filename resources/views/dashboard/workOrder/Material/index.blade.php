@@ -60,6 +60,9 @@
                                     <tr>
                                         <td colspan="7" class="text-right"><button type="button" class="btn btn-info" @click="addNewField()">+ Add Row</button></td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="7" class="text-right"><button type="button" class="btn btn-primary" @click="save()">Save</button></td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -260,6 +263,9 @@ function handler() {
         },
         removeField(index) {
             this.fields.splice(index, 1);
+        },
+        save() {
+            console.log(this.fields);
         }
     }
 }

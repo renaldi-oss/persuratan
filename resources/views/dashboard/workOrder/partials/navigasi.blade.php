@@ -14,39 +14,42 @@
         <x-horizontal-button tab="qcPass">QC Pass</x-horizontal-button>
         <x-horizontal-button tab="persuratan">Persuratan</x-horizontal-button>
     </ul>
-    <template x-if="tab === 'material'">
+    <template x-if="tab === 'material'" id="material">
         @include('dashboard.WorkOrder.Material.index')
     </template>
-    <template x-if="tab === 'jadwal'">
+    <template x-if="tab === 'jadwal'" id="jadwal">
         @include('dashboard.WorkOrder.JadwalPelaksanaan.index')
     </template>
-    <template x-if="tab === 'purchaseRequest'">
+    <template x-if="tab === 'purchaseRequest'" id="purchaseRequest">
         @include('dashboard.WorkOrder.PurchaseRequest.index')
     </template>
-    <template x-if="tab === 'checkList'">
+    <template x-if="tab === 'checkList'" id="checkList">
         @include('dashboard.WorkOrder.CheckList.index')
     </template>
-    <template x-if="tab === 'qcPass'">
+    <template x-if="tab === 'qcPass'" id="qcPass">
        @include('dashboard.WorkOrder.QcPass.index')
     </template>
-    <template x-if="tab === 'persuratan'">
+    <template x-if="tab === 'persuratan'" id="persuratan">
         @include('dashboard.WorkOrder.Persuratan.index')
     </template>
 
 
-    {{-- <div x-show="tab === 'jadwal'">
-       
+    {{-- <div x-show="tab === 'material'">
+        @include('dashboard.WorkOrder.Material.index')
+    </div>
+    <div x-show="tab === 'jadwal'">
+        @include('dashboard.WorkOrder.JadwalPelaksanaan.index')
     </div>
     <div x-show="tab === 'purchaseRequest'">
-        
+        @include('dashboard.WorkOrder.PurchaseRequest.index')
     </div>
     <div x-show="tab === 'checkList'">
-        
+        @include('dashboard.WorkOrder.CheckList.index')
     </div>
     <div x-show="tab === 'qcPass'">
-        
+        @include('dashboard.WorkOrder.QcPass.index')
     </div>
     <div x-show="tab === 'persuratan'">
-        
+        @include('dashboard.WorkOrder.Persuratan.index')
     </div> --}}
 </div>
