@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Operational;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
-use App\Models\User;
 use DataTables;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
@@ -17,26 +18,26 @@ class OperationalController extends Controller
      */
     public function index(Request $request)
     {
-        // get user data with roles
+        // get operational data
         if($request->ajax()) {
-            $users = User::with('roles')->get();
+            $operationals = Operational::with('pekerjaan.instansi')->get();
 
-            return datatables()->of($users)
-    ->addColumn('roles', function($user) {
-        return $user->roles->pluck('name')->implode(', ');
-    })
-    ->addColumn('action', function($user) {
-        $btn = '<div style="display: flex; align-items: center;">';
-        $btn .= '<span style="background: #FFF8cc;  color: #FFA500; padding: 3px 8px; border-radius: 8px;">Menunggu Acc Admin</span>';
-        $btn .= '<a href="' . route("operational.edit", $user->id) . '" class="edit btn btn-sm" style=" color: #666;"><i class="fas fa-edit"></i></a>';
-        $btn .= '</div>';
-        $btn .= '<form action="' . route("operational.destroy", $user->id) . '" method="POST">';
-        $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        $btn .= '</form>';
-        return $btn;
-    })
-    ->rawColumns(['action', 'roles'])
-    ->make(true);
+            return datatables()->of($operationals)
+            ->addColumn('instansi', function($operational) {
+                return $operational->pekerjaan->instansi->nama;
+            })
+            ->addColumn('action', function($operational) {
+                $btn = '<div style="display: flex; align-items: center;">';
+                $btn .= '<span style="background: #FFF8cc;  color: #FFA500; padding: 3px 8px; border-radius: 8px;">Menunggu Acc Admin</span>';
+                $btn .= '<a href="' . route("operational.edit", $operational->id) . '" class="edit btn btn-sm" style=" color: #666;"><i class="fas fa-edit"></i></a>';
+                $btn .= '</div>';
+                $btn .= '<form action="' . route("operational.destroy", $operational->id) . '" method="POST">';
+                $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+                $btn .= '</form>';
+                return $btn;
+            })
+            ->rawColumns(['action', 'instansi'])
+            ->make(true);
 
 
 
@@ -49,10 +50,10 @@ class OperationalController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id')->all();
+        $pekerjaan = Pekerjaan::all();
         return view('dashboard.operationalrequest.create',
         [
-            'roles' => $roles
+            'pekerjaan' => $pekerjaan
         ]);
     }
 
@@ -62,21 +63,19 @@ class OperationalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date' => 'required',
-            'type' => 'required',
-            'instances' => 'required',
-            'location' => 'required',
-            'po' => 'required',
-            'amount' => 'required',
+            'pekerjaan_id' => 'required',
+            'tanggal' => 'required',
+            'kegiatan' => 'required',
+            'status' => 'required',
+            'lokasi' => 'required',
+            'jumlah' => 'required',
         ]);
 
-        $user = User::create($request->all());
-        $role = Role::find($request->input('roles'));
-        $user->assignRole($role->name);
+        $operational = Operational::create($request->all());
 
         return redirect()->route('operational')
             ->with('status', 'success')
-            ->with('message', 'User ' . $user->name . ' created successfully.');
+            ->with('message', 'operational ' . $operational->kegiatan . ' created successfully.');
     }
 
     /**
@@ -92,10 +91,11 @@ class OperationalController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::find($id);
+        $operational = Operational::find($id);
+        $pekerjaan = Pekerjaan::all();
         return view('dashboard.operationalrequest.edit',[
-            'user' => $user,
-            'roles' => Role::pluck('name', 'id')->all() // akan mengembalikan associative array
+            'operational' => $operational,
+            'pekerjaan' => $pekerjaan
         ]);
     }
 
@@ -104,38 +104,20 @@ class OperationalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::find($id);
+        $operational = Operational::find($id);
 
-        if (!$user) {
+        if (!$operational) {
             return redirect()->route('operational')
             ->with('status', 'error')
-            ->with('message', 'User ' . $user->name . ' not found.');
+            ->with('message', 'operational ' . $operational->kegiatan . ' not found.');
         }
-        Validator::make($request->all(), [
-            'name' => 'required',
-            'username' => [
-                'required',
-                Rule::unique('users')->ignore($user->id),
-            ],
-            'email' => [
-                'required',
-                Rule::unique('users')->ignore($user->id),
-            ]
-        ])->validate();
 
-        if($request->input('password')) {
-            $request->merge(['password' => bcrypt($request->input('password'))]);
-        } else {
-            $request->merge(['password' => $user->password]);
-        }
-        $user->roles()->sync($request->input('roles'));
-
-        $user->update($request->all());
+        $operational->update($request->all());
 
         return redirect()
             ->route('operational')
             ->with('status', 'success')
-            ->with('message', "Data ". $user->name ." updated successfully.");
+            ->with('message', "Data ". $operational->kegiatan ." updated successfully.");
     }
 
     /**
@@ -143,11 +125,11 @@ class OperationalController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::find($id);
-        $name = $user->name;
-        $user->delete();
+        $operational = Operational::find($id);
+        $name = $operational->kegiatan;
+        $operational->delete();
         return redirect()->route('operational')
         ->with('status', 'success')
-        ->with('message', 'User ' . $name . ' deleted successfully.');
+        ->with('message', 'operational ' . $name . ' deleted successfully.');
     }
 }

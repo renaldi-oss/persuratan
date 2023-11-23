@@ -8,12 +8,6 @@
 
 <div>
     <div class="container-fluid my-2">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMaterial">
-            Create Primary Material
-        </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMaterial">
-            Create Additional Material
-        </button>
         <div class="modal fade" id="createMaterial">
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
@@ -76,8 +70,40 @@
             </div>
         </div>
     </div>
-    <div class="table-responsive">
-        <table id="tableMaterial" class="table1 table-bordered table-striped" style="text-align: center;">
+    <div class="table-responsive" x-init="initPrimary" x-ref="tablePrimary"
+                style="border-bottom: 2px solid #ccc;
+                margin-bottom: 20px;
+                padding-bottom: 20px">
+    <div class="d-flex justify-content-between">
+        <h2>Primary Material</h2>
+        <button type="button" class="btn btn-primary align-self-center" data-toggle="modal" data-target="#createMaterial">
+            Add Primary
+        </button>
+    </div>
+        <table id="tablePrimary" class="table1 table-bordered table-striped" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Brand</th>
+                    <th>Toko</th>
+                    <th>Qty</th>
+                    <th>Harga Estimasi</th>
+                    <th>Harga Asli</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive" x-init="initAdditional" x-ref="tableAdditional">
+        <div class="d-flex justify-content-between">
+            <h2>Additional Material</h2>
+            <button type="button" class="btn btn-primary align-self-center" data-toggle="modal" data-target="#createMaterial">
+                Add Additional
+            </button>
+        </div>
+        <table id="tableAdditional" class="table1 table-bordered table-striped" style="text-align: center;">
             <thead>
                 <tr>
                     <th>Nama</th>
@@ -104,13 +130,13 @@
 
 {{-- script table user --}}
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#tableMateria').DataTable({
+    function initPrimary() {
+        $('#tablePrimary').DataTable({
             deferRender: false,
             processing: true,
             serverSide: true,
             paging: true,
-            pageLength: 10,
+            pageLength: 5,
             lengthChange: true,
             searching: true,
             ordering: true,
@@ -118,31 +144,37 @@
             info: true,
             responsive: true,
             autoWidth: false,
-            ajax: "{{ route('pekerjaan.index') }}",
+            ajax: {
+                url: "{{ route('material') }}",
+                data: {
+                    tipe: 'primary',
+                    id: {{ $id }}
+                }
+            },
             columns: [
                 {
-                    data: 'surat_no',
-                    name: 'no surat'
-                },
-                {
-                    data: 'instansi',
-                    name: 'instansi'
-                },
-                {
                     data: 'nama',
-                    name: 'pekerjaan'
+                    name: 'nama'
                 },
                 {
-                    data: 'to_attn',
-                    name: 'attn'
+                    data: 'brand',
+                    name: 'brand'
                 },
                 {
-                    data:'due_date',
-                    name:'due date'
+                    data: 'toko',
+                    name: 'toko'
                 },
                 {
-                    data: 'status',
-                    name: 'Status'
+                    data: 'qty',
+                    name: 'qty'
+                },
+                {
+                    data: 'estimated_price',
+                    name: 'harga_estimasi'
+                },
+                {
+                    data: 'real_price',
+                    name: 'harga_asli'
                 },
                 {
                     data: 'action',
@@ -157,7 +189,70 @@
                 console.log(data);
             },
         });
-    });
+    };
+</script>
+
+<script type="text/javascript">
+    function initAdditional() {
+        $('#tableAdditional').DataTable({
+            deferRender: false,
+            processing: true,
+            serverSide: true,
+            paging: true,
+            pageLength: 5,
+            lengthChange: true,
+            searching: true,
+            ordering: true,
+            orderable: true,
+            info: true,
+            responsive: true,
+            autoWidth: false,
+            ajax: {
+                url: "{{ route('material') }}",
+                data: {
+                    tipe: 'additional',
+                    id: {{ $id }}
+                }
+            },
+            columns: [
+                {
+                    data: 'nama',
+                    name: 'nama'
+                },
+                {
+                    data: 'brand',
+                    name: 'brand'
+                },
+                {
+                    data: 'toko',
+                    name: 'toko'
+                },
+                {
+                    data: 'qty',
+                    name: 'qty'
+                },
+                {
+                    data: 'estimated_price',
+                    name: 'harga_estimasi'
+                },
+                {
+                    data: 'real_price',
+                    name: 'harga_asli'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    class: 'd-flex justify-content-center'
+                }
+            ],
+            drawCallback: function(settings) {
+                var data = this.api().rows({
+                    page: 'current'
+                }).data();
+                console.log(data);
+            },
+        });
+    };
 </script>
 
 <script>

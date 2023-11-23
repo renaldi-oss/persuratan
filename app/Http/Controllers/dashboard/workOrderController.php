@@ -45,7 +45,7 @@ class WorkOrderController extends Controller
     public function show(string $id)
     {
         $workorder = WorkOrder::with(['surat','pekerjaan.instansi'])->find($id);
-        return view('dashboard.WorkOrder.show', ['wo' => $workorder]);
+        return view('dashboard.WorkOrder.show', ['wo' => $workorder, 'id' => $id]);
     }
 
     public function detail(string $id)
