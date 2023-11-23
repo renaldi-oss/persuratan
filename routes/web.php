@@ -81,7 +81,8 @@ Route::middleware(['auth'])->group(function () {
     // Route::post('/load-persuratan', [workorderController::class, 'handlePersuratan'])->name('handlePersuratan');
 
     //halaman summary
-    Route::get('/summary', [summaryController::class, 'index'])->name('summary');
+    Route::get('/summary', [summaryController::class, 'index'])->name('summary.index');
+    Route::get('/summary/downloadAll', [summaryController::class, 'downloadAll'])->name('summary.downloadAll');
 
     // Tambahkan rute untuk administration
     Route::resource('operational', OperationalController::class)->names([

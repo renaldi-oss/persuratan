@@ -50,7 +50,7 @@
                     <td>Resiko</td>
                     <td>:</td>
                     <td>
-                        <div class="d-flex justify-content-between">
+                        {{-- <div class="d-flex justify-content-between">
                             <div>
                                 &nbsp;{{ isset($resiko) ? $resiko : '-' }}
                             </div>
@@ -62,7 +62,7 @@
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Resiko Matrix</h5>
+                                        <h5 class="modal-title" id="staticBackdropLabel">Risk Matrix</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -89,7 +89,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        {{ csrf_field() }}
+                        @include('dashboard.WorkOrder.partials.resiko', ['tombol' => 'Submit'])
                     </td>
                 </tr>
             </tbody>
