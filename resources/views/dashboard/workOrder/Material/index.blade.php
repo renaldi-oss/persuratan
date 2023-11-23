@@ -8,12 +8,6 @@
 
 <div>
     <div class="container-fluid my-2">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMaterial">
-            Create Primary Material
-        </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMaterial">
-            Create Additional Material
-        </button>
         <div class="modal fade" id="createMaterial">
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
@@ -76,8 +70,16 @@
             </div>
         </div>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" x-init="initPrimary" x-ref="tablePrimary"
+                style="border-bottom: 2px solid #ccc;
+                margin-bottom: 20px;
+                padding-bottom: 20px">
+    <div class="d-flex justify-content-between">
         <h2>Primary Material</h2>
+        <button type="button" class="btn btn-primary align-self-center" data-toggle="modal" data-target="#createMaterial">
+            Add Primary
+        </button>
+    </div>
         <table id="tablePrimary" class="table1 table-bordered table-striped" style="text-align: center;">
             <thead>
                 <tr>
@@ -94,8 +96,13 @@
             </tbody>
         </table>
     </div>
-    <div class="table-responsive">
-        <h2>Additional Material</h2>
+    <div class="table-responsive" x-init="initAdditional" x-ref="tableAdditional">
+        <div class="d-flex justify-content-between">
+            <h2>Additional Material</h2>
+            <button type="button" class="btn btn-primary align-self-center" data-toggle="modal" data-target="#createMaterial">
+                Add Additional
+            </button>
+        </div>
         <table id="tableAdditional" class="table1 table-bordered table-striped" style="text-align: center;">
             <thead>
                 <tr>
@@ -123,7 +130,7 @@
 
 {{-- script table user --}}
 <script type="text/javascript">
-    $(document).ready(function() {
+    function initPrimary() {
         $('#tablePrimary').DataTable({
             deferRender: false,
             processing: true,
@@ -182,11 +189,11 @@
                 console.log(data);
             },
         });
-    });
+    };
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    function initAdditional() {
         $('#tableAdditional').DataTable({
             deferRender: false,
             processing: true,
@@ -245,7 +252,7 @@
                 console.log(data);
             },
         });
-    });
+    };
 </script>
 
 <script>
