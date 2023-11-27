@@ -68,6 +68,14 @@
                     <td>Nominal</td>
                     <td>:</td>
                     <td>{{ $pekerjaan->nominal }}</td>
+                    {{-- role manager
+                            btn form hidden val status
+                            status tidak dapat dirubah ketika sudah di set
+                        if btn status == manager
+                            role finance
+                                status == finance
+                                btn form hidden val status
+                     --}}
                 </tr>
                 @endif
                 @endrole

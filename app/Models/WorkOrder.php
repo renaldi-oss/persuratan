@@ -22,6 +22,11 @@ class WorkOrder extends Model
         return $this->belongsTo(Surat::class);
     }
 
+    public function jadwal()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
+
     public function purchaseRequest()
     {
         return $this->hasMany(PurchaseRequest::class);

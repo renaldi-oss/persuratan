@@ -18,13 +18,6 @@ class HomeController extends Controller
         return view('dashboard.index', ['pekerjaan' => $pekerjaan]);
     }
 
-    public function api()
-    {
-        $proyeks = Proyek::with('instansi')->get();
-        $operationals = Operational::with('proyek.instansi')->get();
-        dd($proyeks, $operationals);
-
-    }
 
     public function getProyek (Request $request)
     {

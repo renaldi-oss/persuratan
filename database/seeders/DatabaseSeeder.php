@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(WorkOrderSeeder::class);
         $this->call(OperationalSeeder::class);
         $this->call(MaterialSeeder::class);
+        $this->call(JadwalSeeder::class);
     }
 }

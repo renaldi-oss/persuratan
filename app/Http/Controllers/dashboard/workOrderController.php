@@ -42,10 +42,33 @@ class WorkOrderController extends Controller
 
         return view('dashboard.WorkOrder.index');
     }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'pekerjaan_id' => 'required',
+            'lokasi' => 'required',
+            'due_date' => 'required',
+        ]);
+
+        $wo = new WorkOrder();
+        $wo->pekerjaan_id = $request->pekerjaan_id;
+        $wo->lokasi = $request->lokasi;
+        $wo->due_date = $request->due_date;
+        $wo->save();
+
+        return redirect()->route('workorder.index')->with('success', 'Work Order berhasil dibuat');
+    }
+
+
     public function show(string $id)
     {
         $workorder = WorkOrder::with(['surat','pekerjaan.instansi'])->find($id);
         return view('dashboard.WorkOrder.show', ['wo' => $workorder, 'id' => $id]);
+    }
+
+    // FUNCTION NAVIGASI
+    public function navigasi(Request $request){
+        session(['active_tab' => $request->tab]);
     }
 
     public function detail(string $id)
