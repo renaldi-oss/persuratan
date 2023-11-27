@@ -50,6 +50,32 @@
             </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+                Settings
+                <i class="right fas fa-angle-left"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+                @hasrole('finance|manager')
+                <li class="nav-item">
+            <a href="{{ route('kodeSurat.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                    <p>
+                       Kode Surat
+                        <span class="badge badge-info right"></span>
+                    </p>
+                    </a>
+                </li>
+                @endhasrole
+             
+                {{-- DIVIDER --}}
+                <hr class="my-12 mx-1 bg-secondary" />
+            </ul>
+        </li>
+        
         @endhasrole
 
         {{-- DIVIDER --}}
