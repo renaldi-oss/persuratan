@@ -31,6 +31,11 @@ class WorkOrder extends Model
     {
         return $this->hasMany(PurchaseRequest::class);
     }
+    
+    public function qualityControl()
+    {
+        return $this->hasMany(QualityControl::class);
+    }
 
     public static function Last(){
         return static::all()->last();
