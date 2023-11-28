@@ -50,13 +50,13 @@
 
     <div>
         {{-- table event kalendar --}}
-        <table id="tableCalendar" class="table1 table-bordered table-striped" style="text-align: center;">
+        <table id="tableCalendar" class="table1 table-bordered table-striped" style="text-align: center;justify-content: center;align-items: center;">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Keterangan</th>
                     <th>Tanggal</th>
-                    <th>Action</th>
+                    <th style="width: 80px;justify-content: center;">Action</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -66,7 +66,7 @@
     {{-- Calender --}}
     <div>
         <div class="col-12">
-            <div class="card card-primary">
+            <div class="card card-primary mt-5">
             <div class="card-body p-0">
                 <div id="calendar"></div>
             </div>
@@ -107,30 +107,29 @@ $(document).ready(function() {
 
     calendar.render();
 
+
     // ambil data kalender dari database
     axios.get('{{ route('jadwal.index', ['id' => $wo->id]) }}')
     .then(function (response) {
         var e = response.data;
 
-       
         var table = $('#tableCalendar').DataTable();
         table.clear().draw();
         for (var i = 0; i < e.length; i++) {
             var start = moment(e[i].start).format('DD/MM/YYYY');
-            var end = moment(e[i].end).format('DD/MM/YYYY');
+            var end = moment(e[i].end).format('DD/MM/YYYY'); // Menambah 1 hari ke end
+
             table.row.add([
-                i+1,
+                i + 1,
                 e[i].nama,
                 start + ' - ' + end,
-                '<button type="button" class="btn btn-danger btn-sm" onclick="hapusJadwal('+e[i].id+')">Hapus</button>'
+                '<div style="display:flex;justify-content:center;"><button type="button" class="btn btn-block btn-outline-danger" onclick="hapusJadwal(' + e[i].id + ')"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button></div>'
             ]).draw(false);
-        }
-        var colors = ['red', 'blue', 'green', 'purple', 'pink'];
-        for (var i = 0; i < e.length; i++) {
+            var colors = ['#d93838', '#007bff', 'rgb(32 171 81)', '#b559b5', '#e5afb8'];
             calendar.addEvent({
                 title: e[i].nama,
                 start: e[i].start,
-                end: e[i].end,
+                end: moment(e[i].end).add(1, 'day').toDate(), // Menambah 1 hari ke end dan konversi ke Date
                 allDay: true,
                 color: colors[i % colors.length],
             });
@@ -148,7 +147,7 @@ $(document).ready(function() {
     });
     $('form').on('submit', function(e) {
         e.preventDefault();
-        
+
         var formData = new FormData(this);
 
         formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
@@ -174,7 +173,7 @@ $(document).ready(function() {
                 table.data().count() + 1,
                 event.nama,
                 moment(event.start).format('DD/MM/YYYY') + ' - ' + moment(event.end).format('DD/MM/YYYY'),
-                '<button type="button" class="btn btn-danger btn-sm" onclick="hapusJadwal('+event.id+')">Hapus</button>'
+                '<button type="button" class="btn btn-block btn-outline-danger" onclick="hapusJadwal(' + e[i].id + ')"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>'
             ]).draw(false);
 
             $(':input').val('');
@@ -200,15 +199,24 @@ function hapusJadwal(id) {
         var row = table.row(function (idx, data, node) {
             return data[0] === id ? true : false;
         });
-        row.remove().draw();
+
+        if (row) {
+            row.remove().draw(); // Hapus dari tabel
+        } else {
+            console.log("Baris tidak ditemukan dalam tabel.");
+        }
 
         var event = calendar.getEventById(id);
-        event.remove();
+        if (event) {
+            event.remove(); // Hapus dari kalender
+        }
     })
     .catch(function (error) {
         console.log(error);
     });
 }
+
+
 
 </script>
 
