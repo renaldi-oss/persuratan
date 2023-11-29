@@ -79,6 +79,7 @@ class JadwalController extends Controller
      */
     public function destroy(string $id)
     {
-        Jadwal::destroy($id);
+        $jadwal = jadwal::find($id);
+        $jadwal->delete();
     }
 }
