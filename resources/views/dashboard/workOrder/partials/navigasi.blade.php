@@ -1,4 +1,4 @@
-<div x-data="{ tab: 'material' }">
+<div x-data="{ tab: '{{ $defaultTab }}' }">
     {{-- <div class="d-flex justify-content-center flex-wrap">
         <x-horizontal-button tab="jadwal">Jadwal Pelaksanaan</x-horizontal-button>
         <x-horizontal-button tab="purchaseRequest">Purchase Request</x-horizontal-button>
