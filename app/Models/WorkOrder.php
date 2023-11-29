@@ -19,7 +19,7 @@ class WorkOrder extends Model
 
     public function surat()
     {
-        return $this->belongsTo(Surat::class);
+        return $this->hasMany(Surat::class);
     }
 
     public function jadwal()

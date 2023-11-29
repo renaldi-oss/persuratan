@@ -2,6 +2,7 @@
 
 use App\Models\KodeSurat;
 use App\Models\Pekerjaan;
+use App\Models\WorkOrder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,10 +16,9 @@ return new class extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
-            $table->string('surat_no')->unique();
-            $table->foreignIdFor(KodeSurat::class);
+            $table->foreignIdFor(WorkOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->text('keterangan');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
