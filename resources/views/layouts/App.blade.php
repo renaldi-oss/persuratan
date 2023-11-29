@@ -23,10 +23,6 @@
   <link rel="stylesheet" href="{{ asset('./assets/css/css.css') }}">
   <!-- alpinejs -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script
-  defer
-  src="https://unpkg.com/alpinejs-axios@latest/dist/api.min.js"
-  ></script>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   

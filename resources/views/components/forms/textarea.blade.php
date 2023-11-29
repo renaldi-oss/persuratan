@@ -10,10 +10,11 @@
     <x-errormessage :error="$name" />
 </div>
 
-@push('script')
+@prepend('script')
     <script src="{{ asset('./plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script>
         $('#{{ $id }}').summernote({
+            dialogsInBody: true,
             toolbar: [
                 ['style', ['bold', 'italic', 'underline', 'clear']],
                 ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -24,4 +25,4 @@
             ]
         });
     </script>
-@endpush
+@endprepend
