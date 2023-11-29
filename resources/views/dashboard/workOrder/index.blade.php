@@ -29,10 +29,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                            <table id="proyeksTable" class="table table-bordered table-striped">
+                            <table id="TableWO" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nama Proyek</th>
+                                        <th>Nama</th>
                                         <th>Instansi</th>
                                         <th>Pekerjaan</th>
                                         <th>Lokasi</th>
@@ -69,7 +69,7 @@
     {{-- script table user --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#proyeksTable').DataTable({
+            $('#TableWO').DataTable({
                 deferRender: false,
                 processing: true,
                 serverSide: true,

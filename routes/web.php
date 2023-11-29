@@ -3,16 +3,19 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
+use App\Http\Controllers\dashboard\JadwalController;
+use App\Http\Controllers\dashboard\MaterialController;
 use App\Http\Controllers\Dashboard\OperationalController;
 use App\Http\Controllers\dashboard\PekerjaanController;
+use App\Http\Controllers\dashboard\kodeSuratController;
 use App\Http\Controllers\Dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
-use App\Http\Controllers\Dashboard\WorkOrderController;
 use App\Http\Controllers\Dashboard\UserProfileController;
-use App\Http\Controllers\dashboard\MaterialController;
+use App\Http\Controllers\Dashboard\WorkOrderController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -61,7 +64,11 @@ Route::middleware(['auth'])->group(function () {
 
     //route Work Order
     Route::resource('workorder', workorderController::class)->except(['create', 'edit', 'update', 'destroy','store']);
-    // route livewire work order
+    Route::post('workorder/set-active-tab', [workorderController::class, 'navigasi'])->name('workorder.navigasi');
+
+    //route Jadwal
+    Route::resource('jadwal', JadwalController::class)->except(['create']);
+    
     // Route::get('/workorder/{id}/detail', [workorderController::class, 'detail'])->name('detailworkorder');
     // Route::get('/workorder/{id}/jadwal', [workorderController::class, 'jadwal'])->name('jadwal');
     // Route::get('/workorder/{id}/purchaseRequest', [workorderController::class, 'purchaseRequest'])->name('purchaseRequest');
@@ -117,5 +124,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('tempfile.upload');
     Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('tempfile.destroy');
 
-    Route::get('/dashboard/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
+     // route Pekerjaan
+     Route::resource('kodeSurat', kodeSuratController::class);
+    //  Route::get('kodeSurat/create', 'KodeSuratController@create')->name('kodeSurat.create');
+    //  Route::get('kodeSurat/form', 'KodeSuratController@form')->name('kodeSurat.form');
+    // Route::get('/dashboard/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
 });

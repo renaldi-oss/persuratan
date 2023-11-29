@@ -194,12 +194,12 @@
                     class: 'd-flex justify-content-center'
                 }
             ],
-            drawCallback: function(settings) {
-                var data = this.api().rows({
-                    page: 'current'
-                }).data();
-                console.log(data);
-            },
+            // drawCallback: function(settings) {
+            //     var data = this.api().rows({
+            //         page: 'current'
+            //     }).data();
+            //     console.log(data);
+            // },
         });
     };
 </script>
@@ -257,12 +257,12 @@
                     class: 'd-flex justify-content-center'
                 }
             ],
-            drawCallback: function(settings) {
-                var data = this.api().rows({
-                    page: 'current'
-                }).data();
-                console.log(data);
-            },
+            // drawCallback: function(settings) {
+            //     var data = this.api().rows({
+            //         page: 'current'
+            //     }).data();
+            //     console.log(data);
+            // },
         });
     };
 </script>
