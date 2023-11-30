@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(Pekerjaan::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Pekerjaan::class)->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('surat_no');
             $table->string('pekerjaan');
             $table->string('requester');

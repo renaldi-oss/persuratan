@@ -16,4 +16,13 @@ class Material extends Model
     {
         return $this->belongsTo(Pekerjaan::class);
     }
+
+    public static function getAllMaterialPekerjaan()
+    {
+        return static::whereNotNull('pekerjaan_id')->get();
+    }
+    public static function getAllMaterialNonPekerjaan()
+    {
+        return static::whereNull('pekerjaan_id')->get();
+    }
 }

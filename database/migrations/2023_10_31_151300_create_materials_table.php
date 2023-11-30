@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Pekerjaan::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Pekerjaan::class)->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
             $table->string('brand');
             $table->integer('qty');

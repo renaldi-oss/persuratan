@@ -34,7 +34,7 @@ class WorkOrder extends Model
     
     public function qualityControl()
     {
-        return $this->hasMany(QualityControl::class);
+        return $this->hasOne(QualityControl::class);
     }
 
     public static function Last(){

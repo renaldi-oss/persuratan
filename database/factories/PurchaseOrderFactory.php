@@ -17,7 +17,10 @@ class PurchaseOrderFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'pekerjaan' => $this->faker->sentence,
+            'requester' => $this->faker->name,
+            'division' => $this->faker->word,
+            'status' => $this->faker->randomElement(['pending', 'manager', 'accepted']),
         ];
     }
 }

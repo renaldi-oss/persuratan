@@ -117,7 +117,7 @@ $(document).ready(function() {
         table.clear().draw();
         for (var i = 0; i < e.length; i++) {
             var start = moment(e[i].start).format('DD/MM/YYYY');
-            var end = moment(e[i].end).format('DD/MM/YYYY'); // Menambah 1 hari ke end
+            var end = moment(e[i].end).format('DD/MM/YYYY');
 
             table.row.add([
                 i + 1,
@@ -203,6 +203,7 @@ function hapusJadwal(id) {
                 table.row(index).remove().draw();
             }
         });
+
 
         var event = calendar.getEventById(id);
         if (event) {
