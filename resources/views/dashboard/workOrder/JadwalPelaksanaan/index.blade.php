@@ -160,21 +160,21 @@ $(document).ready(function() {
         axios.post('{{ route('jadwal.store') }}', formData)
         .then(function (response) {
             var event = response.data;
-
-            calendar.addEvent({
-                title: event.nama,
-                start: event.start,
-                end: event.end,
-                allDay: true
-            });
-
             var table = $('#tableCalendar').DataTable();
             table.row.add([
-                table.data().count() + 1,
+                event.id,
                 event.nama,
                 moment(event.start).format('DD/MM/YYYY') + ' - ' + moment(event.end).format('DD/MM/YYYY'),
-                '<button type="button" class="btn btn-block btn-outline-danger" onclick="hapusJadwal(' + e[i].id + ')"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>'
+                '<button type="button" class="btn btn-block btn-outline-danger" onclick="hapusJadwal(' + event.id + ')"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>'
             ]).draw(false);
+
+            calendar.addEvent({
+                id: event.id,
+                title: event.nama,
+                start: event.start,
+                end: moment(event.end).add(1, 'day').toDate(),
+                allDay: true
+            });
 
             $(':input').val('');
         })
@@ -195,20 +195,20 @@ function hapusJadwal(id) {
         }
     })
     .then(function (response) {
+        console.log(response);
+        console.log('testing');
         var table = $('#tableCalendar').DataTable();
-        var row = table.row(function (idx, data, node) {
-            return data[0] === id ? true : false;
+        var row = table.rows().data().each(function (data, index) {
+            if (data[0] == id) { 
+                table.row(index).remove().draw();
+            }
         });
-
-        if (row) {
-            row.remove().draw(); // Hapus dari tabel
-        } else {
-            console.log("Baris tidak ditemukan dalam tabel.");
-        }
 
         var event = calendar.getEventById(id);
         if (event) {
-            event.remove(); // Hapus dari kalender
+            event.remove();
+        } else {
+            console.log('Event with id ' + id + ' not found');
         }
     })
     .catch(function (error) {
