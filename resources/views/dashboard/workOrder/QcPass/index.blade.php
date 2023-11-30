@@ -81,7 +81,7 @@ $(document).ready(function() {
         pagelength: 10,
     });
 
-    // axios.get('{{ route('qcPass.index', ['id' => $wo->id]) }}')
+    
     // .then(function (response) {
     //     var e = response.data;
 

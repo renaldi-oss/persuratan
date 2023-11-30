@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between">
     <div>
-        &nbsp;{{ isset($resiko) ? $resiko : '-' }}
+        &nbsp;{{ isset($result) ? $result : '-' }}
     </div>
     <div>
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
@@ -16,15 +16,16 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="save">
+                    <form id="Form" method="POST" action="{{ route('workorder.resiko') }}">
+                        @csrf
                         <div class="form-group">
                             <label for="frequency">Frequency</label>
-                            <input type="text" class="form-control" id="frequency">
+                            <input type="text" class="form-control" id="frequency" name="frequency">
                         </div>
                 
                         <div class="form-group">
                             <label for="consequency">Consequency</label>
-                            <input type="text" class="form-control" id="consequency">
+                            <input type="text" class="form-control" id="consequency" name="consequency">
                         </div>
                 
                         <button type="submit" data-dismiss="modal" class="btn btn-primary">Submit</button>

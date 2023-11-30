@@ -127,6 +127,27 @@ class WorkOrderController extends Controller
     {
         return view('dashboard.WorkOrder.detail.addPersuratan', ['id' => $id]);
     }
+    public function resiko(Request $request)
+    {
+        $frequency = $request->input('frequency');
+        $consequency = $request->input('consequency');
+        $resiko = $frequency * $consequency;
+        if ($frequency <= 0 || $consequency <= 0 || $frequency > 4 || $consequency > 4) {
+            $result = "INVALID";
+        } else if ($resiko%4 == 0) {
+            if ($frequency == $consequency) {
+                $result = "LOW";
+            } else {
+                $result = "HIGH";
+            }
+        } else if ($resiko%3 == 0) {
+            $result = "MEDIUM";
+        } else {
+            $result = "LOW";
+        }
+        return view('dashboard.WorkOrder.show', ['result' => $result]);
+        // return view('workorder.show', $result);
+    }
 
     // AJAX REQUEST
     public function getMaterial(Request $request)

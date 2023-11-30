@@ -63,8 +63,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('pekerjaan/file/{media}', [PekerjaanController::class, 'deletefile'])->name('pekerjaan.delete');
 
     //route Work Order
-    Route::resource('workorder', workorderController::class)->except(['create', 'edit', 'update', 'destroy','store']);
-    Route::post('workorder/set-active-tab', [workorderController::class, 'navigasi'])->name('workorder.navigasi');
+    Route::resource('workorder', workOrderController::class)->except(['create', 'edit', 'update', 'destroy','store']);
+    Route::post('workorder/set-active-tab', [workOrderController::class, 'navigasi'])->name('workorder.navigasi');
+    Route::post('/workorder/resiko', [workOrderController::class, 'resiko'])->name('workorder.resiko');
 
     //route Jadwal
     Route::resource('jadwal', JadwalController::class)->except(['create']);
