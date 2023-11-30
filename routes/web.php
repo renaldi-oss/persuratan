@@ -4,17 +4,19 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\dashboard\JadwalController;
+use App\Http\Controllers\dashboard\kodeSuratController;
 use App\Http\Controllers\dashboard\MaterialController;
 use App\Http\Controllers\Dashboard\OperationalController;
 use App\Http\Controllers\dashboard\PekerjaanController;
-use App\Http\Controllers\dashboard\kodeSuratController;
 use App\Http\Controllers\Dashboard\purchaseController;
+use App\Http\Controllers\Dashboard\QualityControlController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\UserProfileController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -69,6 +71,8 @@ Route::middleware(['auth'])->group(function () {
 
     //route Jadwal
     Route::resource('jadwal', JadwalController::class)->except(['create']);
+    // route quality control
+    Route::resource('quality-control', QualityControlController::class)->except(['index','show']);
     
     // Route::get('/workorder/{id}/detail', [workorderController::class, 'detail'])->name('detailworkorder');
     // Route::get('/workorder/{id}/jadwal', [workorderController::class, 'jadwal'])->name('jadwal');

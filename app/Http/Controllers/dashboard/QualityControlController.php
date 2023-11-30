@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\dashboard;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\jadwal;
+use App\Models\QualityControl;
 use Illuminate\Http\Request;
 
-class JadwalController extends Controller
+class QualityControlController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $jadwal = jadwal::where('work_order_id', $request->id)->get();
+        $qc = QualityControl::where('work_order_id', $request->id)->get();
 
-        return $jadwal;
+        return $qc;
     }
 
     /**
@@ -23,7 +23,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -31,23 +31,7 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        // validasi
-        $request->validate([
-            'nama' => 'required',
-            'deskripsi' => 'required',
-            'start' => 'required|date',
-            'end' => 'required|date',
-        ]);
-
-        $jadwal = jadwal::create([
-            'work_order_id' => $request->id,
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'start' => $request->start,
-            'end' => $request->end,
-        ]);
-
-        return $jadwal;
+        //
     }
 
     /**
@@ -79,7 +63,6 @@ class JadwalController extends Controller
      */
     public function destroy(string $id)
     {
-        $jadwal = jadwal::find($id);
-        $jadwal->delete();
+        //
     }
 }

@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\QualityControl;
+use App\Models\Checklist;
 use App\Models\WorkOrder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class QualityControlSeeder extends Seeder
+class ChecklistSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +15,11 @@ class QualityControlSeeder extends Seeder
     public function run(): void
     {
         WorkOrder::all()->each(function (WorkOrder $workOrder) {
-            QualityControl::factory()
+            Checklist::factory()
             ->count(1)
             ->create([
                 'work_order_id' => $workOrder->id,
-            ])->each(function (QualityControl $qualityControl) {
-                $qualityControl->addMedia(public_path('assets/img/bruh.jpg'))
-                      ->preservingOriginal()
-                      ->toMediaCollection('quality_control');
-            });
+            ]);
         });
     }
 }

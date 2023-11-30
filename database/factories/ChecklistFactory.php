@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\QualityControl>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Checklist>
  */
-class QualityControlFactory extends Factory
+class ChecklistFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class QualityControlFactory extends Factory
     public function definition(): array
     {
         return [
-            'judul' => $this->faker->sentence,
-            'deskripsi' => $this->faker->paragraph,
+            'deskripsi' => $this->faker->sentence,
         ];
     }
 }
