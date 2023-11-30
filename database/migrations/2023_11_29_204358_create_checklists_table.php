@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\WorkOrder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quality_controls', function (Blueprint $table) {
+        Schema::create('checklists', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdfor(WorkOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('judul');
+            $table->foreignId('work_order_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->text('deskripsi');
             $table->timestamps();
         });
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quality_controls');
+        Schema::dropIfExists('checklists');
     }
 };
