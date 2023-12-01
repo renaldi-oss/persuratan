@@ -72,24 +72,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('jadwal', JadwalController::class)->except(['create']);
     // route quality control
     Route::resource('quality-control', QualityControlController::class)->except(['index','show']);
-    
-    // Route::get('/workorder/{id}/detail', [workorderController::class, 'detail'])->name('detailworkorder');
-    // Route::get('/workorder/{id}/jadwal', [workorderController::class, 'jadwal'])->name('jadwal');
-    // Route::get('/workorder/{id}/purchaseRequest', [workorderController::class, 'purchaseRequest'])->name('purchaseRequest');
-    // Route::get('/workorder/{id}/add-pr-item', [workorderController::class, 'addPrItem'])->name('addPrItem');
-    // Route::get('/workorder/{id}/checklist', [workorderController::class, 'checklist'])->name('checklist');
-    // Route::get('/workorder/{id}/qcPass', [workorderController::class, 'qcPass'])->name('qcPass');
-    // Route::get('/workorder/{id}/persuratan', [workorderController::class, 'persuratan'])->name('persuratan');
-    // Route::post('/load-jadwal', [workorderController::class, 'handleJadwal'])->name('handleJadwal');
-    // Route::get('/purchaseRequest', [workorderController::class, 'purchaseRequest'])->name('purchaseRequest');
-    // Route::get('/add-pr-item', [workorderController::class, 'addPrItem'])->name('addPrItem');
-    // Route::get('/checklist', [workorderController::class, 'checklist'])->name('checklist');
-    // Route::post('/load-checklist', [workorderController::class, 'handleChecklist'])->name('handleChecklist');
-    // Route::get('/qcPass', [workorderController::class, 'qcPass'])->name('qcPass');
-    // Route::post('/load-qcPass', [workorderController::class, 'handleQCPass'])->name('handleQCPass');
-    // Route::get('/persuratan', [workorderController::class, 'persuratan'])->name('persuratan');
-    // Route::get('/add-persuratan', [workorderController::class, 'addPersuratan'])->name('addPersuratan');
-    // Route::post('/load-persuratan', [workorderController::class, 'handlePersuratan'])->name('handlePersuratan');
 
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary.index');
