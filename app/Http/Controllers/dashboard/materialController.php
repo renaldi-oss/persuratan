@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Material;
+use App\Models\WorkOrder;
 
 class MaterialController extends Controller
 {
@@ -37,6 +38,8 @@ class MaterialController extends Controller
 
     public function store(Request $request)
     {
+        $id = $request->input('pekerjaan_id');
+        $workorder = WorkOrder::with(['surat','pekerjaan.instansi'])->find($id);
         $request->validate([
             'nama' => 'required',
             'brand' => 'required',
@@ -46,7 +49,27 @@ class MaterialController extends Controller
             'toko' => 'required',
         ]);
 
-        Material::create($request->all());
+        $defautlTab = 'material';
+
+        return dd($request->all());
+
+        Material::createMaterial($request->all(), $id);
+
+
+        // return redirect()->route('workorder.show', ['defaultTab' => $defautlTab, 'id' => $id])
+        //     ->with('status', 'success')
+        //     ->with('message', 'Material berhasil ditambahkan');
+
+        // $request->validate([
+        //     'nama' => 'required',
+        //     'brand' => 'required',
+        //     'qty' => 'required',
+        //     'estimated_price' => 'required',
+        //     'tipe' => 'required',
+        //     'toko' => 'required',
+        // ]);
+
+        // Material::create($request->all());
     }
 
 

@@ -1,4 +1,4 @@
-<div x-data="{ 
+<div x-data="{
     tab: '{{ session('active_tab', 'material') }}',
     async setActiveTab(tab) {
         this.tab = tab;
@@ -11,9 +11,9 @@
         }).catch(function (error) {
             console.log(error);
         });
-    } }" 
+    } }"
     x-init="() => { $watch('tab', (tab) => { setActiveTab(tab) }) }">
-    
+
     <ul class="nav nav-tabs justify-content-center flex-wrap">
         <x-horizontal-button tab="material" @click="setActiveTab('material')">Material</x-horizontal-button>
         <x-horizontal-button tab="jadwal" @click="setActiveTab('jadwal')">Jadwal Pelaksanaan</x-horizontal-button>
