@@ -8,7 +8,7 @@ use App\Http\Controllers\dashboard\kodeSuratController;
 use App\Http\Controllers\dashboard\MaterialController;
 use App\Http\Controllers\Dashboard\OperationalController;
 use App\Http\Controllers\dashboard\PekerjaanController;
-use App\Http\Controllers\Dashboard\purchaseController;
+use App\Http\Controllers\dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\QualityControlController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\TemporaryFilesController;
