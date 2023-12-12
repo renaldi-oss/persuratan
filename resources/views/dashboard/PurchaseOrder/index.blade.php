@@ -22,18 +22,46 @@
             <div class="container-fluid my-2">
               <a href="{{ route('purchase.create') }}" class="btn btn-primary">Create</a>
             </div>
-            <table id="usersTable" class="table table-bordered table-striped text-center">
-              <thead>
-                <tr>
-                  <th>No Surat</th>
-                  <th>Pekerjaan</th>
-                  <th>Requester</th>
-                  <th>Division</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+
+            <!-- pekerjaan_id NULL -->
+            <div class="card">
+              <div class="card-body">
+                <h5>Purchase Orders with pekerjaan_id IS NULL</h5>
+                <table id="purchaseOrdersTable1" class="table table-bordered table-striped text-center">
+                  <thead>
+                    <tr>
+                      <th>No Surat</th>
+                      <th>Pekerjaan</th>
+                      <th>Requester</th>
+                      <th>Division</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- pekerjaan_id NOT NULL -->
+            <div class="card mt-4">
+              <div class="card-body">
+                <h5>Purchase Orders with pekerjaan_id IS NOT NULL</h5>
+                <table id="purchaseOrdersTable2" class="table table-bordered table-striped text-center">
+                  <thead>
+                    <tr>
+                      <th>No Surat</th>
+                      <th>Pekerjaan</th>
+                      <th>Requester</th>
+                      <th>Division</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
           </div>
           <!-- /.card-body -->
         </div>
@@ -47,6 +75,7 @@
 <!-- /.content -->
 
 @endsection
+<!-- Your Blade content above -->
 
 @push('script')
 {{-- Scripts for the datatable --}}
@@ -63,11 +92,11 @@
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
-{{-- Script for the user table --}}
+{{-- Script for the purchaseOrdersTable1 and purchaseOrdersTable2 --}}
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#usersTable').DataTable({
-      deferRender: false,
+    $('#purchaseOrdersTable1').DataTable({
+      deferRender: true,
       processing: true,
       serverSide: true,
       paging: true,
@@ -77,7 +106,45 @@
       ordering: true,
       info: true,
       autoWidth: true,
-      ajax: "{{ route('purchase') }}",
+      ajax: {
+        url: "{{ route('purchase') }}",
+        data: function (d) {
+          d.pekerjaan_id_null = 1; // Filter for IS NULL
+        }
+      },
+      columns: [
+        { data: 'surat_no', name: 'surat_no' },
+        { data: 'pekerjaan', name: 'pekerjaan' },
+        { data: 'requester', name: 'requester' },
+        { data: 'division', name: 'division' },
+        { data: 'status', name: 'status' },
+        {
+          data: 'action',
+          name: 'action',
+          orderable: true,
+          searchable: true,
+          class: 'd-flex justify-content-center'
+        },
+      ]
+    });
+
+    $('#purchaseOrdersTable2').DataTable({
+      deferRender: true,
+      processing: true,
+      serverSide: true,
+      paging: true,
+      pageLength: 10,
+      lengthChange: true,
+      searching: true,
+      ordering: true,
+      info: true,
+      autoWidth: true,
+      ajax: {
+        url: "{{ route('purchase') }}",
+        data: function (d) {
+          d.pekerjaan_id_null = 0; // Filter for IS NOT NULL
+        }
+      },
       columns: [
         { data: 'surat_no', name: 'surat_no' },
         { data: 'pekerjaan', name: 'pekerjaan' },
@@ -95,5 +162,6 @@
     });
   });
 </script>
-
 @endpush
+
+<!-- Your Blade content below -->

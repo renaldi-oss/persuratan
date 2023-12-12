@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
         'destroy' => 'operational.destroy',
     ])->except(['show']);
 
-    Route::resource('purchase', PurchaseController::class)->names([
+    Route::resource('purchase', purchaseController::class)->names([
         'index' => 'purchase',
         'create' => 'purchase.create',
         'store' => 'purchase.store',
@@ -112,6 +112,8 @@ Route::middleware(['auth'])->group(function () {
 
      // route Pekerjaan
      Route::resource('kodeSurat', kodeSuratController::class);
+     // web.php
+
     //  Route::get('kodeSurat/create', 'KodeSuratController@create')->name('kodeSurat.create');
     //  Route::get('kodeSurat/form', 'KodeSuratController@form')->name('kodeSurat.form');
     // Route::get('/dashboard/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
