@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class QualityControl extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
     protected $guarded = ['id'];
 
@@ -17,4 +17,9 @@ class QualityControl extends Model implements HasMedia
     {
         return $this->belongsTo(WorkOrder::class);
     }
+
+    public static function Last(){
+        return static::all()->last();
+    }
+
 }

@@ -15,7 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //php artisan serve
         Role::create(['name' => 'finance']);
         Role::create(['name' => 'manager']);
         Role::create(['name' => 'engineer']);

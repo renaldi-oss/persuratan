@@ -18,8 +18,8 @@
         <x-horizontal-button tab="material" @click="setActiveTab('material')">Material</x-horizontal-button>
         <x-horizontal-button tab="jadwal" @click="setActiveTab('jadwal')">Jadwal Pelaksanaan</x-horizontal-button>
         {{-- <x-horizontal-button tab="purchaseRequest" @click="setActiveTab('purchaseRequest')">Purchase Request</x-horizontal-button> --}}
-        <x-horizontal-button tab="qcPass" @click="setActiveTab('qcPass')">QC Pass</x-horizontal-button>
-        <x-horizontal-button tab="checkList" @click="setActiveTab('checkList')">Check List</x-horizontal-button>
+        <x-horizontal-button tab="QualityControl" @click="setActiveTab('QualityControl')">Quality Control</x-horizontal-button>
+        <x-horizontal-button tab="checkList" @click="setActiveTab('checkList')">Checklist</x-horizontal-button>
         <x-horizontal-button tab="persuratan" @click="setActiveTab('persuratan')">Persuratan</x-horizontal-button>
     </ul>
     <div x-show="tab === 'material'" x-transition>
@@ -34,8 +34,8 @@
     <div x-show="tab === 'checkList'" x-transition>
         @include('dashboard.WorkOrder.CheckList.index')
     </div>
-    <div x-show="tab === 'qcPass'" x-transition>
-        @include('dashboard.WorkOrder.QcPass.index')
+    <div x-show="tab === 'QualityControl'" x-transition>
+        @include('dashboard.WorkOrder.QualityControl.index')
     </div>
     <div x-show="tab === 'persuratan'" x-transition>
         @include('dashboard.WorkOrder.Persuratan.index')

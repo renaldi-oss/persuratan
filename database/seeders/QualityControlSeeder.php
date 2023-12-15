@@ -16,7 +16,7 @@ class QualityControlSeeder extends Seeder
     {
         WorkOrder::all()->each(function (WorkOrder $workOrder) {
             QualityControl::factory()
-            ->count(1)
+            ->count(2)
             ->create([
                 'work_order_id' => $workOrder->id,
             ])->each(function (QualityControl $qualityControl) {
