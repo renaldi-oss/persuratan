@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Checklist extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function workOrder()
+    {
+        return $this->belongsTo(WorkOrder::class);
+    }
 }
