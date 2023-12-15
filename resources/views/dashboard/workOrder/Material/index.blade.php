@@ -20,45 +20,57 @@
                 <div class="modal-body" x-data="handler()">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-bordered align-items-center table-sm">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Brand</th>
-                                        <th>Toko</th>
-                                        <th>Qty</th>
-                                        <th>Harga Estimasi</th>
-                                        <th>Remove</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <template x-for="(field, index) in fields" :key="index">
-                                        <tr>
-                                            <td x-text="index + 1"></td>
-                                            <td><input x-model="field.nama" type="text" name="nama[]" class="form-control"></td>
-                                            <td><input x-model="field.brand" type="text" name="brand[]" class="form-control"></td>
-                                            <td>
-                                                <select x-model="field.toko" name="toko[]" class="form-control">
-                                                    <option value="offline">Offline</option>
-                                                    <option value="online">Online</option>
-                                                </select>
-                                            </td>
-                                            <td><input x-model="field.qty" type="number" name="qty[]" class="form-control"></td>
-                                            <td><input x-model="field.harga" type="number" name="harga[]" class="form-control"></td>
-                                            <td><button type="button" class="btn btn-danger btn-small" @click="removeField(index)">&times;</button></td>
-                                        </tr>
-                                    </template>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="7" class="text-right"><button type="button" class="btn btn-info" @click="addNewField()">+ Add Row</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="7" class="text-right"><button type="button" class="btn btn-primary" @click="save()">Save</button></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <form action="{{ route('material.store') }}" method="post">
+                                <input type="hidden" name="pekerjaan_id" value="{{ $id }}">
+                                @csrf
+                                <table class="table table-bordered align-items-center table-sm">
+                                    <table class="table table-bordered align-items-center table-sm">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Nama</th>
+                                                <th>Brand</th>
+                                                <th>Toko</th>
+                                                <th>Tipe</th>
+                                                <th>Qty</th>
+                                                <th>Harga Estimasi</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template x-for="(field, index) in fields" :key="index">
+                                                <tr>
+                                                    <td x-text="index + 1"></td>
+                                                    <td><input x-model="field.nama" type="text" name="nama[index]" class="form-control"></td>
+                                                    <td><input x-model="field.brand" type="text" name="brand[index]" class="form-control"></td>
+                                                    <td>
+                                                        <select x-model="field.toko" name="toko[index]" class="form-control">
+                                                            <option value="offline">Offline</option>
+                                                            <option value="online">Online</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select x-model="field.tipe" name="tipe[index]" class="form-control">
+                                                            <option value="primary">Primary</option>
+                                                            <option value="additional">Additional</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input x-model="field.qty" type="number" name="qty[index]" class="form-control"></td>
+                                                    <td><input x-model="field.harga" type="number" name="harga[index]" class="form-control"></td>
+                                                    <td class="d-flex justify-content-center"><button type="button" class="btn btn-danger" @click="removeField(index)">X</button></td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="8" class="text-right"><button type="button" class="btn btn-info" @click="addNewField()">+ Add Row</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="8" class="text-right"><button type="button" class="btn btn-primary" @click="save()">Save</button></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                            </form>
                         </div>
                     </div>
                 </div>
