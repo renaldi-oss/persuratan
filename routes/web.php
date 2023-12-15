@@ -71,8 +71,8 @@ Route::middleware(['auth'])->group(function () {
     //route Jadwal
     Route::resource('jadwal', JadwalController::class)->except(['create']);
     // route quality control
-    Route::resource('quality-control', QualityControlController::class)->except(['index','show']);
-
+    Route::resource('quality-control', QualityControlController::class);
+    
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary.index');
     Route::get('/summary/downloadAll', [summaryController::class, 'downloadAll'])->name('summary.downloadAll');
