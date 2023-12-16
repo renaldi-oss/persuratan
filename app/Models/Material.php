@@ -12,21 +12,21 @@ class Material extends Model
     protected $table = 'materials';
     protected $guarded = ['id'];
 
-    public function pekerjaan()
+    public function workOrder()
     {
-        return $this->belongsTo(Pekerjaan::class);
+        return $this->belongsTo(WorkOrder::class);
     }
 
     public static function getAllMaterialPekerjaan()
     {
         return static::whereNotNull('pekerjaan_id')->get();
     }
-  
+
     public static function getAllMaterialNonPekerjaan()
     {
         return static::whereNull('pekerjaan_id')->get();
     }
-  
+
     public static function createMaterial($datas, $pekerjaan_id) {
         foreach ($datas as $key => $data) {
             $input = [

@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\UserProfileController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
+use App\Http\Controllers\Dashboard\ChecklistController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -72,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('jadwal', JadwalController::class)->except(['create']);
     // route quality control
     Route::resource('quality-control', QualityControlController::class);
-    
+
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary.index');
     Route::get('/summary/downloadAll', [summaryController::class, 'downloadAll'])->name('summary.downloadAll');
@@ -104,6 +105,8 @@ Route::middleware(['auth'])->group(function () {
         'update' => 'material.update',
         'destroy' => 'material.destroy',
     ])->except(['show']);
+
+    Route::resource('checklist', ChecklistController::class);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     // route untuk handle file upload temporary digunakan filepond
