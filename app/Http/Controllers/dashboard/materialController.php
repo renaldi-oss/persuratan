@@ -14,7 +14,7 @@ class MaterialController extends Controller
         $tipe = request()->input('tipe');
         $id = request()->input('id');
         if ($request->ajax()) {
-            $materials = Material::where('tipe', $tipe)->where('pekerjaan_id', $id)->get();
+            $materials = Material::where('tipe', $tipe)->where('work_order_id', $id)->get();
 
             return datatables()->of($materials)
                 ->addColumn('action', function ($material) {
@@ -38,7 +38,7 @@ class MaterialController extends Controller
 
     public function store(Request $request)
     {
-        $id = $request->input('pekerjaan_id');
+        $id = $request->input('work_order_id');
         $workorder = WorkOrder::with(['surat','pekerjaan.instansi'])->find($id);
         $request->validate([
             'nama' => 'required',

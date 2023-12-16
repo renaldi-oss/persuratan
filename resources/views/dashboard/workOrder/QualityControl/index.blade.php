@@ -1,11 +1,12 @@
 @push('styles')
-
+{{-- style datatable plugin --}}
+<link rel="stylesheet" href="{{ asset('./plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('./plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 @endpush
-
 
 <div class="pt-3">
     <div class="d-flex justify-content-end mb-2">
-        <a href="{{ route('quality-control.create', $wo->id) }}" class="btn btn-primary" style="text-decoration: none;">
+        <a href="{{ route('quality-control.create', ['id' => $wo->id]) }}" class="btn btn-primary" style="text-decoration: none;">
             <i class="fas fa-plus"></i> Add Quality Control
         </a>
     </div>
@@ -14,6 +15,7 @@
         <table id="tableQualityControl" class="table1 table-bordered table-striped"  style="text-align: center;justify-content: center;align-items: center;">
             <thead>
                 <tr>
+                    <th>Judul</th>
                     <th>Deskripsi</th>
                     <th>Created At</th>
                     <th>Action</th>
@@ -55,6 +57,7 @@
         }
       },
       columns: [
+        {data: 'judul', name: 'judul'},
         {data: 'deskripsi', name: 'deskripsi'},
         {data: 'created_at', name: 'created_at'},
         {

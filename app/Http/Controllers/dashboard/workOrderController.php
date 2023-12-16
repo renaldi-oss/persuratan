@@ -63,59 +63,14 @@ class WorkOrderController extends Controller
     public function show(string $id)
     {
         $workorder = WorkOrder::with(['surat','pekerjaan.instansi'])->find($id);
-        $defaultTab = 'material';
-        return view('dashboard.WorkOrder.show', ['wo' => $workorder, 'id' => $id, 'defaultTab' => $defaultTab]);
+        return view('dashboard.WorkOrder.show', ['wo' => $workorder]);
     }
 
     // FUNCTION NAVIGASI
     public function navigasi(Request $request){
         session(['active_tab' => $request->tab]);
     }
-
-    public function detail(string $id)
-    {
-        $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
-        $pekerjaans->no_wo = $matches[0];
-
-        return view('dashboard.WorkOrder.detail.index', ['id' => $id, 'pekerjaans' => $pekerjaans]);
-    }
-    public function jadwal(string $id)
-    {
-        $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
-        $pekerjaans->no_wo = $matches[0];
-
-        return view('dashboard.WorkOrder.detail.jadwal', ['id' => $id, 'pekerjaans' => $pekerjaans]);
-    }
-    public function purchaseRequest(string $id)
-    {
-        $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
-        $pekerjaans->no_wo = $matches[0];
-
-        return view('dashboard.WorkOrder.detail.purchaseRequest', ['id' => $id, 'pekerjaans' => $pekerjaans]);
-    }
-    public function addPrItem(string $id)
-    {
-        return view('dashboard.WorkOrder.detail.addPrItem', ['id' => $id]);
-    }
-    public function checklist(string $id)
-    {
-        $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
-        $pekerjaans->no_wo = $matches[0];
-
-        return view('dashboard.WorkOrder.detail.checklist', ['id' => $id, 'pekerjaans' => $pekerjaans]);
-    }
-    public function qcPass(string $id)
-    {
-        $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
-        $pekerjaans->no_wo = $matches[0];
-
-        return view('dashboard.WorkOrder.detail.qcPass', ['id' => $id, 'pekerjaans' => $pekerjaans]);
-    }
+ 
     public function persuratan(string $id)
     {
         $pekerjaans = Pekerjaan::with('instansi')->find($id);
