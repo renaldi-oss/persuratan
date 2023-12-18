@@ -10,7 +10,7 @@
 
 <div class="form-group">
   <label for="input-Qc">File Quality Control</label>
-  <input type="file" class="filepond @error('file_qc') is-invalid @enderror" id="input-file_qc" name="file" data-max-file-size="3MB" multiple>
+  <input type="file" class="filepond @error('file_qc') is-invalid @enderror" id="input-file_qc" name="file" data-max-file-size="3MB">
   <x-errormessage error="file_qc" />
 </div>
 
@@ -52,9 +52,8 @@
         }
       }
     });
-    const inputElement = document.querySelector('input[id="input-file_kontrak"]');
+    const inputElement = document.querySelector('input[id="input-file_qc"]');
     const pond = FilePond.create( inputElement );
-
   });
 </script>
 

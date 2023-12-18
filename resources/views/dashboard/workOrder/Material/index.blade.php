@@ -5,7 +5,6 @@
 
 @endpush
 
-
 <div>
     <div class="container-fluid my-2">
         <div class="modal fade" id="createMaterial">
@@ -21,7 +20,7 @@
                     <div class="row">
                         <div class="col">
                             <form action="{{ route('material.store') }}" method="post">
-                                <input type="hidden" name="pekerjaan_id" value="{{ $id }}">
+                                <input type="hidden" name="pekerjaan_id" value="{{ $wo->pekerjaan->id }}">
                                 @csrf
                                 <table class="table table-bordered align-items-center table-sm">
                                     <table class="table table-bordered align-items-center table-sm">
@@ -87,7 +86,7 @@
                 margin-bottom: 20px;
                 padding-bottom: 20px">
     <div class="d-flex justify-content-between">
-        <h2>Primary Material</h2>
+        <h2>Material</h2>
         <button type="button" class="btn btn-primary align-self-center" data-toggle="modal" data-target="#createMaterial">
             Add Primary
         </button>
@@ -160,7 +159,7 @@
                 url: "{{ route('material') }}",
                 data: {
                     tipe: 'primary',
-                    id: {{ $id }}
+                    id: {{ $wo->pekerjaan->id }}
                 }
             },
             columns: [
@@ -223,7 +222,7 @@
                 url: "{{ route('material') }}",
                 data: {
                     tipe: 'additional',
-                    id: {{ $id }}
+                    id: {{ $wo->pekerjaan->id }}
                 }
             },
             columns: [

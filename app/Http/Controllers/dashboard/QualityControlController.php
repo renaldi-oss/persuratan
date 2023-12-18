@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\QualityControl;
+use App\Models\TemporaryFile;
+use App\Models\WorkOrder;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class QualityControlController extends Controller
 {
@@ -41,9 +45,11 @@ class QualityControlController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('Dashboard.WorkOrder.QualityControl.create', [
+            'work_order_id' => $request->id,
+        ]);
     }
 
     /**
@@ -51,7 +57,34 @@ class QualityControlController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'work_order_id' => 'required',
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+
+        $qc = QualityControl::create([
+            'work_order_id' => $request->work_order_id,
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        if($request->file) {
+                $tmpfolder = TemporaryFile::where('folder', $request->file)->first();
+                if($tmpfolder){
+                    $qc->addMedia(storage_path('app/public/tmp/'. $request->file .'/' . $tmpfolder->filename))
+                        ->toMediaCollection('quality_control');
+                    Storage::deleteDirectory('public/tmp/'. $request->file);
+                    $tmpfolder->delete();
+                }
+        }
+
+        $wo = $qc->workOrder->id;
+
+        return redirect()->route('workorder.show', $wo)
+        ->with('status', 'success')
+        ->with('message', 'Data Quality Control berhasil ditambahkan');
     }
 
     /**
@@ -59,9 +92,7 @@ class QualityControlController extends Controller
      */
     public function show(string $id)
     {
-        // get file media
-        $qc = QualityControl::find($id);
-        $media = $qc->getMedia('quality_control');
+
     }
 
     /**
@@ -87,10 +118,23 @@ class QualityControlController extends Controller
     {
         $qc = QualityControl::find($id);
         $qc->delete();
+        $id = $qc->workOrder->id;
+        
+        return redirect()->route('workorder.show', $id)
+        ->with('status', 'success')
+        ->with('message', 'Data Quality Control berhasil dihapus');
+    }
 
-        return redirect()->route('workorder.index')
-                        ->with('status', 'success')
-                        ->with('message', 'Data Quality Control berhasil dihapus');
+    public function download(Media $media)
+    {
+        return response()->download($media->getPath(), $media->file_name);
+    }
 
+    public function downloadAll(QualityControl $qc){
+        $mediaItems = $qc->getMedia('quality_control');
+        $nama = Str::limit($qc->deskripsi, 8, '');
+        $mediaStream = MediaStream::create($nama . '.zip')->addMedia($mediaItems);
+    
+        return $mediaStream->toResponse(request());
     }
 }

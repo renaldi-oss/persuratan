@@ -6,8 +6,9 @@
 
 <div class="card m-3">
   <div class="card-body">
-    <form id="Form" action="{{ route('workorder.store') }}" method="POST">
+    <form id="Form" action="{{ route('quality-control.store') }}" method="POST">
         {{ csrf_field() }}
+        <input type="hidden" name="work_order_id" value="{{ $work_order_id }}">
         @include('dashboard.WorkOrder.QualityControl.form', ['tombol' => 'Create'])
     </form>
   </div>
