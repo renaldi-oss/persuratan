@@ -23,10 +23,10 @@
               <a href="{{ route('purchase.create') }}" class="btn btn-primary">Create</a>
             </div>
 
-            <!-- pekerjaan_id NULL -->
+    
             <div class="card">
               <div class="card-body">
-                <h5>Purchase Orders with pekerjaan_id IS NULL</h5>
+               
                 <table id="purchaseOrdersTable1" class="table table-bordered table-striped text-center">
                   <thead>
                     <tr>
@@ -43,10 +43,9 @@
               </div>
             </div>
 
-            <!-- pekerjaan_id NOT NULL -->
             <div class="card mt-4">
               <div class="card-body">
-                <h5>Purchase Orders with pekerjaan_id IS NOT NULL</h5>
+                
                 <table id="purchaseOrdersTable2" class="table table-bordered table-striped text-center">
                   <thead>
                     <tr>

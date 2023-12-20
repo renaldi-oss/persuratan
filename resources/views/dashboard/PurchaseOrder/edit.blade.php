@@ -10,6 +10,7 @@
     <form id="Form" action="{{ route('purchase.update', $user->id) }}" method="POST">
         {{ csrf_field() }}
         @method('PUT')
+        
         @include('dashboard.PurchaseOrder.form', ['tombol' => 'Update'])
     </form>
   </div>
