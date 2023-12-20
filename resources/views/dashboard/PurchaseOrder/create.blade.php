@@ -59,6 +59,7 @@
           notEqual: "Please select a roles"
         }
      },
+     
      errorElement: 'span',
      errorPlacement: function (error, element) {
        error.addClass('invalid-feedback');

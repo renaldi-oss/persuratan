@@ -42,6 +42,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login.store');
     // auto login berdasarkan role DEVELOPMENT ONLY
     Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
+    
 });
 
 // DASHBOARD

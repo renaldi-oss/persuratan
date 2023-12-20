@@ -24,6 +24,7 @@ class PurchaseController extends Controller
             // Check if the table is for pekerjaan_id IS NULL
             if ($request->has('pekerjaan_id_null') && $request->input('pekerjaan_id_null')) {
                 $query->whereNull('pekerjaan_id');
+                
             } else {
                 $query->whereNotNull('pekerjaan_id');
             }

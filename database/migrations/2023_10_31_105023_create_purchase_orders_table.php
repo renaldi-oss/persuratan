@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('division');
             $table->enum('status', ['pending', 'manager', 'accepted'])->default('pending');
             $table->timestamps();
+            
         });
     }
 

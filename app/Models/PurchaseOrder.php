@@ -9,6 +9,7 @@ class PurchaseOrder extends Model
 {
     protected $table = 'purchase_orders';
     use HasFactory;
+    
 
     public static function getPoPekerjaan(){
         return static::whereNotNull('pekerjaan_id')->get();
