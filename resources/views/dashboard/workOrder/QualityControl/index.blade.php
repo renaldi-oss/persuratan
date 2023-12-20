@@ -1,19 +1,21 @@
 @push('styles')
-
+{{-- style datatable plugin --}}
+<link rel="stylesheet" href="{{ asset('./plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('./plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 @endpush
-
 
 <div class="pt-3">
     <div class="d-flex justify-content-end mb-2">
-        <a href="{{ route('checklist.create', $wo->id) }}" class="btn btn-primary" style="text-decoration: none;">
-            <i class="fas fa-plus"></i> Add Checklist
+        <a href="{{ route('quality-control.create', ['id' => $wo->id]) }}" class="btn btn-primary" style="text-decoration: none;">
+            <i class="fas fa-plus"></i> Add Quality Control
         </a>
     </div>
 
     <div>
-        <table id="tableChecklist" class="table1 table-bordered table-striped"  style="text-align: center;justify-content: center;align-items: center;">
+        <table id="tableQualityControl" class="table1 table-bordered table-striped"  style="text-align: center;justify-content: center;align-items: center;">
             <thead>
                 <tr>
+                    <th>Judul</th>
                     <th>Deskripsi</th>
                     <th>Created At</th>
                     <th>Action</th>
@@ -34,7 +36,7 @@
 {{-- script table user --}}
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#tableChecklist').DataTable({
+    $('#tableQualityControl').DataTable({
       deferRender: false,
       processing: true,
       serverSide: true,
@@ -55,6 +57,7 @@
         }
       },
       columns: [
+        {data: 'judul', name: 'judul'},
         {data: 'deskripsi', name: 'deskripsi'},
         {data: 'created_at', name: 'created_at'},
         {
@@ -64,7 +67,7 @@
         ]
     });
   });
-
+  
 </script>
 
 

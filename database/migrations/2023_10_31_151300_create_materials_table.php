@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Pekerjaan;
+use App\Models\WorkOrder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Pekerjaan::class)->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(WorkOrder::class)->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
             $table->string('brand');
             $table->integer('qty');

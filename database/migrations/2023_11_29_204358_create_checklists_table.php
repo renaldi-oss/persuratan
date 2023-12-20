@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('checklists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('work_order_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('material_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->text('deskripsi');
             $table->timestamps();
         });

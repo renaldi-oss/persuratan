@@ -27,14 +27,24 @@ class WorkOrder extends Model
         return $this->hasMany(Jadwal::class);
     }
 
-    public function purchaseRequest()
+    public function materials()
     {
-        return $this->hasMany(PurchaseRequest::class);
+        return $this->hasMany(Material::class);
     }
-    
+
+    // public function purchaseRequest()
+    // {
+    //     return $this->hasMany(PurchaseRequest::class);
+    // }
+
     public function qualityControl()
     {
         return $this->hasOne(QualityControl::class);
+    }
+
+    public function checklist()
+    {
+        return $this->hasOne(Checklist::class);
     }
 
     public static function Last(){

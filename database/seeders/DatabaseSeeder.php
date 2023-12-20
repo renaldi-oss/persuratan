@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QualityControlSeeder::class);
         $this->call(SuratSeeder::class);
         $this->call(PurchaseOrderSeeder::class);
+        $this->call(ChecklistSeeder::class);
     }
 }
