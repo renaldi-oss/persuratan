@@ -11,19 +11,16 @@ class MaterialController extends Controller
 {
     public function index(Request $request)
     {
-        $tipe = request()->input('tipe');
-        $id = request()->input('id');
         if ($request->ajax()) {
-            $materials = Material::where('tipe', $tipe)->where('work_order_id', $id)->get();
-
-            return datatables()->of($materials)
+            return datatables()->of(Material::where('work_order_id', $request->id)->latest('updated_at')->get())
                 ->addColumn('action', function ($material) {
-                    $btn = '<div style="display: flex; align-items: center;">';
-                    $btn .= '<a href="' . route("material.edit", $material->id) . '" class="edit btn btn-sm" style=" color: #666;"><i class="fas fa-edit"></i></a>';
+                    $btn = '<div class="d-flex justify-content-center">';
+                    $btn .= '<form action="' . route("quality-control.destroy", $material->id) . '" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="' . csrf_token() . '">
+                                <button type="submit" class="btn btn-block btn-outline-danger"><i class="fas fa-solid fa-trash" style="color: #dc3545;"></i></button>
+                            </form>';
                     $btn .= '</div>';
-                    $btn .= '<form action="' . route("material.destroy", $material->id) . '" method="POST">';
-                    $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-                    $btn .= '</form>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

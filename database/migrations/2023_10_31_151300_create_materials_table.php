@@ -23,7 +23,6 @@ return new class extends Migration
             $table->enum('toko', ['offline', 'online']);
             $table->enum('tipe', ['primary', 'additional']);
             // sub total dihitung di frontend
-            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

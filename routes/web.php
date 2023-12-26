@@ -97,14 +97,7 @@ Route::middleware(['auth'])->group(function () {
         'destroy' => 'purchase.destroy',
     ])->except(['show']);
 
-    Route::resource('material', MaterialController::class)->names([
-        'index' => 'material',
-        'create' => 'material.create',
-        'store' => 'material.store',
-        'edit' => 'material.edit',
-        'update' => 'material.update',
-        'destroy' => 'material.destroy',
-    ])->except(['show']);
+    Route::resource('material', MaterialController::class)->except(['show']);
 
     Route::resource('checklist', ChecklistController::class);
     // LOGOUT
