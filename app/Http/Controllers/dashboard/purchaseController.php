@@ -10,37 +10,40 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\Pekerjaan;
+use App\Models\PurchaseOrder;
+
+
 
 class PurchaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
-        // get user data with roles
-        if($request->ajax()) {
-            $users = User::with('roles')->get();
-
-            return datatables()->of($users)
-    ->addColumn('roles', function($user) {
-        return $user->roles->pluck('name')->implode(', ');
-    })
-    ->addColumn('action', function($user) {
-        $btn = '<div style="display: flex; align-items: center;">';
-        $btn .= '<span style="background: #FFF8cc;  color: #FFA500; padding: 3px 8px; border-radius: 8px;">Menunggu Acc Admin</span>';
-        $btn .= '</div>';
-        $btn .= '<form action="' . route("purchase.destroy", $user->id) . '" method="POST">';
-        $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        $btn .= '</form>';
-        return $btn;
-    })
-    ->rawColumns(['action', 'roles'])
-    ->make(true);
-
+        if ($request->ajax()) {
+            $query = PurchaseOrder::select(['id', 'pekerjaan_id', 'surat_no', 'pekerjaan', 'requester', 'division', 'status']);
+    
+            // Check if the table is for pekerjaan_id IS NULL
+            if ($request->has('pekerjaan_id_null') && $request->input('pekerjaan_id_null')) {
+                $query->whereNull('pekerjaan_id');
+                
+            } else {
+                $query->whereNotNull('pekerjaan_id');
+            }
+    
+            $purchaseOrders = $query->get();
+    
+            return datatables()->of($purchaseOrders)
+                ->addColumn('action', function ($purchaseOrder) {
+                    // Add any additional action buttons or links here
+                    return '<a href="' . route("purchase.edit", $purchaseOrder->id) . '" class="btn btn-sm btn-primary">Edit</a>';
+                })
+                ->toJson();
         }
+    
         return view('dashboard.PurchaseOrder.index');
     }
+    
+    
+
 
     /**
      * Show the form for creating a new resource.

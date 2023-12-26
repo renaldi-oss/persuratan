@@ -59,21 +59,23 @@
             </p>
             </a>
             <ul class="nav nav-treeview">
-                @hasrole('finance|manager')
-                <li class="nav-item">
-            <a href="{{ route('kodeSurat.index') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                    <p>
-                       Kode Surat
-                        <span class="badge badge-info right"></span>
-                    </p>
-                    </a>
-                </li>
-                @endhasrole
-             
-                {{-- DIVIDER --}}
-                <hr class="my-12 mx-1 bg-secondary" />
-            </ul>
+    @hasrole('finance|manager')
+    <li class="nav-item">
+        <a href="{{ route('kodeSurat.index') }}" class="nav-link">
+            <i class="fas fa-bars nav-icon"></i>
+            <p>
+                Kode Surat
+                <span class="badge badge-info right"></span>
+            </p>
+        </a>
+    </li>
+    @endhasrole
+
+    {{-- DIVIDER --}}
+    <hr class="my-12 mx-1 bg-secondary" />
+</ul>
+
+
         </li>
         
         @endhasrole
@@ -93,7 +95,7 @@
                 @hasrole('finance|manager')
                 <li class="nav-item {{ request()->routeIs('operational') ? 'menu-open' : '' }}">
                     <a href="{{ route("operational") }}" class="nav-link {{ request()->routeIs('operational') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-bars nav-icon"></i>
                     <p>
                         Operational Request
                         <span class="badge badge-info right"></span>
@@ -104,7 +106,7 @@
                 @hasrole('finance|manager')
                 <li class="nav-item {{ request()->routeIs('purchase') ? 'menu-open' : '' }}">
                     <a href="{{ route("purchase") }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-bars nav-icon"></i>
                     <p>
                         Purchase Order
                         <span class="badge badge-info right"></span>
