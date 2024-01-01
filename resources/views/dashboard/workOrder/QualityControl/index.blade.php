@@ -1,9 +1,3 @@
-@push('styles')
-{{-- style datatable plugin --}}
-<link rel="stylesheet" href="{{ asset('./plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('./plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-@endpush
-
 <div class="pt-3">
     <div class="d-flex justify-content-end mb-2">
         <a href="{{ route('quality-control.create', ['id' => $wo->id]) }}" class="btn btn-primary" style="text-decoration: none;">
@@ -27,11 +21,6 @@
 </div>
 
 @push('script')
-{{-- script datatable --}}
-<script src="{{ asset('./plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('./plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('./plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('./plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 
 {{-- script table user --}}
 <script type="text/javascript">
@@ -47,7 +36,7 @@
       ordering: true,
       orderable: true,
       info: true,
-      autoWidth: true,
+      autoWidth: false,
       responsive: true,
       ajax:
       {

@@ -1,8 +1,3 @@
-@push('styles')
-
-@endpush
-
-
 <div class="pt-3">
     <div class="d-flex justify-content-end mb-2">
         <a href="{{ route('checklist.create', $wo->id) }}" class="btn btn-primary" style="text-decoration: none;">

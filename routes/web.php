@@ -8,7 +8,7 @@ use App\Http\Controllers\dashboard\kodeSuratController;
 use App\Http\Controllers\dashboard\MaterialController;
 use App\Http\Controllers\Dashboard\OperationalController;
 use App\Http\Controllers\dashboard\PekerjaanController;
-use App\Http\Controllers\Dashboard\purchaseController;
+use App\Http\Controllers\dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\QualityControlController;
 use App\Http\Controllers\Dashboard\summaryController;
 use App\Http\Controllers\Dashboard\TemporaryFilesController;
@@ -42,6 +42,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('login.store');
     // auto login berdasarkan role DEVELOPMENT ONLY
     Route::get('/auto-login/{role}', [AuthController::class, 'autoLogin'])->name('auto-login');
+    
 });
 
 // DASHBOARD
@@ -88,7 +89,7 @@ Route::middleware(['auth'])->group(function () {
         'destroy' => 'operational.destroy',
     ])->except(['show']);
 
-    Route::resource('purchase', PurchaseController::class)->names([
+    Route::resource('purchase', purchaseController::class)->names([
         'index' => 'purchase',
         'create' => 'purchase.create',
         'store' => 'purchase.store',
@@ -97,14 +98,7 @@ Route::middleware(['auth'])->group(function () {
         'destroy' => 'purchase.destroy',
     ])->except(['show']);
 
-    Route::resource('material', MaterialController::class)->names([
-        'index' => 'material',
-        'create' => 'material.create',
-        'store' => 'material.store',
-        'edit' => 'material.edit',
-        'update' => 'material.update',
-        'destroy' => 'material.destroy',
-    ])->except(['show']);
+    Route::resource('material', MaterialController::class)->except(['show']);
 
     Route::resource('checklist', ChecklistController::class);
     // LOGOUT
@@ -115,6 +109,8 @@ Route::middleware(['auth'])->group(function () {
 
      // route Pekerjaan
      Route::resource('kodeSurat', kodeSuratController::class);
+     // web.php
+
     //  Route::get('kodeSurat/create', 'KodeSuratController@create')->name('kodeSurat.create');
     //  Route::get('kodeSurat/form', 'KodeSuratController@form')->name('kodeSurat.form');
     // Route::get('/dashboard/edit', [UserProfileController::class, 'edit'])->name('profile.edit');

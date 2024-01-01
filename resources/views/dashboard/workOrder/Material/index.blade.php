@@ -1,10 +1,3 @@
-@push("styles")
-{{-- style datatable plugin --}}
-<link rel="stylesheet" href="{{ asset('./plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('./plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-
-@endpush
-
 <div>
     <div class="container-fluid my-2">
         <div class="modal fade" id="createMaterial">
@@ -75,54 +68,31 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>
         </div>
     </div>
-    <div class="table-responsive" x-init="initPrimary" x-ref="tablePrimary"
+    <div class="table-responsive"
                 style="border-bottom: 2px solid #ccc;
                 margin-bottom: 20px;
                 padding-bottom: 20px">
-    <div class="d-flex justify-content-between">
-        <h2>Material</h2>
-        <button type="button" class="btn btn-primary align-self-center" data-toggle="modal" data-target="#createMaterial">
-            Add Primary
-        </button>
-    </div>
-        <table id="tablePrimary" class="table1 table-bordered table-striped" style="text-align: center;">
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Brand</th>
-                    <th>Toko</th>
-                    <th>Qty</th>
-                    <th>Harga Estimasi</th>
-                    <th>Harga Asli</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-    <div class="table-responsive" x-init="initAdditional" x-ref="tableAdditional">
         <div class="d-flex justify-content-between">
-            <h2>Additional Material</h2>
+            <h2>Material</h2>
             <button type="button" class="btn btn-primary align-self-center" data-toggle="modal" data-target="#createMaterial">
-                Add Additional
+                <i class="fas fa-plus"></i> Add Material
             </button>
         </div>
-        <table id="tableAdditional" class="table1 table-bordered table-striped" style="text-align: center;">
+        <table id="tableMaterial" class="table1 table-bordered table-striped" style="text-align: center;">
             <thead>
                 <tr>
                     <th>Nama</th>
                     <th>Brand</th>
-                    <th>Toko</th>
                     <th>Qty</th>
                     <th>Harga Estimasi</th>
                     <th>Harga Asli</th>
+                    <th>Toko</th>
+                    <th>Tipe</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -133,137 +103,87 @@
 </div>
 
 @push('script')
-{{-- script datatable --}}
-<script src="{{ asset('./plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('./plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('./plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('./plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 
 {{-- script table user --}}
 <script type="text/javascript">
-    function initPrimary() {
-        $('#tablePrimary').DataTable({
-            deferRender: false,
-            processing: true,
-            serverSide: true,
-            paging: true,
-            pageLength: 5,
-            lengthChange: true,
-            searching: true,
-            ordering: true,
-            orderable: true,
-            info: true,
-            responsive: true,
-            autoWidth: false,
-            ajax: {
-                url: "{{ route('material') }}",
-                data: {
-                    tipe: 'primary',
-                    id: {{ $wo->pekerjaan->id }}
-                }
-            },
-            columns: [
-                {
-                    data: 'nama',
-                    name: 'nama'
-                },
-                {
-                    data: 'brand',
-                    name: 'brand'
-                },
-                {
-                    data: 'toko',
-                    name: 'toko'
-                },
-                {
-                    data: 'qty',
-                    name: 'qty'
-                },
-                {
-                    data: 'estimated_price',
-                    name: 'harga_estimasi'
-                },
-                {
-                    data: 'real_price',
-                    name: 'harga_asli'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    class: 'd-flex justify-content-center'
-                }
-            ],
-            // drawCallback: function(settings) {
-            //     var data = this.api().rows({
-            //         page: 'current'
-            //     }).data();
-            //     console.log(data);
-            // },
-        });
-    };
-</script>
+  $(document).ready(function() {
+    $('#tableMaterial').DataTable({
+      deferRender: false,
+      processing: true,
+      serverSide: true,
+      paging: true,
+      pageLength: 10,
+      lengthChange: true,
+      searching: true,
+      ordering: true,
+      orderable: true,
+      info: true,
+      autoWidth: false,
+      responsive: true,
+      ajax:
+      {
+        url: "{{ route('material.index') }}",
+        data: function (d) {
+            d.id = {{ $wo->id }}
+        }
+      },
+      columns: [
+        {data: 'nama', name: 'nama'},
+        {data: 'brand', name: 'brand'},
+        {data: 'qty', name: 'qty'},
+        {data: 'estimated_price', name: 'harga estimasi'},
+        {data: 'real_price', name: 'harga asli'},
+        {data: 'toko', name: 'toko'},
+        {data: 'tipe', name: 'tipe'},
+        {
+            data: 'action',
+            name: 'action',
+        },
+      ],
+      initComplete: function () {
+            this.api().columns(5).every( function () {
+                var column = this;
+                var select = $('<select class="form-control form-control-sm"><option value=""></option></select>')
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
 
-<script type="text/javascript">
-    function initAdditional() {
-        $('#tableAdditional').DataTable({
-            deferRender: false,
-            processing: true,
-            serverSide: true,
-            paging: true,
-            pageLength: 5,
-            lengthChange: true,
-            searching: true,
-            ordering: true,
-            orderable: true,
-            info: true,
-            responsive: true,
-            autoWidth: false,
-            ajax: {
-                url: "{{ route('material') }}",
-                data: {
-                    tipe: 'additional',
-                    id: {{ $wo->pekerjaan->id }}
-                }
-            },
-            columns: [
-                {
-                    data: 'nama',
-                    name: 'nama'
-                },
-                {
-                    data: 'brand',
-                    name: 'brand'
-                },
-                {
-                    data: 'toko',
-                    name: 'toko'
-                },
-                {
-                    data: 'qty',
-                    name: 'qty'
-                },
-                {
-                    data: 'estimated_price',
-                    name: 'harga_estimasi'
-                },
-                {
-                    data: 'real_price',
-                    name: 'harga_asli'
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    class: 'd-flex justify-content-center'
-                }
-            ],
-            // drawCallback: function(settings) {
-            //     var data = this.api().rows({
-            //         page: 'current'
-            //     }).data();
-            //     console.log(data);
-            // },
-        });
-    };
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+
+                var div = $('<div class="mt-2"></div>');
+                div.append(select);
+                $(column.header()).append(div);
+            });
+            this.api().columns(6).every( function () {
+                var column = this;
+                var select = $('<select class="form-control form-control-sm"><option value=""></option></select>')
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+
+                var div = $('<div class="mt-2"></div>');
+                div.append(select);
+                $(column.header()).append(div);
+            });
+        }
+    });
+  });
 </script>
 
 <script>
@@ -284,6 +204,8 @@ function handler() {
         },
         save() {
             console.log(this.fields);
+            
+            
         }
     }
 }
