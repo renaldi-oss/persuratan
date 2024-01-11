@@ -166,6 +166,39 @@ $('#modalSurat').on('hidden.bs.modal', function (e) {
     $('.modal-backdrop').remove();
 })
 
+
+$(document).on('click', '.delete-surat', function() {
+    var id = $(this).data('id');
+    $.ajax({
+        url: "{{ route('surat.destroy', ['surat' => " + id + "]) }}",
+        method: 'DELETE',
+        data: {
+            _token: '{{ csrf_token() }}',
+            id: id
+        },
+        success: function(data) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+            Toast.fire({
+                icon: 'success',
+                title: 'Surat berhasil dihapus'
+            });
+            // Reload the DataTable
+            $('#tableSurat').DataTable().ajax.reload();
+        }
+    });
+});
+
+
 </script>
 
 <script>

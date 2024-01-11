@@ -113,8 +113,10 @@ class suratController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $surat = Surat::findOrFail($request->id);
+        $surat->delete();
+        return response()->json(['success' => true]);
     }
 }
