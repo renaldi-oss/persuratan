@@ -17,7 +17,8 @@ return new class extends Migration
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(WorkOrder::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->text('keterangan');
+            $table->foreignIdFor(KodeSurat::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }

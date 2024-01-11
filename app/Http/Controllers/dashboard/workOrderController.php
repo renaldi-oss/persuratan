@@ -70,28 +70,4 @@ class WorkOrderController extends Controller
     public function navigasi(Request $request){
         session(['active_tab' => $request->tab]);
     }
- 
-    public function persuratan(string $id)
-    {
-        $pekerjaans = Pekerjaan::with('instansi')->find($id);
-        preg_match('/^\d+/', $pekerjaans->surat_no, $matches);
-        $pekerjaans->no_wo = $matches[0];
-
-        return view('dashboard.WorkOrder.detail.persuratan', ['id' => $id, 'pekerjaans' => $pekerjaans]);
-    }
-    public function addPersuratan(string $id)
-    {
-        return view('dashboard.WorkOrder.detail.addPersuratan', ['id' => $id]);
-    }
-
-    // AJAX REQUEST
-    public function getMaterial(Request $request)
-    {
-        if($request->ajax()) {
-            // $data = Pekerjaan::with('instansi')->find($request->id);
-            // return datatables()->of($data->material)
-        }
-    }
-
-
 }

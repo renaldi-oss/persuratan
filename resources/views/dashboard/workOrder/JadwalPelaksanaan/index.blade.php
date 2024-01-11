@@ -27,7 +27,7 @@
                           </button>
                         </div>
                         <div class="modal-body"  x-data="{ }">
-                            <form>
+                            <form id="createJadwal">
                                 @csrf
                                 <x-forms.input id="input-nama" label="Nama" name="nama" placeholder="Masukkan nama" :value="$jadwal->nama ?? ''" />
                                 <x-forms.textarea id="input-deskripsi" label="Deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" :value="$jadwal->deskripsi ?? ''" />
@@ -145,7 +145,7 @@ $(document).ready(function() {
         minDate : moment().subtract(1, 'years'),
         maxDate : moment().add(1, 'years'),
     });
-    $('form').on('submit', function(e) {
+    $('#createJadwal').on('submit', function(e) {
         e.preventDefault();
 
         var formData = new FormData(this);

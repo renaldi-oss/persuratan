@@ -18,7 +18,7 @@ class SuratFactory extends Factory
     public function definition(): array
     {
         return [
-            'keterangan' => $this->faker->sentence,
+            'deskripsi' => $this->faker->sentence,
         ];
     }
 }
