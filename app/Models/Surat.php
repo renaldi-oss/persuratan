@@ -17,4 +17,8 @@ class Surat extends Model implements HasMedia
     {
         return $this->belongsTo(WorkOrder::class);
     }
+    public function kodeSurat()
+    {
+        return $this->belongsTo(KodeSurat::class);
+    }
 }

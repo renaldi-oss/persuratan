@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('work_order_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('material_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->text('deskripsi');
+            $table->string('nama');
+            $table->integer('qty');
+            $table->enum('pembelian',['online','offline']);
+            $table->enum('status',['belum','sudah'])->default('belum');
             $table->timestamps();
         });
     }

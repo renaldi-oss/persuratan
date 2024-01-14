@@ -11,4 +11,9 @@ class KodeSurat extends Model
 
     protected $guarded = ['id'];
 
+    public function surat()
+    {
+        return $this->hasMany(Surat::class);
+    }
+
 }

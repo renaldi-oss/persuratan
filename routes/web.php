@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\ChecklistController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InstansiController;
 use App\Http\Controllers\dashboard\JadwalController;
@@ -11,12 +12,13 @@ use App\Http\Controllers\dashboard\PekerjaanController;
 use App\Http\Controllers\dashboard\purchaseController;
 use App\Http\Controllers\Dashboard\QualityControlController;
 use App\Http\Controllers\Dashboard\summaryController;
+use App\Http\Controllers\Dashboard\suratController;
 use App\Http\Controllers\Dashboard\TemporaryFilesController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\UserProfileController;
 use App\Http\Controllers\Dashboard\WorkOrderController;
-use App\Http\Controllers\Dashboard\ChecklistController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -74,7 +76,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('jadwal', JadwalController::class)->except(['create']);
     // route quality control
     Route::resource('quality-control', QualityControlController::class)->except(['show']);
-
+    
+    Route::resource('surat', suratController::class);
+    Route::get('ajax-surat', [suratController::class, 'ajaxsurat'])->name('ajax-surat');
+    
     //halaman summary
     Route::get('/summary', [summaryController::class, 'index'])->name('summary.index');
     Route::get('/summary/downloadAll', [summaryController::class, 'downloadAll'])->name('summary.downloadAll');
@@ -99,7 +104,7 @@ Route::middleware(['auth'])->group(function () {
     ])->except(['show']);
 
     Route::resource('material', MaterialController::class)->except(['show']);
-
+    Route::get('ajax-material', [MaterialController::class, 'ajaxmaterial'])->name('ajax-material');
     Route::resource('checklist', ChecklistController::class);
     // LOGOUT
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -107,9 +112,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/upload', [TemporaryFilesController::class, 'store'])->name('tempfile.upload');
     Route::delete('/upload', [TemporaryFilesController::class, 'destroy'])->name('tempfile.destroy');
 
-     // route Pekerjaan
-     Route::resource('kodeSurat', kodeSuratController::class);
-     // web.php
+    // route Pekerjaan
+    Route::resource('kodeSurat', kodeSuratController::class);
 
     //  Route::get('kodeSurat/create', 'KodeSuratController@create')->name('kodeSurat.create');
     //  Route::get('kodeSurat/form', 'KodeSuratController@form')->name('kodeSurat.form');

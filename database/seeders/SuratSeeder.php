@@ -19,6 +19,7 @@ class SuratSeeder extends Seeder
             Surat::factory()->count(1)
             ->create([
                 'work_order_id' => $workOrder->id,
+                'kode_surat_id' => 1,
             ])->each(function (Surat $surat) {
                 $surat->addMedia(public_path('assets/img/bruh.jpg'))
                       ->preservingOriginal()

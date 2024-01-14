@@ -27,6 +27,16 @@ class MaterialController extends Controller
                 ->make(true);
         }
     }
+    public function ajaxmaterial(Request $request)
+    {
+        $material = Material::where('work_order_id', $request->id)->latest('updated_at')->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Material berhasil ditampilkan',
+            'data' => $material
+        ], 200);
+    }
 
     public function create()
     {
@@ -45,10 +55,6 @@ class MaterialController extends Controller
             'tipe' => 'required',
             'toko' => 'required',
         ]);
-
-        $defautlTab = 'material';
-
-        return dd($request->all());
 
         Material::createMaterial($request->all(), $id);
 

@@ -17,7 +17,9 @@ class ChecklistFactory extends Factory
     public function definition(): array
     {
         return [
-            'deskripsi' => $this->faker->sentence,
+            'nama' => $this->faker->sentence,
+            'qty' => $this->faker->randomNumber(),
+            'pembelian' => $this->faker->randomElement(['online','offline']),
         ];
     }
 }
